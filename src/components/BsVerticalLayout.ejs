@@ -1,0 +1,23 @@
+<%
+const {
+  useBottomFixedArea=false,
+  useHeaderInTab= false,
+  useSlotStart = '',
+  useSlotEnd = '',
+  useSlotCenter = '',
+} = props || {}
+%>
+<div class="bs-vertical-layout <%-useBottomFixedArea?'is-bottom-fixedarea':''%> <%-useSlotCenter ? 'is-layout-center' : ''%> <%-useHeaderInTab ? 'is-header-tabs' : ''%>">
+  <%_if(!useSlotCenter){_%>
+  <div class="bvs-start">
+    <%-useSlotStart%>
+  </div>
+  <div class="bvs-end">
+    <%-useSlotEnd%>
+  </div>
+  <%_}else{_%>
+  <div class="bvs-center">
+    <%-useSlotCenter%>
+  </div>
+  <%_}_%>
+</div>

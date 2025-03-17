@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<%- include($rootSrc('@/components/layout/Head')); %>
+
+<body>
+  <div class="main">
+    <%- include($rootSrc('@/components/layout/HeaderTitle'), {
+      props: {
+        ...data?.headerSubInfo,
+        useRightArea: data?.headerSubInfo?.useRightArea,
+        useBottomArea: include($rootSrc('@/components/BsTab'), {
+          props: {
+            items: [
+            {codeId: 0, codeName: '지원 사업'},
+            {codeId: 1, codeName: '창업 정보'},
+            {codeId: 2, codeName: '창업 라운지'},
+            ],
+            value: data.tabValue,
+            size: (TAB_SIZE)=>TAB_SIZE.large
+          }
+        })
+      }
+    }) %>
+    <%- body %>
+  </div>
+  <div class="tlp-toast">
+  </div>
+  <div class="tlp-dialog">
+  </div>
+  <%-include($rootSrc('@/components/layout/Script'))%>
+</body>
+
+</html>

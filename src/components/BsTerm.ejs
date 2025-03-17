@@ -1,0 +1,65 @@
+<%
+const {
+  title = '',
+  checked = false,
+  useTitleCheckbox = false,
+  items = [
+  {codeId: 1, codeName: '[필수] 서비스 약관', checked: false},
+  {codeId: 2, codeName: '[필수] 개인정보 처리방침', checked: true},
+  {codeId: 3, codeName: '[선택] 개인정보 이용 동의', checked: false},
+  ]
+} = props || {}
+%>
+
+<div class="bs-term">
+  <div class="bt-inner">
+    <%_if(title){_%>
+    <div class="b-org-tt">
+      <!--  -->
+      <div class="bx-conte">
+        <div class="b-lts">
+          <%-include($rootSrc('@/components/BsCheckbox'), {
+            props: {
+              checked,
+              designType: (TYPE)=>TYPE.ROUND,
+              slot: `<span class="l-tx">${title}</span>`
+            }
+          })%>
+        </div>
+        <div class="b-rts">
+          <%_if(useTitleCheckbox){_%>
+          <button class="b-det-btn">
+            <span class="blind">약관상세보기</span>
+          </button>
+          <%_}_%>
+        </div>
+      </div>
+      <!--  -->
+    </div>
+    <%_}_%>
+    <%_if(items.length >= 1){_%>
+    <div class="b-org-st">
+      <!--  -->
+      <%_for(const k in items){_%>
+      <div class="bx-conte">
+        <div class="b-lts">
+          <%-include($rootSrc('@/components/BsCheckbox'), {
+              props: {
+                checked: items[k].checked,
+                designType: (TYPE)=>TYPE.CHECK,
+                slot: `<span class="l-tx">${items[k].codeName}</span>`
+              }
+            })%>
+        </div>
+        <div class="b-rts">
+          <button class="b-det-btn">
+            <span class="blind">약관상세보기</span>
+          </button>
+        </div>
+      </div>
+      <%_}_%>
+      <!--  -->
+    </div>
+    <%_}_%>
+  </div>
+</div>

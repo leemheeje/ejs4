@@ -1,0 +1,69 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+.typing-container {
+  display: flex;
+  border-top: solid 1px color('Gray/10');
+  align-items: center;
+  background: #fff;
+  .btn-area {
+    display: flex;
+    padding-left: to-rem(4px);
+    align-items: center;
+    // flex: 0 0 to-rem(100px); //컴포넌트로 옮기면서 해당 내용 주석
+    button {
+      background: transparent;
+      width: to-rem(48px);
+      height: to-rem(56px);
+      border: 0;
+    }
+    .btn-keyboard {
+      background-size: to-rem(24px) to-rem(24px);
+      background-image: get-background-svg('icon_keyboard_down', #{color('Gray/01')});
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+    .btn-camera {
+      background-size: to-rem(24px) to-rem(24px);
+      background-image: get-background-svg('icon_camera', #{color('Gray/01')});
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+  }
+  .typing-input {
+    height: to-rem(56px);
+    flex: 1;
+    input {
+      background: transparent;
+      width: 100%;
+      height: 100%;
+      padding: 0 to-rem(8px);
+      border: solid to-rem(1px) transparent;
+      border-radius: to-rem(8px);
+      &:focus {
+        border-color: color('Gray/02');
+      }
+    }
+  }
+  .word-count {
+    display: flex;
+    min-width: to-rem(55px);
+    height: to-rem(56px);
+    margin-right: to-rem(16px);
+    margin-left: to-rem(8px);
+    // flex: 0 0 to-rem(55px);
+    gap: 0 to-rem(4px);
+    align-items: center;
+    margin-left: auto;
+    strong {
+      color: color('Gray/02');
+      font-weight: 500;
+    }
+    span {
+      color: color('Gray/06');
+      font-weight: 500;
+    }
+  }
+}

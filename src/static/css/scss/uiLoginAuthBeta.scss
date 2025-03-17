@@ -1,0 +1,34 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+.ui-login-authbeta{
+  .uaa-inner{
+    padding: to-rem(24px) $spacing-left;
+    border-radius: to-rem(8px);
+    background: color('Gray/11');
+  }
+  .ua-lst{
+    .u-tp{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .t-ic{
+      display: block;
+      width: to-rem(20px);
+      height: to-rem(20px);
+      margin-right: to-rem(10px);
+      .t-img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .t-tx{
+      @include font('Body2/Medium');
+      color: color('Gray/02');
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+$use-right-arrow: 'use-right-arrow';
+
+.ui-mypage-bancollaps{
+  .umb-inner{}
+  .mb-lst{
+    background: none;
+    border: none;
+    width: 100%;
+    padding: to-rem(20px);
+    min-height: to-rem(64px);
+    background-color: #fff;
+    border-radius: to-rem(16px);
+    .mx-tit{
+      display: flex;
+      align-items: center;
+      gap: to-rem(8px);
+      padding-right: to-rem(24px);
+      position: relative;
+      &:after{
+        content: '';
+        width: to-rem(24px);
+        height: to-rem(24px);
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: no-repeat center center get-background-svg('icon_angle_small_down', #{color('Gray/01')});
+        background-size: 100%;
+      }
+      .m-t{
+        display: block;
+        max-width: calc(100% - to-rem(50px));
+        @include font('T3/Semibold');
+        @include text-ellipsis;
+        color: color('Gray/02');
+      }
+    }
+  }
+  &.#{$use-right-arrow}{
+    .mb-lst{
+      .mx-tit{
+        &:after{
+          content: '';
+          background-image: get-background-svg('icon_angle_small_right', #{color('Gray/01')});
+        }
+      }
+    }
+  }
+}

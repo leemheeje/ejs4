@@ -1,0 +1,44 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+$is-required: 'is-required';
+
+.bs-label {
+  margin-bottom: to-rem(8px);
+  @at-root .bs-col .bs-label {
+    margin-bottom: 0;
+  }
+  .bl-t {
+    @include font('Body2/Bold');
+    color: color('Gray/01');
+  }
+  .bl-rr {
+    @include font('Body4/Medium');
+    color: color('Gray/05');
+  }
+  .bs-label-desc {
+    font-size: to-rem(11px);
+    width: 100%;
+    color: color('Gray/06');
+    font-weight: 500;
+    margin-top: to-rem(4px);
+  }
+  &.is-labelright {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .bl-rr {
+      margin-left: to-rem(2px);
+    }
+  }
+  &.#{$is-required} {
+    .bl-t:after {
+      content: '*';
+      margin-left: to-rem(2px);
+      @include font('Body3/Bold');
+      color: color('Red/03');
+    }
+  }
+}

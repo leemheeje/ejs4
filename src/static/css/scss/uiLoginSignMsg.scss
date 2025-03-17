@@ -1,0 +1,25 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+.ui-login-signsmsg{
+  .um-inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .b-tit{
+      font-size: 0;
+      width: to-rem(60px);
+      height: to-rem(33px);
+      background: no-repeat center center url('../images/logo-basic.svg');
+      background-size: 100%;
+    }
+    .b-desc{
+      margin-top: to-rem(16px);
+      @include font('Body1/Medium');
+      color: color('Gray/05');
+    }
+  }
+}

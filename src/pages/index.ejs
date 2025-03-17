@@ -1,0 +1,37 @@
+<%
+const __Export = defineExport({
+  layout: 'default', 
+  head:{
+    title: '미미미',
+    meta: [
+      { hid: 'description', name: 'description', content: 'my website description' }
+    ]
+  },
+  async asyncData({getHtml}){
+    const term1 = await getHtml('https://ui.kcp.co.kr/project/be-friends/01_Findid-auth-rejec.html')
+    return {
+      term1
+    }
+  }
+}).bind()
+const data = 3
+%>
+index 44444 5515123<%-data%> <%-JSON.stringify(__Export)%>
+
+<img src="<%-$staticSrc('@/static/images/logo-basic.svg')%>" /> <br />
+<%-include($rootSrc('@/components/Bs.ejs'), {
+  props:{
+    test: 1
+  }
+})%>
+<br />
+<%-term1%>
+<%-$t('Hello')%>
+<br />
+<%-data%>
+<br />
+<%_if($currentLocale === 'ko'){_%>
+한국어입니다.
+<%_}else if($currentLocale === 'en'){_%>
+영문입니다.
+<%_}_%>

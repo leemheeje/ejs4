@@ -1,0 +1,34 @@
+{
+  "editor.formatOnSave": true,
+  "eslint.validate": ["javascript", "html"],
+  "javascript.validate.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "json.format.enable": true,
+  "json.format.indent": 2,
+  "eslint.workingDirectories": [{"mode": "auto"}],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "emmet.includeLanguages": {
+    "ejs": "html"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "j69.ejs-beautify"
+  },
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded", //compact || compressed || expanded
+      "extensionName": ".min.css",
+      "savePath": "/src/static/css"
+    }
+  ],
+  "liveSassCompile.settings.generateMap": false,
+  "liveSassCompile.settings.includeItems": ["/src/static/css/scss/*.scss"]
+}

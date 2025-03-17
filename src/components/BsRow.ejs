@@ -1,0 +1,24 @@
+<%
+const LAYOUT_TYPE = {
+  DEFAULT: 'layout-default',
+  FLEX: 'layout-flex',
+  SECOND_FIT_CONTENT: 'layout-second-fit-content',
+  FIRST_FIT_CONTENT: 'layout-first-fit-content',
+}
+
+const {
+  items=[],
+  layoutType=()=>LAYOUT_TYPE.DEFAULT,
+  alignItemCenter=false,
+} = props || {}
+
+const localLayoutType = Object.values(LAYOUT_TYPE).includes(layoutType(LAYOUT_TYPE)) ? layoutType(LAYOUT_TYPE) : LAYOUT_TYPE.DEFAULT
+%>
+
+<div class="bs-row <%-alignItemCenter ? 'align-item-center' :''%> <%-localLayoutType%>">
+  <%_for(const k in items){_%>
+  <div class="bs-col">
+    <%-items[k]%>
+  </div>
+  <%_}_%>
+</div>

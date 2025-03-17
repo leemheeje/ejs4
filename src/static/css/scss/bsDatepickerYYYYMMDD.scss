@@ -1,0 +1,109 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+$is-active: 'is-active';
+$is-schedule: 'is-schedule';
+
+.bs-datepicker-ymd {
+  .bdy-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: to-rem(16px);
+    margin-bottom: to-rem(24px);
+    .lty,
+    .rty {
+      width: to-rem(20px);
+      height: to-rem(20px);
+      background: none;
+      border: none;
+      background: no-repeat center center;
+      background-size: 100%;
+    }
+    .lty {
+      background-image: get-background-svg('icon_angle_small_left', #{color('Gray/02')});
+    }
+    .rty {
+      background-image: get-background-svg('icon_angle_small_right', #{color('Gray/02')});
+    }
+    .bt-tit {
+      @include font('Body1/Bold');
+      color: color('Gray/02');
+    }
+  }
+  .bdy-cont {
+    .b-thead {
+      color: color('Gray/05');
+      .b-tr {
+        .b-td {
+          font-size: 13px;
+          font-weight: 500;
+        }
+      }
+    }
+    .b-tbody {
+      color: color('Gray/02');
+    }
+    .b-tr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: to-rem(12px);
+      gap: to-rem(4px);
+      & + .b-tr {
+        margin-top: to-rem(20px);
+      }
+    }
+    .b-td {
+      background: none;
+      border: none;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: to-rem(32px);
+      position: relative;
+      z-index: 1;
+      height: to-rem(32px);
+      line-height: to-rem(32px);
+      font-size: 15px;
+      font-weight: 600;
+      &.#{$is-active} {
+        &::after {
+          content: '';
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background-color: color('Blue/04 (basic)');
+          position: absolute;
+          top: 0;
+          left: 50%;
+          margin-left: -16px;
+          z-index: -1;
+        }
+        color: color('Common/White');
+      }
+      &.#{$is-schedule} {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          border-radius: 50%;
+          width: 4px;
+          height: 4px;
+          background: color('Blue/06');
+          margin-left: -2px;
+        }
+      }
+    }
+    .b-thead {
+      .b-td {
+        height: to-rem(24px);
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<%
+const {
+  title = '창업 시작전',
+  description = '반가워요, 우리 창업 성공해봐요!',
+  imgSrc = '<%-$staticSrc('@/static/images/common/img_symb_005.png')%>',
+} = props || {}
+%>
+
+<div class="ui-banner-main-guide">
+  <div class="ubm-inner">
+    <div class="ub-txts">
+      <div class="u-tit"><%-title%></div>
+      <p class="u-desc"><%-description%></p>
+    </div>
+    <span class="ub-synb">
+      <img src="<%-imgSrc%>" class="u-img" alt="" />
+    </span>
+  </div>
+</div>

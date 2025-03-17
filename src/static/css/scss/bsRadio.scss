@@ -1,0 +1,112 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+$DESIGN_TYPE_CHECKBOX: 'design-checkbox';
+$DESIGN_TYPE_ROUND: 'design-roundcheckbox';
+$DESIGN_TYPE_CHECK: 'design-check';
+$DESIGN_TYPE_LABEL: 'design-label';
+
+$radio-width: to-rem(20px);
+$radio-height: to-rem(20px);
+
+.bs-radio {
+  position: relative;
+  display: inline-flex;
+
+  .b-inp {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  .b-lb {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .ico-check {
+    display: block;
+    min-width: $radio-width;
+    width: $radio-height;
+    height: $radio-width;
+    border-radius: to-rem(4px);
+    background: no-repeat center center #fff;
+    border: to-rem(1px) solid color('Gray/07');
+  }
+  .b-tx {
+    display: flex;
+    align-items: center;
+    min-height: $radio-height;
+    margin-left: to-rem(8px);
+    @include font('Body4/Medium');
+    @extend %css-color-set;
+  }
+  .b-n-slot {
+    display: block;
+    width: 100%;
+  }
+  .b-lb {
+    .ico-check {
+    }
+  }
+  .b-inp:checked ~ .b-lb {
+    .ico-check {
+      border: to-rem(6px) solid color('Blue/04 (basic)');
+      // background-image: get-background-svg('icon_check', '#fff');
+      // background-size: 100%;
+      // background-color: color('Blue/04 (basic)');
+    }
+  }
+  &.is-disabled .ico-check {
+    opacity: 0.46;
+  }
+  &.#{$DESIGN_TYPE_ROUND} .ico-check {
+    border-radius: 50%;
+    // background-image: get-background-svg('icon_check', #{color('Gray/08')});
+    background-color: #fff;
+    // background-size: 100%;
+  }
+  &.#{$DESIGN_TYPE_CHECK} {
+    .ico-check {
+      border-color: #fff;
+      border-radius: 0%;
+      background-image: get-background-svg('icon_check', #{color('Gray/08')});
+      background-color: #fff;
+      background-size: 100%;
+    }
+    .b-inp:checked ~ .b-lb .ico-check {
+      background-image: get-background-svg('icon_check', #{color('Blue/04 (basic)')});
+      background-color: #fff;
+      border-color: #fff;
+    }
+  }
+  &.#{$DESIGN_TYPE_LABEL} {
+    .ico-check {
+      display: none;
+    }
+    .b-tx {
+      margin-left: 0;
+      @include font('Body5/Medium');
+      color: color('Gray/03');
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 to-rem(14px);
+      white-space: nowrap;
+      border: to-rem(1px) solid color('Gray/09');
+      border-radius: to-rem(32px);
+      min-width: to-rem(50px);
+      height: to-rem(32px);
+    }
+    .b-inp:checked ~ .b-lb {
+      .b-tx {
+        border-color: color('Blue/04 (basic)');
+        color: color('Blue/04 (basic)');
+      }
+    }
+  }
+}

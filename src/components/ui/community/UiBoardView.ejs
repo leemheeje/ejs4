@@ -1,0 +1,231 @@
+<%
+const {
+  board = 'support',
+  nickname = "닉네임",
+  category = "",
+  title="",
+  download = false,
+  origin = false,
+  buttonArea = false,
+  buttonIcon = "bookmark",
+  buttonText = "PICK 하기",
+  linkArea = false,
+  linkText = "목록보기",
+  info = true,
+  date = "23.01.01",
+  dateRange = "23.01.01 - 24.02.02",
+  type = "정책자금",
+  viewsCount = "200",
+  tags,
+  className,
+  active=false,
+  imgSwipe=false,
+  report=false,
+  blockedMember=false,
+} = props || {}
+
+const htmlTags = (tags, margin='') => tags ? `
+<div class="u-tags ${margin}">
+  ${tags.map((tag)=>{
+    let params = {
+      cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND['Blue/09'],
+      cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR['Blue/09'],
+      cssColor: (CSS_COLOR)=>CSS_COLOR['Blue/04 (basic)'],
+    }
+    if(tag.codeId === 1099){
+      params = params
+    }else if(tag.codeId === 1098){
+      params = {
+        cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND['Red/09'],
+        cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR['Red/09'],
+        cssColor: (CSS_COLOR)=>CSS_COLOR['Red/03'],
+      }
+    }else{
+      params = {
+        cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND['Gray/11'],
+        cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR['Gray/11'],
+        cssColor: (CSS_COLOR)=>CSS_COLOR['Gray/03'],
+      }
+    }
+    return include($rootSrc('@/components/BsTag.ejs'), {
+      props: {
+        ...params,
+        size: (TAG_SIZE)=>TAG_SIZE.SMALL,
+        slot: tag.codeName
+      }
+    })
+  }).join(' ')}
+</div>
+` : ''
+%>
+
+
+<div class="board-view">
+  <div class="board-header">
+    <%_if(category){_%>
+    <strong class="board-category"><%-category ? category : "" %></strong>
+    <%_}_%>
+    <h2 class="board-title <%-report ? 'report-text':''%>"><%-title%></h2>
+    <%_if(info){_%>
+    <div class="board-info">
+      <%_if(board === 'support'){_%>
+      <%_if(dateRange){_%>
+      <span><%-dateRange%></span>
+      <%_}_%>
+      <%_if(type){_%>
+      <span><%-type%></span>
+      <%_}_%>
+      <span>조회 <em><%-viewsCount%></em></span>
+      <%_} else if(board === 'lounge') {_%>
+      <span><%-nickname%></span>
+      <span><%-date %></span>
+      <span>조회 <em><%-viewsCount%></em></span>
+      <%_} else if(board === 'notice') {_%>
+      <span><%-date%></span>
+      <%_} else if(board === 'event') {_%>
+      <span><%-dateRange%></span>
+      <span>조회 <em><%-viewsCount%></em></span>
+      <%-htmlTags(tags, 'ML12')%>
+      <%_} else {_%>
+      <%_if(date){_%>
+      <span><%-date%></span>
+      <%_}_%>
+      <%_if(type){_%>
+      <span><%-type%></span>
+      <%_}_%>
+      <span>조회 <em><%-viewsCount%></em></span>
+      <%_}_%>
+    </div>
+    <%_}_%>
+  </div>
+  <div class="board-body">
+    <%_if(report){_%>
+    <div class="board-content is-smarteditor-content">
+      <p class="report-text">
+        게시가 중단되어 내용 확인이 불가합니다
+      </p>
+    </div>
+    <%_} else if(blockedMember){_%>
+    <div class="board-content is-smarteditor-content">
+      <p class="report-text">
+        차단된 멤버의 게시글입니다.
+      </p>
+    </div>
+    <%_} else {_%>
+    <div class="board-content is-smarteditor-content">
+
+      <p>25년 「정책자금 상환연장」제도 변경사항 안내</p>
+      <p>소상공인시장진흥공단 에서는 공단 직접 대출을 이용중인 &nbsp;<br>
+        소상공인들의 월 원리금상환 부담을 경감하고자&nbsp;<br>
+        「정책자금 상환연장」신청을 접수하고 있습니다.&nbsp;</p>
+      <p>해당 제도의 접수기간 및 신청조건에 변경사항이 있어 이를&nbsp;<br>
+        안내합니다.&nbsp;</p>
+      <p>✅ 접수기간 변경 : 매월1일~10일까지</p>
+      <p>✅ 경영애로 사유 완화&nbsp;</p>
+      <p>(기존) 3곳 이상의 금융기관에서 대출 활용중인 다중채무자&nbsp;<br><br><strong>(변경) 2곳 이상의 금융기관에서 대출 활용중인 다중채무자&nbsp;</strong></p>
+      <p>(기존) 매출액이 전기 대비 10% 이상 감소한 업체&nbsp;<br><strong>(변경) 매출액이 전기 대비 감소한 업체&nbsp;</strong></p>
+      <p>※ 1개월 이내 연체자 상환연장은 3월경 접수 개시 예정<br>
+        &nbsp; &nbsp; (별도 공지 예정)&nbsp;</p>
+      <p>※ 지원대상 등 기타 자세한 사항은 첨부된 공고문을 확인하여&nbsp;<br>
+        &nbsp; &nbsp; 주십시오.&nbsp;</p>
+
+
+      <p><span style="color:hsl(0,0%,0%);"><strong>소관부처 · 지자체</strong></span></p>
+      <p>대전 광역시</p>
+      <p>&nbsp;</p>
+      <p><span style="color:hsl(0,0%,0%);"><strong>사업개요</strong></span></p>
+      <p>고물가 · 경기침체 등으로 인한 영업환경의 불안정으로 분쟁 사례가 급증함에 따라, 소상공인 경영안정을 도모하기 위해 ‘소상공인 법률서비스 지원사업’계획을 다음과 같이 공고합니다.</p>
+      <p>&nbsp;</p>
+      <p><span style="color:hsl(0,0%,0%);"><strong>사업신청 방법</strong></span></p>
+      <p>이메일 또는 팩스 접수<br>
+        - 이메일 : post@djdea.or.kr<br>
+        - 팩스 : 042-380-3093</p>
+      <p>
+        내용이 노출됩니다. 내용이 노출됩니다.
+        내용이 노출됩니다. 내용이 내용이 노출됩니다.
+        내용이 노출됩니다. 내용이 노출.
+
+        내용이 노출됩니다. 내용이 노출됩니다. 내용이
+        노출됩니다. 내용이 노출됩니다. 내용이 노출됩니다.
+        내용이 노출됩니다. 내용이 노출됩니다. 내용이 노출됩니다. 내용이 노출됩니다. 내용이 노출됩니다. 내용이 노출됩니다. 내용이 노출됩니다. 내용이 노출됩니다.
+
+        내용이 노출됩니다. 내용.
+        내용이 노출됩니다. 내용이 노출됩니다. 내용이 노출됩니다. 내용이 노출됩니다. 내용이 노출됩니다.
+      </p>
+      <figure class="image">
+        <%_if(imgSwipe){_%>
+        <!-- 이미지 여러개 스와이프 -->
+        <%- include($rootSrc('@/components/BsSwiper'), {
+            props:{
+              items: [
+                {codeId: 0, codeSrc: '<%-$staticSrc('@/static/images/@dummy/Ratio.png')%>'},
+        {codeId: 1, codeSrc: '<%-$staticSrc('@/static/images/@dummy/Ratio.png')%>'},
+        {codeId: 2, codeSrc: '<%-$staticSrc('@/static/images/@dummy/Ratio.png')%>'},
+        {codeId: 3, codeSrc: '<%-$staticSrc('@/static/images/@dummy/Ratio.png')%>'},
+        ],
+        pagination: false,
+        slidesPerView:'auto',
+        spaceBetween:10,
+        slot: ({codeSrc})=> `<img src="${codeSrc}" alt="" />`
+        }
+        })%>
+        <%_} else {_%>
+        <!--이미지 하나만 있을때  -->
+        <img src="<%-$staticSrc('@/static/images/@dummy/board.png')%>" alt="">
+        <%_}_%>
+      </figure>
+    </div>
+    <%_}_%>
+    <%_if(download){_%>
+    <div class="board-download">
+      <ul>
+        <li>
+          <p><span>240102_24년_소상공인_지원방식1240102_24년_소상공인_지원방식1</span><em>.pdf</em></p>
+          <a href="#">다운로드</a>
+        </li>
+        <li>
+          <p><span>파일명</span><em>.pdf</em></p>
+          <a href="#">다운로드</a>
+        </li>
+      </ul>
+    </div>
+    <%_}_%>
+  </div>
+  <%_if(origin || buttonArea || linkArea){_%>
+  <div class="board-footer">
+    <%_if(origin){_%>
+    <div class="board-origin">
+      <a href="#"><span class="bs-tag tag-type-round">출처</span> 중소벤처기업부</a>
+    </div>
+    <%_}_%>
+    <%_if(buttonArea){_%>
+    <div class="board-button-area <%- origin ? 'MT40' : '' %>">
+      <!-- 버튼 on : active class 추가 -->
+      <button type="button" class="btn-primary <%-active ? 'active' : ''%>" data-front="<%-buttonIcon%>">
+        <%_ if(buttonText === '공감') {_%>
+        <%-buttonText%>
+        <span>2</span>
+        <%_} else {_%>
+        <%-buttonText%>
+        <%_}_%>
+      </button>
+    </div>
+    <%_}_%>
+    <%_if(linkArea){_%>
+    <div class="board-link-area <%-className%>">
+      <%-include($rootSrc('@/components/BsButton'),{
+        props:{
+          block: true,
+          href:"#",
+          size: (size)=>size.LARGE,
+          cssBackground: (color)=>color['Blue/04 (basic)'],
+          cssBorderColor: (color)=>color['Blue/04 (basic)'],
+          cssColor: (color)=> color['Common/White'],
+          slot: linkText,
+        }
+      })%>
+    </div>
+    <%_}_%>
+  </div>
+  <%_}_%>
+</div>

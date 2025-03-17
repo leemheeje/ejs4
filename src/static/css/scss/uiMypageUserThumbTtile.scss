@@ -1,0 +1,67 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+.ui-mypage-userthumb{
+  .umu-inner{
+  }
+  .u-thumb{
+    min-width: to-rem(60px);
+    width: to-rem(60px);
+    height: to-rem(60px);
+    overflow: hidden;
+    border-radius: 50%;
+    .img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .u-txts{
+    max-width: calc(100% - to-rem(80px));
+    .u-t{
+      display: block;
+      @include text-ellipsis;
+      @include font('H1/Bold');
+      color: color('Gray/01');
+    }
+    .u-bt{
+      @include font('Body5/Medium');
+      width: 100%;
+      margin-top: to-rem(6px);
+      background: none;
+      border: none;
+      color: color('Gray/04');
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: to-rem(4px);
+      .s-t{
+        white-space: nowrap;
+      }
+      .s-b{
+        padding-right: to-rem(18px);
+        position: relative;
+        @include text-ellipsis;
+        max-width: 100%;;
+        &:after{
+          content: '';
+          width: to-rem(14px);
+          height: 100%;
+          position: absolute;
+          right: 0;
+          top: 0;
+          background: no-repeat center center get-background-svg('icon_copy', #{color('Gray/06')});
+          background-size: 100%;
+        }
+      }
+    }
+  }
+  .um-cont{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: to-rem(20px);
+  }
+}

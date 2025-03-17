@@ -1,0 +1,30 @@
+<%
+const {
+  inputRightSlot = ()=>'<span class="b-ic-select"></span>',
+  items= [
+  {codeId: 1, codeName: 'select1'},
+  {codeId: 2, codeName: 'select2'},
+  {codeId: 3, codeName: 'select3'}, 
+  {codeId: 4, codeName: 'select4'},
+  ],
+  value='',
+  disabled = false,
+  ...prop
+} = props || {}
+%>
+
+<div class="bs-select <%-disabled ? 'is-select-disabled' : ''%>">
+  <%-include($rootSrc('@/components/BsInputField'), {
+    props:{
+      ...prop,
+      value,
+      disabled: true,
+      inputRightSlot,
+    }
+  })%>
+  <select class="blind">
+    <%_for(const k in items){_%>
+    <option value="<%-items[k].codeId%>"><%-items[k].codeName%></option>
+    <%_}_%>
+  </select>
+</div>

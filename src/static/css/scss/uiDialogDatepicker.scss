@@ -1,0 +1,62 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+$is-active: 'is-active';
+
+.ui-dialog-datepicker{
+  .udd-inner{
+    position: relative;
+    &:after,&:before{
+      content: '';
+      width: 100%;
+      height: to-rem(95px);
+      position: absolute;
+      left: 0;
+      pointer-events: none;
+    }
+    &:after{
+      background: linear-gradient(180deg, transparent 0%, #fff 100%);
+      bottom: 0;
+    }
+    &:before{
+      // background: linear-gradient(180deg, #fff 30%, transparent 100%);
+      background: linear-gradient(180deg, #fff 0%, transparent 100%);
+      top: 0;
+      z-index: 1;
+    }
+  }
+  .ud-lst{
+    height: to-rem(226px);
+    overflow: hidden;
+    overflow-y: auto;
+   
+    .ud-tp{
+      .u-tx{
+        @include font('Body1/Medium');
+        color: color('Gray/02');
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: to-rem(48px);
+        background: transparent;
+        border: none;
+        width: 100%;
+        &.#{$is-active}{
+          color: color('Blue/04 (basic)');
+        }
+      }
+    }
+  }
+  .bs-radio{
+    .b-inp:checked~.b-lb{
+      .ud-tp{
+        .u-tx{
+          color: color('Blue/04 (basic)');
+        }
+      }
+    }
+  }
+}

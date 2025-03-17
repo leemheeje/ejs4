@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<%- include($rootSrc('@/components/layout/Head')); %>
+
+<body>
+  <div class="subpage">
+    <%- include($rootSrc('@/components/layout/HeaderSearch'),{
+      props: {
+        ...data?.headerSubInfo,
+        useRightArea: data?.headerSubInfo?.useRightArea,
+        useBottomArea: data?.headerSubInfo?.useBottomArea ? include($rootSrc('@/components/BsTab'), {
+          props: {
+            ...{
+              items: [
+                {codeId: 0, codeName: '지원 사업'},
+                {codeId: 1, codeName: '창업 정보'},
+                {codeId: 2, codeName: '창업 라운지'},
+              ],
+              value: data.tabValue,
+              size: (TAB_SIZE)=>TAB_SIZE.large
+            },
+            ...data?.headerSubInfo?.useBottomArea
+          }
+        }): ''
+      }
+    }) %>
+    <%- body %>
+  </div>
+  <%-include($rootSrc('@/components/layout/Script'))%>
+</body>
+
+</html>

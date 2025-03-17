@@ -1,0 +1,45 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+.ui-login-form{
+  .uf-inner{
+  }
+  .uf-lst{
+    display: flex;
+    flex-direction: column;
+    gap: to-rem(16px);
+  }
+  .u-form{}
+  .u-form-grid{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .uf-lt{
+      display: flex;
+    }
+    .uf-rt{
+      display: flex;
+      align-items: center;
+      .r-t{
+      }
+      .r-t+.r-t{
+        margin-left: to-rem(12px);
+        padding-left: to-rem(12px);
+        position: relative;
+        &:before{
+          content: '';
+          width: to-rem(1px);
+          height: to-rem(12px);
+          background: color('Gray/09');
+          position: absolute;
+          left: 0;
+          top: 50%;
+          margin-top: to-rem(-6px);
+        }
+      }
+    }
+  }
+}

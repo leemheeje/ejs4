@@ -1,0 +1,113 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+.ui-section-pannel-list{
+  .usp-inner{
+    border-radius: to-rem(16px);
+    background-color: color('Common/White');
+    padding: to-rem(10px);
+  }
+  .up-tits{
+    margin-top: to-rem(14px);
+    padding-left: to-rem(10px);
+    color: color('Gray/01');
+    text-align: left;
+    display: block;
+    @include font('T2/Bold');
+    @include text-ellipsis;
+  }
+  .up-lsts{
+    margin-top: to-rem(16px);
+    .u-tps{
+      position: relative;
+      background: transparent;
+      border: none;
+      width: 100%;
+      background: color('Gray/11');
+      border-radius: to-rem(16px);
+      padding: to-rem(16px);
+      .ub-sym{
+        min-width: to-rem(42px);
+        width: to-rem(42px);
+        height: to-rem(42px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .u-img{
+          width: to-rem(32px);
+        }
+      }
+      .ub-txts{
+        text-align: left;
+        .u-tit{
+          display: flex;
+          align-items: center;
+          gap: to-rem(8px);
+        }
+        .t-tx{
+          @include font('Body1/Semibold');
+          color: color('Gray/02');
+        }
+        .tg-grp{
+          display: flex;
+          align-items: flex-start;
+        }
+        .u-desc{
+          margin-top: to-rem(4px);
+          @include font('Body4/Regular');
+          color: color('Gray/05');
+        }
+      }
+      .u-tps-cont{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: to-rem(16px);
+      }
+      .u-tps-lay{
+        position: absolute;
+        right: 0;
+        bottom: calc(100% - to-rem(8px));
+        .u-tl{
+          padding: to-rem(5px) to-rem(8px);
+          border-radius: to-rem(6px);
+          background: color('Opacity/100');
+          @include font('Body6/Medium');
+          color: color('Common/White');
+          display: block;
+          text-align: center;
+          position: relative;
+          &:after{
+            content: "";
+            width: to-rem(8px);
+            height: to-rem(8px);
+            background: color('Opacity/100');
+            transform: rotate(45deg);
+            border-radius: to-rem(2px);
+            position: absolute;
+            right: to-rem(14px);
+            bottom: to-rem(-3px);
+          }
+        }
+      }
+      &+.u-tps{
+        margin-top: to-rem(8px);
+      }
+      &.is-active{
+        background: color('Blue/08');
+        .ub-txts{
+          .t-tx{
+            @include font('Body1/Bold');
+            color: color('Blue/04 (basic)');
+          }
+          .u-desc{
+            @include font('Body4/Medium');
+            color: color('Blue/04 (basic)');
+          }
+        }
+      }
+    }
+  }
+}

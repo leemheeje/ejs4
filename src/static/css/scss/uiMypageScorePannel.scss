@@ -1,0 +1,51 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+.ui-mypage-score-pannel{
+  .umsp-inner{
+    padding: 0 to-rem(2px);
+    min-height: to-rem(64px);
+    background-color: #fff;
+    border-radius: to-rem(16px);
+    display: flex;
+    // flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .us-txts{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: to-rem(20px) to-rem(24px);
+    justify-content: space-between;
+    gap: to-rem(6px);
+    position: relative;
+    background: none;
+    border: none;
+    .u-lb{
+      @include font('Body4/Medium');
+      color: color('Gray/05');
+      text-align: left;
+      white-space: nowrap;
+    }
+    .u-vl{
+      @include font('Body1/Semibold');
+      color: color('Gray/02');
+      text-align: right;
+    }
+    &+.us-txts{
+      &:before{
+        content: '';
+        width: to-rem(1px);
+        height: to-rem(22px);
+        background: color('Gray/09');
+        position: absolute;
+        left: 0; 
+        top: 50%;
+        margin-top: to-rem(-11px);
+      }
+    }
+  }
+}

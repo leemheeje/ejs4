@@ -1,0 +1,12 @@
+<%
+const {
+  items = [],
+  textAlign = ''
+} = props || {}
+%>
+
+<ul class="bs-noti <%-textAlign === 'center' ? 'is-text-center' : ''%>">
+  <%_for(const k in items){_%>
+    <li class="bn-tp"><%-items[k]%></li>
+    <%_}_%>
+</ul>

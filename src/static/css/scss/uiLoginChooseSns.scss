@@ -1,0 +1,134 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+.ui-login-choosesns{
+ .ulc-innner{} 
+ .uc-chos-cont{
+  padding: $spacing-left 0;
+ }
+ .uc-chos-bot{}
+ .t-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: to-rem(51px);
+  text-align: center;
+  padding: 0 to-rem(24px);
+  position: relative;
+  border: to-rem(1px) solid;
+  border-radius: to-rem(8px);
+  background: color('Common/White');
+  border-color: color('Gray/07');
+  .t-tx{
+    @include font('Body1/Semibold');
+    color: color('Gray/02');
+    display: block;
+    width: 100%;
+    padding: 0 to-rem(28px);
+    position: relative;
+    &:before{
+      content: '';
+      width: to-rem(20px);
+      height: to-rem(20px);
+      position: absolute;
+      left: 0;
+      top: 50%; 
+      margin-top: to-rem(-10px);
+      background: no-repeat left center;
+      background-size: 100%;
+    }
+  }
+  &-kakao{
+    background: #FEE500;
+    border-color: #FEE500;
+    .t-tx{
+      color: color('Gray/01');
+      &:before{
+        background-image: url(../images/common/ico_sns_kakao.svg);
+      }
+    }
+  }
+  &-payco{
+    background: #FA2828;
+    border-color: #FA2828;
+    .t-tx{
+      color: color('Common/White');
+      &:before{
+        background-image: url(../images/common/ico_sns_payco.svg);
+      }
+    }
+  }
+  &-apple{
+    background: #1C1C1A;
+    border-color: #1C1C1A;
+    .t-tx{
+      color: color('Common/White');
+      &:before{
+        background-image: url(../images/common/ico_sns_apple.svg);
+      }
+    }
+  }
+  &-naver{
+    background: #03CF5D;
+    border-color: #03CF5D;
+    .t-tx{
+      color: color('Common/White');
+      &:before{
+        background-image: url(../images/common/ico_sns_naver.svg);
+      }
+    }
+  }
+  &-google{
+    background: color('Gray/11');
+    border-color: color('Gray/11');
+    .t-tx{
+      color: color('Gray/02');
+      &:before{
+        background-image: url(../images/common/ico_sns_google.svg);
+      }
+    }
+  }
+ }
+ .u-sns-lst{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: to-rem(12px);
+  .us-tp{
+  }
+ }
+ .u-antr-txt{
+  margin: to-rem(16px) 0;
+  @include font('Body5/Semibold');
+  color: color('Gray/06');
+  display: flex;
+  justify-content: center;
+ }
+ .u-antr-lst{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: to-rem(12px);
+  .t-btn{
+    width: to-rem(48px);
+    height: to-rem(48px);
+    border-radius: 50%;
+    padding: 0;
+    .t-tx{
+      padding-right: 0;
+      padding-left: to-rem(20px);
+      width: to-rem(20px);
+      height: to-rem(20px);
+      font-size: 0;
+      &:before{
+        background-position: center center;
+      }
+    }
+  }
+ }
+ 
+}

@@ -1,0 +1,26 @@
+<%
+const {
+  inputRightSlot = ()=>'<span class="b-ic-date"></span>',
+  value= '',
+  items= [
+  {codeId: 1, codeName: 'select1'},
+  {codeId: 2, codeName: 'select2'},
+  {codeId: 3, codeName: 'select3'},
+  {codeId: 4, codeName: 'select4'},
+  ],
+  disabled=false,
+  ...prop
+} = props || {}
+%>
+
+<div class="bs-datepicker">
+  <%-include($rootSrc('@/components/BsInputField'), {
+    props:{
+      ...prop,
+      value,
+      disabled,
+      readonly: !disabled,
+      inputRightSlot,
+    }
+  })%>
+</div>

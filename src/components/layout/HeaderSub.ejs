@@ -1,0 +1,95 @@
+<%
+const RIGHT_ICON_TYPE = {
+  SELECT: 'select',
+  ICON_SEARCH: 'icon_search',
+  ICON_CALENDER_DATE: 'icon_calender_date',
+  ICON_BOOKMARK_LINE: 'icon_bookmark_line',
+}
+const {
+  title = 'Title',
+  addClass = '',
+  useBackButton = true,
+  useCloseButton = false,
+  useRightArea = [],
+  useBottomArea = null,
+} = props || {}
+%>
+<div class="sub-header <%-addClass%>">
+  <div class="head-content">
+    <div class="mb-inner">
+      <div class="mb-lt">
+        <%_if(useBackButton){_%>
+        <button class="mb-btn mb-btn-bck">
+          <span class="blind">뒤로가기</span>
+        </button>
+        <%_}_%>
+        <%_if(useCloseButton){_%>
+        <button class="mb-btn mb-btn-close">
+          <span class="blind">닫기</span>
+        </button>
+        <%_}_%>
+      </div>
+      <div class="mb-ct">
+        <span class="h-tx"><%-title%></span>
+      </div>
+      <div class="mb-rt">
+
+        <%_for(const k in useRightArea){_%>
+        <%_if(useRightArea[k] === '완료'){_%>
+        <!-- 완료 텍스트버튼:S -->
+        <%-include($rootSrc('@/components/BsButton'), {
+          props: {
+            size: (size)=>size.LARGE,
+            type: (type)=>type.TEXT,
+            cssColor: (color)=>color['Blue/04 (basic)'],
+            slot: '완료',
+            disabled:true
+          }
+        })%>
+        <!-- 완료 텍스트버튼:E -->
+        <%_} else if(useRightArea[k] === '등록') {_%>
+        <%-include($rootSrc('@/components/BsButton'), {
+          props: {
+            size: (size)=>size.LARGE,
+            type: (type)=>type.TEXT,
+            cssColor: (color)=>color['Blue/04 (basic)'],
+            slot: '등록'
+          }
+        })%>
+        <%_} else if(useRightArea[k] === 'select'){_%>
+        <button class="mb-btn mb-btn-select">
+          <span>오프라인</span>
+        </button>
+        <%_} else if(useRightArea[k] === RIGHT_ICON_TYPE.ICON_SEARCH){_%>
+        <button class="mb-btn mb-btn-search">
+          <span class="blind">검색</span>
+        </button>
+        <%_}else if(useRightArea[k] === RIGHT_ICON_TYPE.ICON_CALENDER_DATE){_%>
+        <button class="mb-btn mb-btn-cal">
+          <span class="blind">일정</span>
+        </button>
+        <%_}else if(useRightArea[k] === RIGHT_ICON_TYPE.ICON_BOOKMARK_LINE){_%>
+        <button class="mb-btn mb-btn-bookmark">
+          <span class="blind">북마크</span>
+        </button>
+        <%_}else{_%>
+        <button class="mb-btn">
+          <%-include($rootSrc('@/components/BsIcon'), {
+              props:{
+                type: (type)=>type[useRightArea[k]],
+                color: (color)=>color['Gray/01']
+              }
+            })%>
+        </button>
+        <%_}_%>
+        <%_}_%>
+
+      </div>
+    </div>
+  </div>
+  <%_if(useBottomArea){_%>
+  <div class="head-bottom">
+    <%-useBottomArea%>
+  </div>
+  <%_}_%>
+</div>

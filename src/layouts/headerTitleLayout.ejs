@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko">
+<%- include($rootSrc('@/components/layout/Head')); %>
+
+<body>
+  <div class="header-title-layout">
+    <%- include($rootSrc('@/components/layout/HeaderTitle'), {
+      props: {
+        ...data?.headerSubInfo,
+        useRightArea: data?.headerSubInfo?.useRightArea,
+      }
+    }) %>
+  </div>
+  <%- body %>
+  <div class="tlp-toast">
+  </div>
+  <div class="tlp-dialog">
+  </div>
+  <%-include($rootSrc('@/components/layout/Script'))%>
+</body>
+
+</html>

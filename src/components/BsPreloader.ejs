@@ -1,0 +1,15 @@
+<%
+const {
+  usePageLoader = false,
+  loadingtext = '',
+  noflex = false,
+  dim = false
+} = props || {}
+%>
+
+<div class="bs-preloader <%-usePageLoader ? 'is-page-loader' : 'is-list-loader'%> <%-noflex ? 'is-no-flex' : ''%> <%-dim ? 'is-dim' : ''%>">
+  <span class="bp-ics"></span>
+  <%_if(loadingtext){_%>
+  <p class="loading-text"><%-loadingtext%></p>
+  <%_}_%>
+</div>

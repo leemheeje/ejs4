@@ -1,0 +1,35 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+$TAG_SIZE_LARGE: 'tag-large';
+$TAG_SIZE_SMALL: 'tag-small';
+
+$TAG_TYPE_DEFAULT: 'tag-type-default';
+$TAG_TYPE_ROUND: 'tag-type-round';
+
+
+
+.bs-tag{
+  @include font('Body6/Semibold');
+  padding: 0 to-rem(6px);
+  min-height: to-rem(22px);
+  border-radius: to-rem(4px);
+  border: to-rem(1px) solid;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  &::before{display: none}
+  &.#{$TAG_SIZE_SMALL}{
+    @include font('Body8/Semibold');
+    min-width: to-rem(31px);
+    min-height: to-rem(18px);
+    padding: 0 to-rem(4px);
+  }
+  &.#{$TAG_TYPE_ROUND}{
+    border-radius: to-rem(32px);
+  } 
+  @extend %buttonColorSet;
+}

@@ -1,0 +1,32 @@
+<%
+const {
+  items = [
+  {codeId: 1, codeName: '💡 창업 노하우'},
+  {codeId: 2, codeName: '📗 사장님 가이드'},
+  {codeId: 3, codeName: '💰 소상공인 혜택 💰'},
+    ],
+} = props || {}
+%>
+
+
+
+<div class="ui-home-category">
+  <div class="uhc-inner">
+    <div class="uhc-abs animation-category">
+      <button class="btn-se">
+        <div class="tx">
+          <span class="ico"></span>
+          <span class="an-icx ft">무엇을 찾으세요?</span>
+          <span class="an-icx ed">검색</span>
+        </div>
+      </button>
+    </div>
+    <div class="uhc-lst">
+      <%-include($rootSrc('@/components/BsTabCategory'), {
+        props: {
+          items,
+        }
+      })%>
+    </div>
+  </div>
+</div>

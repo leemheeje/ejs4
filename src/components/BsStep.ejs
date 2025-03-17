@@ -1,0 +1,23 @@
+<%
+const {
+  items = [1,2],
+  value = 1
+} = props || {}
+%>
+
+<div class="bs-step">
+  <div class="bs-sinner">
+    <!-- forech:S -->
+    <%_for(let i = 0; i<items.length; i++){_%>
+    <%
+      const _v = items[i];
+      const equalValue = _v === value;
+      const prevValue = _v < value;
+      %>
+    <div class="spt-tp <%-equalValue ? 'is-active' : ''%> <%-prevValue ? 'is-complete': ''%>">
+      <span class="s-tx-t"><%-items[i]%></span>
+    </div>
+    <%_}_%>
+    <!-- forech:E -->
+  </div>
+</div>

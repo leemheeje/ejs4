@@ -1,0 +1,71 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+
+$thumb-width: to-rem(52px);
+$thumb-height: to-rem(52px);
+
+.ui-home-storeinfo{
+  .uhs-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-left;
+    padding: to-rem(16px) to-rem(20px) to-rem(8px);
+  }
+  .ug-txts{
+    text-align: left;
+    width: calc(100% - $thumb-width - $spacing-left);
+    .u-top{
+      color: color('Gray/03');
+      font-size: to-rem(13px);
+      font-weight: $font-weight-regular;
+      margin-bottom: to-rem(6px);
+    }
+    .u-cont{
+      background: transparent;
+      border: none;
+      display: flex;
+      max-width: 100%;
+      .u-t{
+        $arrow-width: to-rem(24px);
+        $arrow-height: to-rem(24px);
+        position: relative;
+        padding-right: calc(to-rem(2px) + $arrow-width);
+        min-height: $arrow-height;
+        font-size: to-rem(17px);
+        font-weight: $font-weight-bold;
+        color: color('Gray/01');
+        @include text-ellipsis(1, $arrow-height);
+        display: block;
+        &:after{
+          content: '';
+          width: $arrow-width;
+          height: $arrow-height;
+          background: no-repeat center center get-background-svg('icon_angle_small_down', #{color('Gray/01')});
+          background-size: 100%;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      }
+    }
+  }
+  .ug-rt{
+    .u-thb{
+      display: flex;
+      min-width: $thumb-width;
+      width: $thumb-width;
+      height: $thumb-height;
+      border-radius: 50%;
+      overflow: hidden;
+      .u-img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

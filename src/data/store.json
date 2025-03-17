@@ -1,0 +1,236 @@
+{
+  "listQueryParse": {
+    "홈>지원사업": [
+      {
+        "codeId": 0,
+        "title": "2024 소상공인 법률 서비스 지원사업",
+        "description": "",
+        "thumbnail": {
+          "src": "@/static/images/@dummy/banner23.png",
+          "description": "전국"
+        },
+        "options": [
+          {"codeId": 0, "codeName": "정책자금"},
+          {"codeId": 1, "codeName": "최대 지원금 2억원"}
+        ],
+        "tags": [
+          {"codeId": 1099, "codeName": "NEW"},
+          {"codeId": 1098, "codeName": "HOT"},
+          {"codeId": 1, "codeName": "D-132"}
+        ],
+        "isBookmark": true
+      },
+      {
+        "codeId": 1,
+        "title": "2024 소상공인 법률 서비스 지원사업 서비스 제공 ",
+        "description": "",
+        "thumbnail": {
+          "src": "@/static/images/@dummy/banner23.png",
+          "description": "대전/세종/충청"
+        },
+        "options": [
+          {"codeId": 0, "codeName": "정책자금"},
+          {"codeId": 1, "codeName": "최대 지원금 2억원"}
+        ],
+        "tags": [
+          {"codeId": 1098, "codeName": "HOT"},
+          {"codeId": 1, "codeName": "D-132"}
+        ],
+        "isBookmark": false
+      },
+      {
+        "codeId": 2,
+        "title": "2024 소상공인 법률 서비스 지원사업법률 서비스 지원사업법률 서비스 지원사업",
+        "description": "",
+        "thumbnail": {
+          "src": "@/static/images/@dummy/banner23.png",
+          "description": "광주/전라/경상/강원"
+        },
+        "options": [{"codeId": 0, "codeName": "정책자금"}],
+        "tags": [{"codeId": 1, "codeName": "D-132"}],
+        "isBookmark": false
+      },
+      {
+        "codeId": 3,
+        "title": "2024 소상공인 법률 서비스 지원사업법률 서비스 지원사업법률 서비스 지원사업",
+        "description": "",
+        "thumbnail": {
+          "src": "@/static/images/@dummy/banner23.png",
+          "description": "광주 전라"
+        },
+        "options": [{"codeId": 0, "codeName": "정책자금"}],
+        "tags": [{"codeId": 1, "codeName": "D-132"}],
+        "isBookmark": false
+      },
+      {
+        "codeId": 4,
+        "title": "2024 소상공인 법률 서비스 지원사업법률 서비스 지원사업법률 서비스 지원사업",
+        "description": "",
+        "thumbnail": {
+          "src": "@/static/images/@dummy/banner23.png",
+          "description": "광주 전라"
+        },
+        "options": [{"codeId": 0, "codeName": "정책자금"}],
+        "tags": [{"codeId": 1, "codeName": "D-132"}],
+        "isBookmark": false
+      },
+      {
+        "codeId": 5,
+        "title": "2024 소상공인 법률 서비스 지원사업법률 서비스 지원사업법률 서비스 지원사업",
+        "description": "",
+        "thumbnail": {
+          "src": "@/static/images/@dummy/banner23.png",
+          "description": "광주 전라"
+        },
+        "options": [{"codeId": 0, "codeName": "정책자금"}],
+        "tags": [{"codeId": 1, "codeName": "D-132"}],
+        "isBookmark": false
+      },
+      {
+        "codeId": 6,
+        "title": "2024 소상공인 법률 서비스 지원사업법률 서비스 지원사업법률 서비스 지원사업",
+        "description": "",
+        "thumbnail": {
+          "src": "@/static/images/@dummy/banner23.png",
+          "description": "광주 전라"
+        },
+        "options": [{"codeId": 0, "codeName": "정책자금"}],
+        "tags": [{"codeId": 1, "codeName": "D-132"}],
+        "isBookmark": false
+      }
+    ],
+    "홈>창업정보": [
+      {
+        "codeId": 0,
+        "title": "펫코노미시대, 누구나 도전할 수 있는 창업 아이템",
+        "description": "내용 테스트입니다. 두 줄 텍스트 경우 노출 형식입니다. 내용 테스트입니다. 두 줄 텍스트 경우 노출",
+        "thumbnail": {
+          "src": "@/static/images/@dummy/banner23.png",
+          "description": ""
+        },
+        "options": [
+          {"codeId": 0, "codeName": "24.06.21"},
+          {"codeId": 1, "codeName": "조회 0"}
+        ],
+        "tags": [
+          {"codeId": 1, "codeName": "온라인"},
+          {"codeId": 1099, "codeName": "NEW"},
+          {"codeId": 1098, "codeName": "HOT"}
+        ]
+      },
+      {
+        "codeId": 1,
+        "title": "펫코노미시대, 누구나 도전할 수 있는 창업 아이템도전할 수 있는 창업 아이템",
+        "description": "내용 테스트입니다. ",
+        "thumbnail": {
+          "src": "@/static/images/@dummy/banner23.png",
+          "description": ""
+        },
+        "options": [
+          {"codeId": 0, "codeName": "24.06.21"},
+          {"codeId": 1, "codeName": "조회 778"}
+        ],
+        "tags": [
+          {"codeId": 1, "codeName": "온라인"},
+          {"codeId": 1099, "codeName": "NEW"}
+        ]
+      },
+      {
+        "codeId": 2,
+        "title": "펫코노미시대, ",
+        "description": "내용 테스트입니다. ",
+        "thumbnail": {
+          "src": "@/static/images/@dummy/banner23.png",
+          "description": ""
+        },
+        "options": [
+          {"codeId": 0, "codeName": "24.06.21"},
+          {"codeId": 1, "codeName": "조회 778"}
+        ],
+        "tags": [{"codeId": 1, "codeName": "온라인"}]
+      }
+    ],
+    "홈>창업라운지": [
+      {
+        "codeId": 0,
+        "title": "식기세척기 위치 조언해주세요!",
+        "description": "복층을 직원 휴게실로 사용하려는데 삼각형이라 막막하네요ㅠ 7평 정도인것 같아요. 층고는 높아서 키 185도 가능해요. 꿀팁 부탁185도 가능해요. 꿀팁 부탁",
+        "thumbnail": {
+          "src": "",
+          "description": ""
+        },
+        "options": [
+          {"codeId": 0, "codeName": "1시간 전"},
+          {"codeId": 1, "codeName": "좋아요 0"},
+          {"codeId": 2, "codeName": "댓글 1"}
+        ],
+        "tags": [
+          {"codeId": 1, "codeName": "찐추천"},
+          {"codeId": 1099, "codeName": "NEW"},
+          {"codeId": 1098, "codeName": "HOT"}
+        ]
+      },
+      {
+        "codeId": 1,
+        "title": "식기세척기 위치 조언해주세요!식기세척기 위치 조언해주세요!식기세척기 위치 조언해주세요!",
+        "description": "왼쪽에 둘시 시공비 20만원정도",
+        "thumbnail": {
+          "src": "",
+          "description": ""
+        },
+        "options": [
+          {"codeId": 0, "codeName": "2시간 전"},
+          {"codeId": 1, "codeName": "좋아요 234"},
+          {"codeId": 2, "codeName": "댓글 331"}
+        ],
+        "tags": [
+          {"codeId": 1, "codeName": "질문하기"},
+          {"codeId": 1099, "codeName": "NEW"}
+        ]
+      },
+      {
+        "codeId": 2,
+        "title": "게시글 제목 노출 최대 두 줄 까지 입니다. 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스",
+        "description": "내용 테스트입니다. ",
+        "thumbnail": {
+          "src": "",
+          "description": ""
+        },
+        "options": [
+          {"codeId": 0, "codeName": "2시간 전"},
+          {"codeId": 1, "codeName": "좋아요 0"},
+          {"codeId": 2, "codeName": "댓글 0"}
+        ],
+        "tags": [{"codeId": 1, "codeName": "별거 아닌 이야기"}]
+      },
+      {
+        "codeId": 3,
+        "title": "신고 받은 게시물로 숨김 처리 되었습니다.",
+        "description": "",
+        "thumbnail": {
+          "src": "",
+          "description": ""
+        },
+        "options": [{"codeId": 0, "codeName": "2시간 전"}],
+        "tags": [{"codeId": 1, "codeName": "질문하기"}],
+        "report": true
+      },
+      {
+        "codeId": 4,
+        "title": "차단된 멤버의 게시글입니다.",
+        "description": "",
+        "thumbnail": {
+          "src": "",
+          "description": ""
+        },
+        "options": [{"codeId": 0, "codeName": "2시간 전"}],
+        "tags": [{"codeId": 1, "codeName": "질문하기"}],
+        "blockedMember": true
+      }
+    ]
+  },
+  "COMMON": {
+    "projectName": "be-friends 퍼블리싱 리스트",
+    "manager": "담당자 : UI팀 장평우"
+  }
+}

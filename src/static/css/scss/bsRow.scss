@@ -1,0 +1,58 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+$LAYOUT_TYPE_DEFAULT: 'layout-default';
+$LAYOUT_TYPE_FLEX: 'layout-flex';
+$LAYOUT_TYPE_SECOND_FIT_CONTENT: 'layout-second-fit-content';
+$LAYOUT_TYPE_FIRST_FIT_CONTENT: 'layout-first-fit-content';
+
+
+$align-item-center : 'align-item-center';
+
+.bs-row{
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: to-rem(8px);
+  .bs-col{
+  }
+  &.#{$align-item-center}{
+    align-items: center;
+  }
+  &.#{$LAYOUT_TYPE_SECOND_FIT_CONTENT}{
+    >.bs-col{
+      &:first-child{
+        flex-grow: 1;
+      }
+      &+.bs-col{
+        width: fit-content;
+        flex: initial;
+        margin-left: auto;
+        margin-right: 0;
+        display: flex;
+      }
+    }
+  }
+  &.#{$LAYOUT_TYPE_FIRST_FIT_CONTENT}{
+    >.bs-col{
+      &:first-child{
+        width: fit-content;
+        flex: initial;
+        margin-left: 0;
+        margin-right: auto;
+        display: flex;
+      }
+      &+.bs-col{
+        flex-grow: 1;
+      }
+    }
+  }
+  &.#{$LAYOUT_TYPE_FLEX}{
+    >.bs-col{
+      flex: 1;
+    }
+  }
+}

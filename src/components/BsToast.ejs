@@ -1,0 +1,38 @@
+<%
+const DESIGN_TYPE = {
+  DEFAULT: 'toast-design-default'
+}
+const ALIGN_TYPE = {
+  TOP: 'align-top',
+  BOTTOM: 'align-bottom',
+}
+
+const {
+  type = ()=> '',
+  align = ()=>null,
+  useLeftArea = null,
+  useRightArea = null,
+  isHeader = true,
+  isNavigation = false,
+  slot = 'MBTI 창업가능성 알아보기!'
+} = props || {}
+
+const localType = Object.values(DESIGN_TYPE).includes(type(DESIGN_TYPE)) ? type(DESIGN_TYPE) : ''
+const localAlign = Object.values(ALIGN_TYPE).includes(align(ALIGN_TYPE)) ? align(ALIGN_TYPE) : ALIGN_TYPE.BOTTOM
+%>
+
+<div class="bs-toast <%-localAlign%> <%-isHeader ? 'is-header' : ''%> <%-isNavigation ? 'is-navigation' : ''%> <%-localType%>">
+  <div class="bt-inner">
+    <button class="bt-container">
+      <%_if(useLeftArea){_%>
+      <div class="b-lt"><%-useLeftArea()%></div>
+      <%_}_%>
+      <div class="b-cont">
+        <span class="b-t"><%-slot%></span>
+      </div>
+      <%_if(useRightArea){_%>
+      <div class="b-rt"><%-useRightArea()%></div>
+      <%_}_%>
+    </button>
+  </div>
+</div>

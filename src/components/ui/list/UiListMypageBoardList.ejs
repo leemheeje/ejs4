@@ -1,0 +1,109 @@
+<%# 홈>리스트 [지원사업,창업정보,창어라운지] %>
+<%
+const {
+  items= [
+  {
+    codeId: 0, 
+    title: '비벗 개인정보처리방침이 개정될 예정이에요.', 
+    date:"24.01.01",
+    img: false,
+    tags: [
+      {codeId: 1099, codeName: 'NEW'},
+      {codeId: 1098, codeName: 'HOT'},
+      {codeId: 0, codeName: '온라인'},
+      {codeId: 1, codeName: 'D-132'},
+    ],
+  },
+  {
+    codeId: 1, 
+    title: '알림설정, 사용자 검색 등 새로워진 1.2.0 버전을 만나보세요. ', 
+    date:"24.01.01",
+    tags: [
+      {codeId: 1099, codeName: 'NEW'},
+      {codeId: 1098, codeName: 'HOT'},
+      {codeId: 0, codeName: '온라인'},
+      {codeId: 1, codeName: 'D-132'},
+    ],
+  },
+  {
+    codeId: 2, 
+    title: '제목은 최대 2줄까지 노출됩니다. 두 줄 형식 테스트입니다. 테스트테스트테스트테스트테스트테스 테스트테스트테스트테스트테스트테스 테스트테스트테스트테스트테스트테스', 
+    date:"24.01.01",
+    tags: [
+      {codeId: 1099, codeName: 'NEW'},
+      {codeId: 1098, codeName: 'HOT'},
+      {codeId: 0, codeName: '온라인'},
+      {codeId: 1, codeName: 'D-132'},
+    ],
+  },
+  ],
+  useTagsTop = false,
+  boardType = "",
+  boardInfo = true,
+  className,
+  emptyText = '진행중인 이벤트가 없어요'
+} = props || {}
+
+
+const htmlTags = (tags, margin)=> tags ? `
+<div class="u-tags ${margin}">
+  ${tags.map((tag)=>{
+    let params = {
+      cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND['Blue/09'],
+      cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR['Blue/09'],
+      cssColor: (CSS_COLOR)=>CSS_COLOR['Blue/04 (basic)'],
+    }
+    if(tag.codeId === 1099){
+      params = params
+    }else if(tag.codeId === 1098){
+      params = {
+        cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND['Red/09'],
+        cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR['Red/09'],
+        cssColor: (CSS_COLOR)=>CSS_COLOR['Red/03'],
+      }
+    }else{
+      params = {
+        cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND['Gray/11'],
+        cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR['Gray/11'],
+        cssColor: (CSS_COLOR)=>CSS_COLOR['Gray/03'],
+      }
+    }
+    return include($rootSrc('@/components/BsTag.ejs'), {
+      props: {
+        ...params,
+        size: (TAG_SIZE)=>TAG_SIZE.SMALL,
+        slot: tag.codeName
+      }
+    })
+  }).join(' ')}
+</div>
+` : ''
+%>
+
+<ul class="mypage-board-list" data-board-type="<%-boardType%>">
+  <%_ if(items.length === 0) {%>
+  <li class="list-empty">
+    <p><%-emptyText%></p>
+  </li>
+  <%_}_%>
+  <%_for(const i in items){_%>
+  <li>
+    <a href="#">
+      <%_ if(items[i].img) {%>
+      <div class="board-thumb" <%- i ? `style="background-color: #738cf3;"` : ''%>>
+        <img src="<%-items[i].img%>" alt="">
+      </div>
+      <%_}_%>
+      <p class="board-title"><%-items[i].title%></p>
+      <%_ if(boardInfo) {%>
+      <div class="board-info">
+        <div>
+          <span class="board-date"><%-items[i].date%></span>
+        </div>
+        <%-htmlTags(items[i].tags , "ML8")%>
+      </div>
+      <%_}_%>
+    </a>
+  </li>
+  <%_}_%>
+</ul>

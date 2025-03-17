@@ -1,0 +1,69 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+$is-active: 'is-active';
+$is-complete: 'is-complete';
+
+.bs-step{
+  .bs-sinner{
+    display: flex;
+    gap: to-rem(28px);
+    align-items: flex-start;
+  }
+  .spt-tp{
+    position: relative;
+    .s-tx-t{
+      width: to-rem(28px);
+      height: to-rem(28px);
+      border-radius: 50%;
+      background: color('Blue/09');
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: color('Blue/04 (basic)');
+      @include font('Body4/Semibold');
+    }
+    &+.spt-tp{
+      &:before{
+        content: '';
+        width: to-rem(20px);
+        height: to-rem(20px);
+        position: absolute;
+        left: to-rem(-24px);
+        top: to-rem(4px);
+        background: no-repeat center center get-background-svg('icon_menu_dot', #{color('Blue/08')});
+        transform: rotate(90deg);
+        background-size: 100%;
+      }
+    }
+    &.#{$is-active}{
+      .s-tx-t{
+        background: color('Blue/04 (basic)');
+        color: color('Common/White');
+      }
+      &:before{
+        background-image: get-background-svg('icon_menu_dot', #{color('Blue/04 (basic)')});
+
+      }
+    }
+    &.#{$is-complete}{
+      &:after{
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: no-repeat center center get-background-svg('icon_check', #{color('Common/White')});
+        background-size: to-rem(24px);
+      }
+      .s-tx-t{
+        background: color('Blue/04 (basic)');
+        opacity: .46;
+        font-size: 0;
+      }
+    }
+  }
+}

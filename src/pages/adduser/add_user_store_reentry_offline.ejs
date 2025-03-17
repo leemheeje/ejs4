@@ -1,0 +1,20 @@
+<%
+defineExport({
+  layout: 'subLayout',
+  head:{
+    title: '창업계획서-가이드-재진입-오프라인'
+  },
+  data: {
+    headerSubInfo: {
+      title: "창업 계획"
+    }
+  }
+}).bind()
+%>
+
+<%- include($rootSrc('@/components/page/adduser/index'), {
+  props:{
+    pageKeyName:'재진입-오프라인',
+    pageAlias: "가이드-창업계획서",
+  }
+}) %>

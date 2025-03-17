@@ -1,0 +1,57 @@
+<%
+const {
+  tags= {},
+  title= '사업자 등록증 발급사업자 등록증 발급',
+  option= '개업 준비',
+  date= '24.01.02 - 24.01.04',
+  isMore = false
+} = props || {}
+
+const localTags = {
+  size: (TAG_SIZE)=>TAG_SIZE.LARGE,
+  type: (TAG_TYPE)=>TAG_TYPE.DEFAULT,
+  cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND['Gray/02'],
+  cssColor: (CSS_COLOR)=>CSS_COLOR['Common/White'],
+  cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR['Gray/02'],
+  slot: '지남'
+}
+%>
+
+<div class="ui-home-storesection <%-isMore?'is-more':''%>">
+  <div class="uhsc-inner">
+    <%_if(isMore){_%>
+    <button class="uhc-more">
+      <span class="icw-c">일정 더보기</span>
+    </button>
+    <%_}else{_%>
+    <div class="uhc-top">
+      <div class="u-lts">
+        <%-include($rootSrc('@/components/BsTag'), {
+            props:{
+              ...localTags,
+              ...tags
+            }
+          })%>
+      </div>
+      <div class="u-rts">
+        <%-include($rootSrc('@/components/BsCheckbox'), {
+            props: {
+              designType: (DESIGN_TYPE)=>DESIGN_TYPE.ROUND
+            }
+          })%>
+        <div class="u-tltp">
+          <span class="u-tl">체크완료로 지난 일정관리를 하세요</span>
+        </div>
+      </div>
+    </div>
+    <div class="uhc-cont">
+      <div class="u-tit"><%-title%></div>
+      <div class="u-opt">
+        <div class="ux-t ux-t-st"><%-option%></div>
+        <div class="ux-t ux-t-date"><%-date%></div>
+      </div>
+    </div>
+    <%_}_%>
+
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko">
+<%- include($rootSrc('@/components/layout/Head')); %>
+
+<body>
+  <div class="dialog-page">
+    <%- include($rootSrc('@/components/layout/HeaderSub'), {
+      props: {
+        ...data?.headerSubInfo,
+        useBackButton: false,
+        useCloseButton: true,
+      }
+    }) %>
+    <%- body %>
+  </div>
+
+  <%-include($rootSrc('@/components/layout/Script'))%>
+</body>
+
+</html>

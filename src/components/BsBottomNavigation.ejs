@@ -1,0 +1,27 @@
+<%
+const {
+  items= [
+  {codeId: 1, codeName: '홈', codeIconName: 'b-ic-home'},
+  {codeId: 2, codeName: '가이드', codeIconName: 'b-ic-guide'},
+  {codeId: 3, codeName: '추천', codeIconName: 'b-ic-store'},
+  {codeId: 4, codeName: '커뮤니티', codeIconName: 'b-ic-community'},
+  {codeId: 5, codeName: '마이', codeIconName: 'b-ic-my'},
+  ],
+  value= 1,
+} = props || {}
+%>
+
+<div class="bs-bottom-navigation">
+  <div class="bbn-lst">
+    <!-- foreach:S -->
+    <%_for(const k in items){_%>
+    <div class="bb-tp <%-items[k].codeId === value ? 'active' : ''%>">
+      <button class="bt-cont">
+        <span class="b-ic <%-items[k].codeIconName%>"></span>
+        <span class="b-tx"><%-items[k].codeName%></span>
+      </button>
+    </div>
+    <%_}_%>
+    <!-- foreach:E -->
+  </div>
+</div>

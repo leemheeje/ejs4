@@ -1,0 +1,26 @@
+<script src="<%-$staticSrc('@/static/js/swiper.js')%>"></script>
+<script src="<%-$staticSrc('@/static/js/front.js')%>"></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.bsSwiper').forEach(function(swiperWrapper) {
+      const swiperElement = swiperWrapper.querySelector('.swiperContainer');
+      const params = JSON.parse(swiperElement.dataset.params);
+
+      if (params.pagination) {
+        params.pagination.el = swiperWrapper.querySelector(params.pagination.el);
+        if (params.pagination.type === 'fraction') {
+          params.pagination.renderFraction = (current, total) => {
+            return `
+            <span class="${current}"></span>
+            <span class="bc-trc-g"></span>
+            <span class="${total}"></span>
+            `
+          }
+        }
+      }
+      const swiper = new Swiper(swiperElement, params);
+    });
+  });
+</script>

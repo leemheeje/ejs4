@@ -1,0 +1,27 @@
+<%
+const SIZE_TYPE = {
+  DEFAULT: 'size-default',
+  SM: 'size-sm'
+}
+const {
+  title = '',
+  description = '',
+  useRightDescription = '',
+  size = ()=>SIZE_TYPE.DEFAULT,
+} = props || {}
+
+const localSize = Object.values(SIZE_TYPE).includes(size(SIZE_TYPE)) ? size(SIZE_TYPE) : SIZE_TYPE.DEFAULT
+
+%>
+
+<div class="bs-title <%-localSize%>">
+  <div class="bt-tt">
+    <%-title%>
+    <%_if(useRightDescription){_%>
+    <div class="b-r"><%-useRightDescription%></div>
+    <%_}_%>
+  </div>
+  <%_if(description){_%>
+  <div class="bt-st"><%-description%></div>
+  <%_}_%>
+</div>

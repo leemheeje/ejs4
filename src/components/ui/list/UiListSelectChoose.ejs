@@ -1,0 +1,21 @@
+<%
+const {
+  items = []
+} = props || {}
+%>
+
+<div class="ui-list-select-choose">
+  <div class="dlst-inner">
+    <!-- foreach:S -->
+    <%_for(const k in items){_%>
+    <div class="dl-tp">
+      <button class="d-cont">
+        <span class="d-tt">
+          <%-items[k].codeName%>
+        </span>
+      </button>
+    </div>
+    <%_}_%>
+    <!-- foreach:E -->
+  </div>
+</div>

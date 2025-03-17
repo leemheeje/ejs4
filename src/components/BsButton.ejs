@@ -1,0 +1,50 @@
+<%
+const {CSS_BACKGROUND, CSS_COLOR, CSS_BORDER_COLOR} = JSON.parse(include($rootSrc('@/data/colorSet.json')))
+const BUTTON_SIZE = {
+  LARGE : 'large',
+  MEDIUM : 'medium',
+  SMALL : 'small',
+}
+
+const BUTTON_TYPE = {
+  DEFAULT : 'default',
+  TEXT : 'text',
+}
+
+const {
+  href = '',
+  pannelLeft = null,
+  pannelRight = null,
+  size = ()=>BUTTON_SIZE.MEDIUM,
+  type = ()=>BUTTON_TYPE.DEFAULT,
+  cssBackground = ()=>CSS_BACKGROUND['Gray/11'],
+  cssColor = ()=>CSS_COLOR['Gray/03'],
+  cssBorderColor = ()=>CSS_BORDER_COLOR['Gray/11'],
+  disabled = false,
+  block = false,
+  slot = '',
+  className,
+} = props || {}
+
+const localTag = href ? 'a' : 'button'
+const localSize = Object.values(BUTTON_SIZE).includes(size(BUTTON_SIZE)) ? size(BUTTON_SIZE) : BUTTON_SIZE.MEDIUM
+const localType = Object.values(BUTTON_TYPE).includes(type(BUTTON_TYPE)) ? type(BUTTON_TYPE) : BUTTON_TYPE.DEFAULT
+const localCssBackground = localType !== BUTTON_TYPE.TEXT ? (Object.values(CSS_BACKGROUND).includes(cssBackground(CSS_BACKGROUND)) ? cssBackground(CSS_BACKGROUND) : CSS_BACKGROUND['Gray/02'] ) : ''
+const localCssColor = Object.values(CSS_COLOR).includes(cssColor(CSS_COLOR)) ? cssColor(CSS_COLOR) : CSS_COLOR['Gray/02']
+const localCssBorderColor = localType !== BUTTON_TYPE.TEXT ? (Object.values(CSS_BORDER_COLOR).includes(cssBorderColor(CSS_BORDER_COLOR)) ? cssBorderColor(CSS_BORDER_COLOR) : CSS_BORDER_COLOR['Gray/02']) : ''
+%>
+
+<!-- 버튼 비활성화 시 disabled 추가 -->
+<<%-localTag%> <%-href ? `href=${href}` : ''%> class="bs-button <%-localSize%> <%-localCssBackground%> <%-localCssColor%> <%-localCssBorderColor%> <%-localType%> <%-block?'block':''%> <%-className%>" <%- disabled ? 'disabled' : '' %>>
+  <div class="b-cont">
+    <%_if(typeof pannelLeft === 'function' && pannelLeft()){_%>
+    <span class="b-lt">
+      <%-pannelLeft()%>
+    </span>
+    <%_}_%>
+    <span class="b-tx"><%-slot%></span>
+    <%_if(typeof pannelRight === 'function' && pannelRight()){_%>
+    <span class="b-rt"><%-pannelRight()%></span>
+    <%_}_%>
+  </div>
+</<%-localTag%>>

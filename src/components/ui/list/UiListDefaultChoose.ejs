@@ -1,0 +1,27 @@
+<%
+const {
+  items = []
+} = props || {}
+
+const localHtml = (item)=>`
+<div class="dl-tp">
+  <div class="d-cont">
+    <span class="d-tt">
+      ${item.codeName}
+    </span>
+  </div>
+  <div class="d-rt"></div>
+</div>
+`
+%>
+
+<div class="ui-list-default-choose">
+  <div class="dlst-inner">
+    <%-include($rootSrc('@/components/BsRadioGroup'),{
+      props: {
+        items,
+        slot: (item)=>localHtml(item)
+      }
+     })%>
+  </div>
+</div>

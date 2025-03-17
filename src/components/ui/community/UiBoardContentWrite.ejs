@@ -1,0 +1,29 @@
+<div class="board-write">
+  <div class="board-title">
+    <button type="button" class="btn-board-category">별거 아닌 이야기</button>
+  </div>
+  <div class="board-body">
+    <div class="title">
+      <input type="text" placeholder="제목을 입력하세요 (최대 50자)">
+    </div>
+    <div class="content">
+      <textarea id="textarea" name="" id="" placeholder="내용을 입력해주세요"></textarea>
+      <!-- 등록된 사진이 하나 이상일때:S -->
+      <%-include($rootSrc('@/components/BsUploadImage'), {
+        props:{
+          items: [
+          '<%-$staticSrc('@/static/images/@dummy/recommendThumb2.png')%>',
+      '<%-$staticSrc('@/static/images/@dummy/recommendThumb2.png')%>',
+      '<%-$staticSrc('@/static/images/@dummy/recommendThumb2.png')%>',
+      '<%-$staticSrc('@/static/images/@dummy/recommendThumb2.png')%>',
+      ],
+      add:false,
+      className:'MT24'
+      }
+      })%>
+    </div>
+  </div>
+  <div class="board-footer">
+    <%-include($rootSrc(''@/components/BsContentInput')')%>
+  </div>
+</div>

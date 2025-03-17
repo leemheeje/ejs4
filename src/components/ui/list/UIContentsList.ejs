@@ -1,0 +1,137 @@
+<%
+const {
+  title,
+  items,
+  swiperItems,
+  thumb = false,
+  category,
+  sort,
+  location
+} = props || {}
+const htmlTags = (tags, margin)=> tags ? `
+<div class="u-tags ${margin}">
+  ${tags.map((tag)=>{
+    let params = {
+      cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND['Blue/09'],
+      cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR['Blue/09'],
+      cssColor: (CSS_COLOR)=>CSS_COLOR['Blue/04 (basic)'],
+    }
+    if(tag.codeId === 1099){
+      params = params
+    }else if(tag.codeId === 1098){
+      params = {
+        cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND['Red/09'],
+        cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR['Red/09'],
+        cssColor: (CSS_COLOR)=>CSS_COLOR['Red/03'],
+      }
+    }else{
+      params = {
+        cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND['Gray/11'],
+        cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR['Gray/11'],
+        cssColor: (CSS_COLOR)=>CSS_COLOR['Gray/03'],
+      }
+    }
+    return include($rootSrc('@/components/BsTag.ejs'), {
+      props: {
+        ...params,
+        size: (TAG_SIZE)=>TAG_SIZE.SMALL,
+        slot: tag.codeName
+      }
+    })
+  }).join(' ')}
+</div>
+` : ''
+%>
+
+
+
+
+<%
+const htmlDesscription = (desc)=> Array.isArray(desc) ? `
+<div class="it-f">
+  <ul>
+    ${desc.map((d)=>`<li>${d}</li>`).join('')}
+  </ul>
+</div>
+` : `<div class="s-txt">${desc}</div>`
+%>
+
+
+
+
+<%_if(items){_%>
+<div class="contents-container">
+  <%_if(category){_%>
+  <%- include($rootSrc('@/components/BsTabCategory'), {
+      props: {
+        useBoxing: true,
+        items:category,
+        value: 99
+      }
+    }) %>
+  <%_}_%>
+  <%_if(sort){_%>
+  <%- include($rootSrc('@/components/BsSort.ejs'), {
+    props: {
+      sort
+    }
+  }) %>
+  <%_}_%>
+
+
+
+  <%_if(title){_%>
+  <h3 class="contents-title"><%-title%></h3>
+  <%_}_%>
+  <div class="contents-list">
+    <%_for(const i in items){_%>
+    <div class="contents-item">
+      <a href="#">
+        <div class="item-thumb" <%- thumb ? "data-type='square'" : ""%>>
+          <%_ if(!items[i].location) {%><img src="<%-$staticSrc('@/static/images/@dummy/<%-items[i].thumb%>.png')%>" alt="광고배너"><%_}_%>
+          <%_ if(thumb === 'square') {%>
+          <%_ if(items[i].location) {%>
+          <img src="<%-$staticSrc('@/static/images/common/location/<%-items[i].thumb%>.png')%>" alt="<%-items[i].location%>">
+          <p class="category"><span><%-items[i].location%></span></p>
+          <%_}_%>
+          <%_} else {_%>
+          <p class="review"><span>60</span></p>
+          <%_}_%>
+        </div>
+        <div class="item-info">
+          <h3><%-items[i].title%></h3>
+          <%-htmlDesscription(items[i].desc)%>
+        </div>
+        <div>
+          <%-htmlTags(items[i].tags , "MT10")%>
+        </div>
+      </a>
+      <button type="button" class="btn-bookmark<%-items[i].bookmark ? ' active' : ''%>">PICK 하기</button>
+    </div>
+    <%_}_%>
+  </div>
+</div>
+<%_}_%>
+
+<%_if(swiperItems){_%>
+<div class="contents-list">
+  <%_for(const i in swiperItems){_%>
+  <div class="contents-item">
+    <a href="#">
+      <div class="item-thumb">
+        <img src="<%-$staticSrc('@/static/images/@dummy/<%-swiperItems[i].thumb%>.png')%>" alt="광고배너">
+        <p class="review"><span>60</span></p>
+      </div>
+      <div class="item-info">
+        <h3><%-swiperItems[i].title%></h3>
+        <%-htmlDesscription(swiperItems[i].desc)%>
+      </div>
+      <div>
+        <%-htmlTags(swiperItems[i].tags , "MT10")%>
+      </div>
+    </a>
+    <button type="button" class="btn-bookmark<%-swiperItems[i].bookmark ? ' active' : ''%>">PICK 하기</button>
+  </div>
+  <%_}_%>
+</div>
+<%_}_%>

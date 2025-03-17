@@ -1,0 +1,84 @@
+<%
+const {
+  items=[{
+    status : 1, //codeId : 완료1, 진행중2, 예정99
+    title : '',
+    description : '',
+    checked : false,
+    disabled :false,
+    useCheckbox: true,
+    useIcon: '', //체크박스 부분에 아이콘넣을때 svg
+  }]
+} = props || {}
+
+
+const localStatusTagParams = (item)=> item.status === 1 ? {
+  cssBackground: (color)=>color['Gray/02'],
+  cssColor: (color)=>color['Common/White'],
+  cssBorderColor: (color)=>color['Gray/02'],
+  slot: '완료'
+} : item.status === 2 ? {
+  cssBackground: (color)=>color['Red/05'],
+  cssColor: (color)=>color['Common/White'],
+  cssBorderColor: (color)=>color['Red/05'],
+  slot: '진행중'
+} : item.status === 99 ? {
+  cssBackground: (color)=>color['Blue/05'],
+  cssColor: (color)=>color['Common/White'],
+  cssBorderColor: (color)=>color['Blue/05'],
+  slot: '예정'
+}: {}
+const localTemplate = (item)=>`
+<div class="u-tp-cont">
+  ${item.useIcon ? `<span class="u-lt">
+    <img src="${item.useIcon }" alt=""/>
+  </span>`: ``}
+  <div class="u-txts">
+    <div class="u-tt">${item.title}</div>
+    ${item.description ? `<div class="u-st">${item.description}</div>`: ''}
+  </div>
+  ${item.status ? `
+  <div class="u-stsx">
+    ${include($rootSrc('@/components/BsTag'), {
+      props:{
+        type: (type)=>type.ROUND,
+        ...localStatusTagParams(item)
+      }
+    })}
+  </div>
+  ` : ``}
+</div>
+`
+%>
+
+
+<div class="ui-list-guide-checklist">
+  <div class="ug-lst">
+    <!-- foreach:S -->
+    <%_for(const k in items){_%>
+    <%_if(items[k].isViewer){_%>
+    <div class="u-cont-viewer">
+      <%-localTemplate(items[k])%>
+    </div>
+    <%_}else if(items[k].useCheckbox){_%>
+    <div class="ug-tps">
+      <%-include($rootSrc('@/components/BsCheckbox'),{
+          props:{
+            designType: (type)=>type.ROUND,
+            disabled: items[k].disabled,
+            checked: items[k].checked,
+            slot: localTemplate(items[k])
+          }
+        })%>
+    </div>
+    <%_}else{_%>
+    <div class="ug-tps">
+      <button class="u-cont-button">
+        <%-localTemplate(items[k])%>
+      </button>
+    </div>
+    <%_}_%>
+    <%_}_%>
+    <!-- foreach:E -->
+  </div>
+</div>

@@ -1,0 +1,22 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+
+
+$spacing: to-rem(8px);
+$is-flexwrap: 'is-flexwrap';
+
+
+.bs-button-group{
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing;
+  .bg-tp{
+    flex: 1;
+  }
+  &.#{$is-flexwrap}{
+    .bg-tp{
+      flex: initial;
+    }
+  }
+}

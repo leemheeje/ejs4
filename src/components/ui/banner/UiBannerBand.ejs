@@ -1,0 +1,19 @@
+<%
+const {
+  imgSrc='',
+  colorBackground='',
+} = props || {}
+%>
+
+
+<div class="ui-banner-band">
+  <div class="ubb-inner">
+    <div class="s-container" style=<%- colorBackground ? 'background-color:' + colorBackground + ';' : '' %>>
+      <!-- foreach:S -->
+      <button class="s-item">
+        <img src="<%-imgSrc%>" alt="" />
+      </button>
+      <!-- foreach:E -->
+    </div>
+  </div>
+</div>

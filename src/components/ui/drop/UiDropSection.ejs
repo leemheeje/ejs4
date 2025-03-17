@@ -1,0 +1,26 @@
+<%
+const {
+  title = '',
+  description = '',
+  options = '',
+  imgSrc = '',
+  useContentPage = false,
+  useImageSlot = ''
+} = props || {}
+%>
+
+<div class="ui-drop-section <%-useContentPage ? 'is-contentpage' : ''%>">
+  <div class="udr-top">
+    <%_if(useImageSlot){_%>
+    <div class="u-svg">
+      <%-useImageSlot%>
+    </div>
+    <%_}else{_%>
+    <img src="<%-imgSrc%>" class="u-img" alt="" />
+    <%_}_%>
+  </div>
+  <div class="udr-txt">
+    <div class="u-tit"><%-title%></div>
+    <div class="u-desc"><%-description%></div>
+  </div>
+</div>

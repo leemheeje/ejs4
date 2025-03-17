@@ -1,0 +1,20 @@
+<%
+const {
+  name = '체리포스 1호점',
+  useRightArrow = false,
+  slotNameLeft = ''
+} = props || {}
+%>
+
+<div class="ui-mypage-bancollaps <%-useRightArrow ? 'use-right-arrow' : ''%>">
+  <div class="umb-inner">
+    <!-- foreach:S -->
+    <button class="mb-lst">
+      <div class="mx-tit">
+        <span class="m-t"><%-name%></span>
+        <%-slotNameLeft%>
+      </div>
+    </button>
+    <!-- foreach:E -->
+  </div>
+</div>

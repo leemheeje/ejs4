@@ -1,0 +1,30 @@
+<%
+const {
+  jender='man',
+} = props || {}
+%>
+
+<div class="ui-mypage-userthumb">
+  <div class="umu-inner">
+    <div class="um-cont">
+      <span class="u-thumb">
+        <!-- 
+        남성: <%-$staticSrc('@/static/images/@dummy/profile.png')%>
+        여성: <%-$staticSrc('@/static/images/@dummy/profile_w.png')%>
+         -->
+        <%_if(jender === 'man'){_%>
+        <img src="<%-$staticSrc('@/static/images/@dummy/profile.png')%>" class="img" alt="" />
+        <%_}else if(jender === 'woman'){_%>
+        <img src="<%-$staticSrc('@/static/images/@dummy/profile_w.png')%>" class="img" alt="" />
+        <%_}_%>
+      </span>
+      <div class="u-txts">
+        <div class="u-t">성공할사장</div>
+        <button class="u-bt">
+          <span class="s-t">추천인 코드</span>
+          <span class="s-b">ABCD12314</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

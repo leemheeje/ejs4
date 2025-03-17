@@ -1,0 +1,23 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+.bs-noti{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: to-rem(4px);
+  .bn-tp{
+    @include font('Body4/Medium');
+    text-indent: to-rem(-6px);
+    padding-left: to-rem(6px);
+    color: color('Gray/05');
+    text-align: left;
+  }
+  &.is-text-center{
+    .bn-tp{
+      text-align: center;
+    }
+  }
+}

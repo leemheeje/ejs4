@@ -1,0 +1,74 @@
+<div class="ui-guide-customtarget">
+  <div class="cst-inner">
+    <!-- 선택된 필터 있을때:S -->
+    <div class="cst-top-area">
+      <!-- foreach:S -->
+      <span class="c-t-tag">남/여성</span>
+      <span class="c-t-tag">50대 이상</span>
+      <span class="c-t-tag">기타</span>
+      <!-- foreach:E -->
+    </div>
+    <!-- 선택된 필터 있을때:E -->
+    <div class="cst-cont-area">
+      <!-- foreach:S -->
+      <!-- 활성화시 is-active 추가 후 .csc-pan-cola 노출 -->
+      <div class="cs-c-tp is-active">
+        <button class="csc-pan-ft">
+          <span class="csp-tit">성별</span>
+        </button>
+        <!-- <div class="csc-pan-cola">
+          <%#-include($rootSrc('@/components/BsRadioGroup'), {
+            props: {
+              items: [
+              {codeId: 1, codeName: '남성'},
+              {codeId: 2, codeName: '여성'},
+              {codeId: 3, codeName: '남/여성', checked:true},
+              {codeId: 4, codeName: '미정'},
+              ],
+              slot: (item)=>item.codeName
+            }
+          })%>
+        </div> -->
+      </div>
+      <div class="cs-c-tp">
+        <button class="csc-pan-ft">
+          <span class="csp-tit">연령</span>
+        </button>
+        <div class="csc-pan-cola">
+          <%-include($rootSrc('@/components/BsRadioGroup'), {
+            props: {
+              items: [
+              {codeId: 1, codeName: '~10대'},
+              {codeId: 2, codeName: '20대'},
+              {codeId: 3, codeName: '30대'},
+              {codeId: 4, codeName: '40대'},
+              {codeId: 5, codeName: '50대 이상', checked:true},
+              {codeId: 6, codeName: '미정'},
+              ],
+              slot: (item)=>item.codeName
+            }
+          })%>
+        </div>
+      </div>
+      <div class="cs-c-tp">
+        <button class="csc-pan-ft">
+          <span class="csp-tit">가격대</span>
+        </button>
+        <div class="csc-pan-cola">
+          <%-include($rootSrc('@/components/BsRadioGroup'), {
+            props: {
+              items: [
+              {codeId: 1, codeName: '저가'},
+              {codeId: 2, codeName: '고가'},
+              {codeId: 3, codeName: '기타', checked:true},
+              {codeId: 4, codeName: '미정'},
+              ],
+              slot: (item)=>item.codeName
+            }
+          })%>
+        </div>
+      </div>
+      <!-- foreach:E -->
+    </div>
+  </div>
+</div>

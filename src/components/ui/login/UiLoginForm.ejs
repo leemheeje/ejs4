@@ -1,0 +1,71 @@
+<%
+const {} = props || {}
+%>
+
+<div class="ui-login-form">
+  <div class="uf-inner">
+    <div class="uf-lst">
+      <div class="u-form">
+        <%-include($rootSrc('@/components/BsInputField'),{
+        props:{
+          placeholder: '이메일을 입력해 주세요',
+        }
+      })%>
+      </div>
+      <div class="u-form">
+        <%-include($rootSrc('@/components/BsInputField'),{
+        props:{
+          type: 'password',
+          placeholder: '비밀번호를 입력해 주세요',
+        }
+      })%>
+      </div>
+      <div class="u-form">
+        <%-include($rootSrc('@/components/BsButton'),{
+        props:{
+          block: true,
+          size: (size)=>size.LARGE,
+          cssBackground: (color)=>color['Blue/04 (basic)'],
+          cssBorderColor: (color)=>color['Blue/04 (basic)'],
+          cssColor: (color)=> color['Common/White'],
+          slot: '로그인'
+        }
+      })%>
+      </div>
+      <div class="u-form-grid">
+        <div class="uf-lt">
+          <%-include($rootSrc('@/components/BsCheckbox'),{
+            props:{
+              cssColor: (color)=>color['Gray/05'],
+              slot: '아이디 저장'
+            }
+          })%>
+        </div>
+        <div class="uf-rt">
+          <!-- foreach:S -->
+          <div class="r-t">
+            <%-include($rootSrc('@/components/BsButton'),{
+              props:{
+                size: (size)=>size.SMALL,
+                type: (type)=>type.TEXT,
+                cssColor: (color)=>color['Gray/05'],
+                slot: '아이디 찾기'
+              }
+            })%>
+          </div>
+          <div class="r-t">
+            <%-include($rootSrc('@/components/BsButton'),{
+              props:{
+                size: (size)=>size.SMALL,
+                type: (type)=>type.TEXT,
+                cssColor: (color)=>color['Gray/05'],
+                slot: '비밀번호 찾기'
+              }
+            })%>
+          </div>
+          <!-- foreach:E -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

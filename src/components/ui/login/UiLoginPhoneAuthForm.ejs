@@ -1,0 +1,72 @@
+<%
+const {
+  value='',
+  isSendAuthNumber=false,
+  authNumber='',
+  isError=false,
+} = props || {}
+%>
+
+<div class="ui-login-phoneauth">
+  <div class="ulp-inner">
+    <%-include($rootSrc('@/components/BsTitle'),{
+      props:{
+        title: '휴대폰 번호를 인증해 주세요'
+      }
+    })%>
+    <div class="subg-form-area">
+      <div class="form-item">
+        <%
+        const localLayoutColum1 = include($rootSrc('@/components/BsInputField'),{
+          props:{
+            required: true,
+            placeholder: '- 없이 번호 입력',
+            value,
+            isError:isError,
+            supportMessage: '휴대폰 번호 양식에 맞게 입력해 주세요.'
+          }
+        })
+        const localLayoutColum2 = include($rootSrc('@/components/BsButton'),{
+          props:{
+            size:(SIZE)=>SIZE.LARGE,
+            cssBackground:(COLOR)=>COLOR['Common/White'],
+            cssColor:(COLOR)=>COLOR['Blue/04 (basic)'],
+            cssBorderColor:(COLOR)=>COLOR['Blue/04 (basic)'],
+            disabled: !value,
+            slot: '인증요청', //재전송
+          }
+        })
+        %>
+        <%-include($rootSrc('@/components/BsLabel'),{
+          props:{
+            required: true,
+            label: '휴대폰 번호',
+          }
+        })%>
+        <%-include($rootSrc('@/components/BsRow'),{
+          props:{
+            alignItemCenter: false,
+            layoutType: (TYPE)=>TYPE.SECOND_FIT_CONTENT,
+            items: [localLayoutColum1, localLayoutColum2]
+          }
+        })%>
+      </div>
+      <%_if(isSendAuthNumber){_%>
+      <div class="form-item">
+        <%-include($rootSrc('@/components/BsLabel'),{
+            props:{
+              label: '인증번호',
+            }
+          })%>
+        <%-include($rootSrc('@/components/BsInputField'),{
+            props:{
+              inputRightSlot: ()=>'<span class="FONT_BODY3_MEDIUM COLOR_BLUE_03">3:00</span>',
+              value: authNumber,
+              placeholder: '인증번호를 입력해 주세요',
+            }
+          })%>
+      </div>
+      <%_}_%>
+    </div>
+  </div>
+</div>

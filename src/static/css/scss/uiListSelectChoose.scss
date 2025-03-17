@@ -1,0 +1,29 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+.ui-list-select-choose{
+  .dlst-inner{
+    display: flex;
+    flex-direction: column;
+    margin-top: to-rem(-12px);
+    margin-bottom: to-rem(-12px);
+  }
+  .dl-tp{
+    .d-cont{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      padding: to-rem(12px) 0;
+      width: 100%;
+      .d-tt{
+        @include font('Body1/Medium');
+        color: color('Gray/02');
+      }
+    }
+  }
+}

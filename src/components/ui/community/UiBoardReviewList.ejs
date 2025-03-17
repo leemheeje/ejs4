@@ -1,0 +1,153 @@
+<%
+const {
+  actionBtn = false,
+  reportText = "<span>신고 받은 댓글로 숨김 처리 되었습니다.</span>",
+  blank = false,
+  emptyText = '아직 작성한 댓글이 없어요',
+  reviews = [
+    {
+      profileIMG : "<%-$staticSrc('@/static/images/@dummy/profile.png')%>",
+nickName : "아자아자화이팅",
+time : "3시간 전",
+content : "유튜브로 배우는 요리와는\n\n\n 차원이 다르네요. \n\n클래스를 통해 디테일 높은 수업을 이용할 수 있어서 많은걸 배울 수있습니다! ",
+like:1,
+linked: true,
+report:false,
+user:true,
+review: [
+{
+profileIMG : "<%-$staticSrc('@/static/images/@dummy/profile_w.png')%>",
+nickName : "대댓글",
+time : "3시간 전",
+content : "유튜브로 배우는 요리와는 차원이 다르네요. 클래스를 통해 디테일 높은 수업을 이용할 수 있어서 많은걸 배울 수있습니다! ",
+like:1,
+linked: false,
+report:false,
+review: []
+},
+{
+profileIMG : "<%-$staticSrc('@/static/images/@dummy/profile.png')%>",
+nickName : "대댓글2",
+time : "3시간 전",
+content : "유튜브로 배우는 요리와는 차원이\n 다르네요. 클래스를\n 통해 디테일 높은 수업을 이용할 수 있어서 많은걸 배울 수있습니다! ",
+like:10,
+linked: true,
+report:false,
+review: []
+}
+]
+},
+{
+profileIMG : "<%-$staticSrc('@/static/images/@dummy/profile_w.png')%>",
+nickName : "나는야사장",
+time : "3시간 전",
+content : "많은걸 배울 수있습니다~ 유튜브로 배우는 요리와는 차원이 다르네요 :)",
+like:1,
+linked: false,
+report:false,
+review:[
+{
+profileIMG : "<%-$staticSrc('@/static/images/@dummy/profile_w.png')%>",
+nickName : "대댓글넹",
+time : "3시간 전",
+content : "유튜브로 배우는 요리와는 차원이 다르네요. 클래스를 통해 디테일 높은 수업을 이용할 수 있어서 많은걸 배울 수있습니다! ",
+like:1,
+linked: false,
+report:false,
+review: []
+}
+]
+},
+{
+profileIMG : "<%-$staticSrc('@/static/images/@dummy/profile.png')%>",
+nickName : "나는야사장",
+time : "3시간 전",
+content : "유튜브로 배우는 요리와는 차원이 다르네요. 클래스를 통해 디테일 높은 수업을 이용할 수 있어서 많은걸 배울 수있습니다!",
+like:1,
+blockedMember: true,
+linked: false,
+report:true,
+review:[]
+},
+{
+profileIMG : "<%-$staticSrc('@/static/images/@dummy/profile.png')%>",
+nickName : "나는야사장",
+time : "3시간 전",
+content : "신고에 의해 숨김 처리 되었습니다.",
+like:1,
+linked: false,
+report:true,
+review:[]
+},
+{
+profileIMG : "<%-$staticSrc('@/static/images/@dummy/profile.png')%>",
+nickName : "나는야사장",
+time : "3시간 전",
+content : "많은걸 배울 수있습니다~ 유튜브로 배우는 요리와는 차원이 다르네요 :)",
+like:1,
+linked: false,
+report:false,
+review:[],
+},
+],
+} = props || {}
+%>
+
+<div class="board-review <%- blank ? 'blank' : '' %>">
+  <%_if(!blank){_%>
+  <h2>댓글 <span><%-reviews.length%></span></h2>
+  <%_}_%>
+  <ul class="review-list">
+    <%_ if(reviews.length === 0) {_%>
+    <!-- 리뷰없을때 -->
+    <li class="review-item">
+      <div class="review-empty">
+        <p><%-emptyText%></p>
+      </div>
+    </li>
+    <%_}_%>
+    <%_for(const i in reviews){_%>
+    <li class="review-item">
+      <%_if(reviews[i].blockedMember){_%>
+      <!-- 차단된 멤버의 댓글입니다. -->
+      <div class="review-container is-blocked-member">
+        <div class="review-detail">
+          <p class="content">차단된 멤버의 댓글입니다.</p>
+          <%_if(actionBtn){_%>
+          <button type="button" class="btn-more"><span class="blind">더보기</span></button>
+          <%_}_%>
+        </div>
+      </div>
+      <%_}else{_%>
+      <div class="review-container">
+        <div class="thumb" <%-reviews[i].user ? 'data-user' : ''%>>
+          <div class="profile-img">
+            <img src="<%-reviews[i].profileIMG%>" alt="profile">
+          </div>
+        </div>
+        <div class="review-detail">
+          <h3 class="nick"><%-reviews[i].nickName%></h3>
+          <span class="time"><%-reviews[i].time%></span>
+          <p class="content"><%- reviews[i].report ? reportText : reviews[i].content%></p>
+          <div class="review-button-area">
+            <%_if(!reviews[i].report){_%>
+            <!-- 공감 클릭시 활성화 클래스 추가 버튼에 is-active -->
+            <button type="button" class="<%-reviews[i].linked ? 'is-active' : ''%>"><span>공감 <em><%-reviews[i].like%></em></span></button>
+            <%_}_%>
+            <a href="">답글 <%-reviews[i].review.length%></a>
+          </div>
+          <%_if(actionBtn){_%>
+          <button type="button" class="btn-more"><span class="blind">더보기</span></button>
+          <%_}_%>
+        </div>
+      </div>
+      <%_}_%>
+    </li>
+    <%_}_%>
+  </ul>
+  <%_ if(!blank && reviews.length > 0) {_%>
+  <div class="board-button-area MT32">
+    <a href="#" class="btn-out-line full" data-back="icon_angle_small_right">댓글 전체보기</a>
+  </div>
+  <%_}_%>
+</div>

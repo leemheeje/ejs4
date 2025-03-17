@@ -1,0 +1,193 @@
+<%
+const {
+  items= [ // 창업경험 있을 때
+    {
+      codeId: 0, 
+      title: '체리포스 1호점',
+      storeIMG : "<%-$staticSrc('@/static/images/common/icon_05.svg')%>",
+options: [
+{codeId: 0, codeName: '오픈일 미정'},
+{codeId: 1, codeName: '준비중'},
+],
+tags: [
+{codeId: 0, codeName: '온라인'},
+],
+checked: true,
+status:"창업 준비중"
+},
+{
+codeId: 0,
+title: '케이씨피치킨 2호점케이씨피치킨 2호점케이씨피치킨 2호점케이씨피치킨 2호점',
+storeIMG : "<%-$staticSrc('@/static/images/common/icon_10.svg')%>",
+options: [
+{codeId: 0, codeName: '오픈일 미정'},
+{codeId: 1, codeName: '준비중'},
+],
+tags: [
+{codeId: 1, codeName: '오프라인'},
+],
+checked: false,
+status:"24.01.02 - 운영중"
+},
+{
+codeId: 0,
+title: '체리포스샵',
+storeIMG : "<%-$staticSrc('@/static/images/common/icon_06.svg')%>",
+options: [
+{codeId: 0, codeName: '오픈일 미정'},
+{codeId: 1, codeName: '준비중'},
+],
+tags: [
+{codeId: 1, codeName: '온라인'},
+],
+checked: false,
+status:"24.06.06 - 24.06.28"
+},
+],
+itemEmpty= [ // 창업경험 없을 때
+{
+codeId: 0,
+title: '아직 창업 경험이 없어요',
+storeIMG : "<%-$staticSrc('@/static/images/common/icon_99.svg')%>",
+options: [
+{codeId: 0, codeName: '오픈일 미정'},
+{codeId: 1, codeName: '준비중'},
+],
+tags: [
+{codeId: 0, codeName: '온라인'},
+],
+checked: true,
+status:"창업 준비중"
+},
+],
+profileData={
+empty:null,
+nicknName : "아자아자화이팅",
+profileIMG: "<%-$staticSrc('@/static/images/@dummy/profile.png')%>",
+},
+useRadio = false,
+} = props || {}
+
+
+const localHtmlTitle = (item) => `<span class="u-tt">${item.title}</span>`
+const localHtmlTag = (item) => `
+<div class="u-lb">
+  ${
+  include($rootSrc('@/components/BsTag'), {
+  props:{
+  size: (TAG_SIZE)=>TAG_SIZE.SMALL,
+  cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND['Blue/09'],
+  cssColor: (CSS_COLOR)=>CSS_COLOR['Blue/04 (basic)'],
+  cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR['Blue/09'],
+  slot: item.tags[0].codeName
+  }
+  })
+  }
+</div>
+`
+const localHtmlOption = (itemStatus) => `<span class="u-op">${itemStatus}</span>`
+const localHtmlTotal = (item) => `
+<div class="uq-tps">
+  <div class="uqt-cont">
+    ${item.storeIMG ? `<div class="u-thumb"><img src="${item.storeIMG}" alt=""></div>` : ''}
+    <div class="ut-txts">
+      <div class="u-tit">
+        ${localHtmlTitle(item)}
+        ${localHtmlTag(item)}
+      </div>
+      <div class="u-option">
+        ${localHtmlOption(item.status)}
+      </div>
+    </div>
+  </div>
+</div>
+`
+
+
+%>
+<%_if(profileData){_%>
+<p class="ui-list-selectstore-title">창업 스토어</p>
+<%_}_%>
+<div class="ui-list-selectstore">
+  <div class="uq-inner">
+
+    <%_if(useRadio){_%>
+    <%-include($rootSrc('@/components/BsRadioGroup'), {
+        props:{
+          items,
+          slot: (item)=>`
+          <div class="uq-tps">
+            <div class="uqt-cont">
+              <div class="ut-txts">
+                <div class="u-tit">
+                  ${localHtmlTitle(item)}
+                  ${localHtmlTag(item)}
+                </div>
+                <div class="u-option">
+                  ${item.options.map((_item)=>localHtmlOption(_item.codeName)).join('')}
+                </div>
+              </div>
+              <div class="ut-chks"></div>
+            </div>
+          </div>
+          `
+        }
+      })%>
+    <%_} else if(profileData.empty){_%>
+    <!-- 창업스토어 없을 경우 -->
+    <div class="uq-tps">
+      <div class="uqt-cont">
+        <%_if(profileData){_%>
+        <div class="u-thumb"><img src="<%-itemEmpty[0].storeIMG%>" alt=""></div>
+        <%_}_%>
+        <div class="ut-txts">
+          <div class="u-tit">
+            <span class="u-tt empty"><%-itemEmpty[0].title%></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%_} else {_%>
+    <!-- 창업스토어 있는 경우 -->
+    <%_for(const k in items){
+      const item = items[k]
+    _%>
+    <div class="uq-tps">
+      <div class="uqt-cont">
+        <div class="u-thumb">
+          <!-- 
+        * 카테고리별 아이콘 경로 (온라인)
+        - 의류&패션&잡화                             : <%-$staticSrc('@/static/images/common/icon_01.svg')%>
+        - 식품                                      : <%-$staticSrc('@/static/images/common/icon_02.svg')%>
+        - 가전( 컴퓨터 및 주변기기, 전자, 통신기기 )   : <%-$staticSrc('@/static/images/common/icon_03.svg')%>
+        - 생활용품 ( 가구 등)                         : <%-$staticSrc('@/static/images/common/icon_04.svg')%>
+        - 뷰티 (화장품)                               : <%-$staticSrc('@/static/images/common/icon_05.svg')%>
+        - 애완용품                                    : <%-$staticSrc('@/static/images/common/icon_06.svg')%>
+        - 스포츠&레저                                 : <%-$staticSrc('@/static/images/common/icon_07.svg')%>
+        - 아동&유아용품                               : <%-$staticSrc('@/static/images/common/icon_08.svg')%>
+        - 기타                                        : <%-$staticSrc('@/static/images/common/icon_09.svg')%>
+
+        * 카테고리별 아이콘 경로 (오프라인)
+        - 카페                                         : <%-$staticSrc('@/static/images/common/icon_10.svg')%>
+        - 일반 음식점                                   : <%-$staticSrc('@/static/images/common/icon_11.svg')%>
+        - 주점                                          : <%-$staticSrc('@/static/images/common/icon_12.svg')%>
+        - 기타                                          : <%-$staticSrc('@/static/images/common/icon_13.svg')%>
+        - 미정                                          : <%-$staticSrc('@/static/images/common/icon_14.svg')%>
+         -->
+          <img src="<%-item.storeIMG%>" alt="">
+        </div>
+        <div class="ut-txts">
+          <div class="u-tit">
+            <%-localHtmlTitle(item)%>
+            <%-localHtmlTag(item)%>
+          </div>
+          <div class="u-option">
+            <%-localHtmlOption(item.status)%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%_}_%>
+    <%_}_%>
+  </div>
+</div>

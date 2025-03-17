@@ -1,0 +1,35 @@
+<%
+const {CSS_COLOR} = JSON.parse(include($rootSrc('@/data/colorSet.json')))
+const DESIGN_TYPE = {
+  CHECKBOX : 'design-checkbox',
+  ROUND : 'design-roundcheckbox',
+  CHECK : 'design-check',
+  LABEL : 'design-label',
+  SWITCH: 'design-switch',
+}
+
+const {
+  slot = '',
+  id = '',
+  name = '',
+  designType = ()=>DESIGN_TYPE.CHECKBOX,
+  disabled = false,
+  checked = false,
+  cssColor = ()=>CSS_COLOR['Gray/02'],
+} = props || {};
+
+const localId = id ? id : _.uniqueId('_uid_')
+const localName = name ? name : localId 
+const localDesignType = Object.values(DESIGN_TYPE).includes(designType(DESIGN_TYPE)) ? designType(DESIGN_TYPE) : DESIGN_TYPE.CHECKBOX
+const localCssColor = Object.values(CSS_COLOR).includes(cssColor(CSS_COLOR)) ? cssColor(CSS_COLOR) : CSS_COLOR['Gray/02']
+%>
+
+<span class="bs-checkbox <%-localDesignType%> <%-disabled ? 'is-disabled' : ''%> ">
+  <input type="checkbox" id="<%-localId%>" class="b-inp" <%- checked ? 'checked' : '' %> <%- disabled ? 'disabled' : '' %> name="<%-localName%>">
+  <label class="b-lb" for="<%-localId%>">
+    <span class="ico-check"></span>
+    <%_if(slot){_%>
+    <span class="b-tx <%-localCssColor%>"><%-slot%></span>
+    <%_}_%>
+  </label>
+</span>

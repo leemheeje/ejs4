@@ -1,0 +1,83 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+$is-boxing: 'is-boxing';
+
+%label {
+  border: none;
+  height: to-rem(34px);
+  display: flex;
+  align-items: center;
+  padding: 0 to-rem(14px);
+  background: color('Gray/10');
+  border-radius: to-rem(32px);
+  @include font('Body5/Medium');
+  color: color('Gray/04');
+  white-space: nowrap;
+}
+
+.bs-tab-category {
+  .btc-inner {
+  }
+  .bc-lst {
+    display: flex;
+    align-items: flex-start;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    gap: to-rem(8px);
+    &[data-wrap='false'] {
+      flex-wrap: wrap;
+      white-space: normal;
+      gap: 10px 8px;
+    }
+    .uh-tx {
+      @extend %label;
+
+      &[data-type='del'] {
+        background: #fff;
+        border: solid 1px color('Gray/09');
+        font-size: 13px;
+        color: color('Gray/02');
+        button {
+          border: 0;
+          background: transparent;
+          padding: 0;
+          font-size: 13px;
+          line-height: 1.4;
+          font-weight: 500;
+          color: color('Gray/02');
+        }
+        a {
+          font: 0/0 j;
+          width: 16px;
+          height: 16px;
+          background: get-background-svg('icon_cancle', #{color('Gray/05')}) 0 0 no-repeat;
+          background-size: 100% 100%;
+          margin-left: 6px;
+        }
+      }
+    }
+    .uhi-tp {
+      &.active {
+        .uh-tx {
+          background: color('Gray/01');
+          color: color('Common/White');
+        }
+      }
+    }
+  }
+  @at-root .#{bs-tab-category} .btc-inner {
+    &.#{$is-boxing} {
+      padding: to-rem(12px) 0;
+      border-bottom: to-rem(1px) solid color('Gray/10');
+      .bc-lst {
+        padding-left: $spacing-left;
+        padding-right: $spacing-right;
+      }
+    }
+  }
+}

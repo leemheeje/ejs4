@@ -1,0 +1,17 @@
+<%
+const {
+  imgSrc = '',
+  title = '',
+  buttonText = '',
+} = props || {}
+%>
+
+<div class="ui-banner-bandcontent">
+  <button class="bb-inner">
+    <div class="lt">
+      <img src="<%-imgSrc%>" class="s-img" alt="" />
+    </div>
+    <div class="ct"><%-title%></div>
+    <div class="rt"><%-buttonText%></div>
+  </button>
+</div>

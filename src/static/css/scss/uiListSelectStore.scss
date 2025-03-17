@@ -1,0 +1,95 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+$is-checked: 'is-checked';
+.ui-list-selectstore{
+  .uqt-cont{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .ut-thumb{
+      flex:0 0 to-rem(36px);width:to-rem(36px);height:to-rem(36px);margin-right:to-rem(16px);overflow:hidden;border-radius:50%;
+      img{width: 100%;}
+    }
+    .ut-txts{
+      width: calc(100% - $spacing-left - to-rem(24px));
+      .u-tit{
+        min-height: to-rem(21px);
+        display: flex;
+        align-items: center;
+        gap: to-rem(8px);
+        .u-tt{
+          display: block;
+          @include font('Body2/Semibold');
+          @include text-ellipsis(1, to-rem(21px));
+          color: color('Gray/02');
+        }
+        .u-lb{}
+      }
+    }
+    .u-option{
+      margin-top: to-rem(4px);
+      display: flex;
+      flex-wrap: wrap;
+      .u-op{
+        @include font('Body5/Medium');
+        color: color('Gray/05');
+        &:before{
+          content: '∙';
+          margin: 0 to-rem(4px);
+        }
+      }
+      .u-op:first-child:before{
+        content: none;
+      }
+    }
+    .ut-chks{
+      min-width: to-rem(24px);
+      width: to-rem(24px);
+      height: to-rem(24px);
+      background-image: get-background-svg('icon_check', #{color('Gray/08')});;
+      background-size: 100%;
+    }
+  }
+  .uq-tps{
+    &+.uq-tps{
+      margin-top: to-rem(24px);
+    }
+    &.#{$is-checked}{
+      .uqt-cont{
+        .ut-txts{
+          .u-tit{
+            .u-tt{
+              color: color('Blue/03');
+            }
+          }
+        }
+      }
+    }
+  }
+  .bs-radio-group{
+    .tn-tp+.tn-tp{
+      margin-top: to-rem(24px);
+    }
+  }
+  .bs-radio{
+    .b-inp:checked~.b-lb{
+      .uqt-cont {
+        .ut-txts{
+          .u-tit{
+            .u-tt{
+              color: color('Blue/03');
+            }
+          }
+        }
+        .ut-chks{
+          background-image: get-background-svg('icon_check', #{color('Blue/04 (basic)')});;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+}

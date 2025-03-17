@@ -1,0 +1,34 @@
+<%
+const {
+  items = [
+  {codeId: 1, codeName: 'ab****@k****.kr', imgSrc: '<%-$staticSrc('@/static/images/common/ico_sns_kakao_t.svg')%>'},
+],
+} = props || {}
+%>
+
+<div class="ui-login-authbeta">
+  <div class="uaa-inner">
+    <div class="ua-lst">
+      <!-- foreach:S -->
+      <%_for(const k in items){_%>
+      <div class="u-tp">
+        <%_if(items[k].imgSrc){_%>
+        <!-- 
+          SNS아이콘 이미지 경로 정보
+          카카오    :    <%-$staticSrc('@/static/images/common/ico_sns_kakao_t.svg')%>
+          애플      :    <%-$staticSrc('@/static/images/common/ico_sns_apple_t.svg')%>
+          구글      :    <%-$staticSrc('@/static/images/common/ico_sns_google_t.svg')%>
+          네이버    :    <%-$staticSrc('@/static/images/common/ico_sns_naver_t.svg')%>
+          페이코    :    <%-$staticSrc('@/static/images/common/ico_sns_payco_t.svg')%>
+          -->
+        <span class="t-ic">
+          <img src="<%-items[k].imgSrc%>" class="t-img" alt="" />
+        </span>
+        <%_}_%>
+        <span class="t-tx"><%-items[k].codeName%></span>
+      </div>
+      <%_}_%>
+      <!-- foreach:E -->
+    </div>
+  </div>
+</div>

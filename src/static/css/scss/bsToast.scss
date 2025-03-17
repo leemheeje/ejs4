@@ -1,0 +1,78 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+$DESIGN_TYPE_DEFAULT: 'toast-design-default';
+
+$ALIGN_TYPE_TOP: 'align-top';
+$ALIGN_TYPE_BOTTOM: 'align-bottom';
+
+$is-navigation: 'is-navigation';
+$is-header: 'is-header';
+
+.bs-toast {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  z-index: 4500;
+  pointer-events: none;
+  .bt-inner {
+    // padding: $spacing-left;
+    padding: 0 16px;
+    width: 100%;
+  }
+  .bt-container {
+    width: 100%;
+    display: block;
+    border: none;
+    background: transparent;
+    pointer-events: initial;
+    .b-lt {
+    }
+    .b-cont {
+      .b-t {
+      }
+    }
+    .b-rt {
+    }
+  }
+  &.#{$ALIGN_TYPE_TOP} {
+    align-items: flex-start;
+    &.#{is-header} {
+      padding-top: to-rem(60px);
+    }
+  }
+  &.#{$ALIGN_TYPE_BOTTOM} {
+    align-items: flex-end;
+    &.#{is-navigation} {
+      bottom: to-rem(66px);
+    }
+  }
+  &.#{$DESIGN_TYPE_DEFAULT} {
+    .bt-container {
+      background: color('Opacity/88');
+      padding: to-rem(14px) to-rem(20px);
+      min-height: to-rem(48px);
+      border-radius: to-rem(30px);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      .b-lt {
+        min-width: to-rem(20px);
+        width: to-rem(20px);
+        height: to-rem(20px);
+        display: flex;
+        margin-right: to-rem(12px);
+      }
+      .b-t {
+        color: color('Common/White');
+        @include font('Body3/Semibold');
+      }
+    }
+  }
+}

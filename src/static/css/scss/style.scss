@@ -1,0 +1,628 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+
+body {
+  width: 100%;
+  overflow-x: hidden !important;
+  min-width: $body-min-width;
+}
+.blind {
+  @include hidden;
+}
+
+// 서브페이지 max-width
+.subpage {
+  min-width: $body-min-width;
+  &.maxWidth {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}
+
+// 에러페이지
+.page-error {
+  height: calc(100vh - 88px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.page-spacing {
+  padding-left: $spacing-left;
+  padding-right: $spacing-right;
+  .page-unspacing {
+    margin-left: -$spacing-left;
+    margin-right: -$spacing-right;
+  }
+}
+.cmm-hr {
+  display: block;
+  height: to-rem(10px);
+  background: color('Gray/11');
+}
+
+.bs-dialog.dialog-select-store {
+  .ad-btn {
+    padding-left: to-rem(18px);
+    background: no-repeat left center get-background-svg('icon_add_small', #{color('Blue/04 (basic)')});
+    background-size: to-rem(18px);
+    @include font('Body4/Semibold');
+    color: color('Blue/04 (basic)');
+  }
+}
+
+.main {
+  background: color('Gray/11');
+}
+.is-bottom-navigation {
+  padding-bottom: to-rem(104px);
+}
+.is-bottom-button {
+  padding-bottom: to-rem(100px);
+}
+.is-bottom-dbbutton {
+  padding-bottom: to-rem(156px);
+}
+.page-home {
+  margin-top: to-rem(4px);
+  .store-layout {
+  }
+  .page-spacing {
+    .store-layout {
+      margin-left: -$spacing-left;
+      margin-right: -$spacing-left;
+      .bsa-swiper {
+        padding-left: calc($spacing-left + $spacing-box-left);
+        padding-right: calc($spacing-right + $spacing-box-right);
+      }
+    }
+  }
+  .mb-comuti-wrap {
+    // 사장님을 위한 정보
+    padding: to-rem(24px) 0 to-rem(4px);
+    padding-left: $spacing-box-left;
+    padding-right: $spacing-box-right;
+    background: color('Common/White');
+    border-radius: to-rem(16px);
+    .mcw-tit {
+      @include font('T2/Bold');
+      color: color('Gray/01');
+      text-align: left;
+    }
+    .mcw-tab {
+      margin-top: to-rem(12px);
+    }
+    .mcw-lst {
+      margin-top: to-rem(20px);
+    }
+    .mcw-bot {
+      border-top: to-rem(1px) solid color('Gray/10');
+      margin-top: to-rem(20px);
+      .mw-btn {
+        display: block;
+        width: 100%;
+        border: none;
+        background: none;
+        padding: to-rem(16px) 0;
+        .m-t {
+          @include font('Body3/Medium');
+          color: color('Gray/05');
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          &:after {
+            content: '';
+            width: to-rem(16px);
+            height: to-rem(16px);
+            display: block;
+            margin-left: to-rem(4px);
+            background: no-repeat center center get-background-svg('icon_angle_small_right', #{color('Gray/05')});
+            background-size: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+.page-sub {
+  padding-top: to-rem(24px);
+  &.sm-pdt {
+    padding-top: to-rem(16px);
+  }
+  &.xsm-pdt {
+    padding-top: to-rem(8px);
+  }
+  &.pdt0 {
+    padding-top: 0;
+  }
+  .subg-form-area {
+    padding-top: to-rem(40px);
+    padding-bottom: to-rem(42px);
+    &.sm-pdb {
+      padding-bottom: to-rem(32px);
+    }
+    &.pdt0 {
+      padding-top: 0;
+    }
+    .form-item {
+      margin-bottom: to-rem(24px);
+      .ant-copy {
+        display: flex;
+        justify-content: flex-end;
+        @include font('Body4/Medium');
+        color: color('Gray/02');
+        min-width: to-rem(30px);
+        &.not-minw {
+          min-width: inherit;
+        }
+      }
+    }
+  }
+  .adds-top-btwn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .ab-rt {
+      @include font('Body3/Semibold');
+      color: color('Blue/04 (basic)');
+      position: relative;
+      padding-right: to-rem(18px);
+      background: none;
+      border: none;
+      &:after {
+        content: '';
+        width: to-rem(18px);
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: no-repeat center center get-background-svg('icon_angle_small_right', #{color('Blue/04 (basic)')});
+        background-size: 100%;
+      }
+    }
+  }
+}
+
+// 가이드_창업계획서(온라인)_Step2
+.cm-bab-lst {
+  .cb-tp {
+    background: color('Gray/11');
+    border-radius: to-rem(8px);
+    padding: to-rem(20px);
+    display: flex;
+    align-items: center;
+    gap: to-rem(16px);
+    .img-are {
+      display: block;
+      border-radius: 50%;
+      overflow: hidden;
+      min-width: to-rem(37px);
+      width: to-rem(37px);
+      height: to-rem(37px);
+      .cimg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .txt-are {
+      max-width: calc(100% - to-rem(52px));
+      .ctt {
+        @include font('Body2/Semibold');
+        @include text-ellipsis;
+        color: color('Gray/02');
+        display: block;
+      }
+      .stt {
+        @include font('Body5/Medium');
+        @include text-ellipsis;
+        display: block;
+        color: color('Gray/05');
+        margin-top: to-rem(4px);
+      }
+    }
+    & + .cb-tp {
+      margin-top: to-rem(8px);
+    }
+  }
+  &.img-banner {
+    .cb-tp {
+      padding: 0;
+      border-radius: 0;
+      background: none;
+      .img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+// 날짜기간 레이아웃 폼
+.cmm-date-range-form {
+  .bs-col {
+    flex: 1;
+  }
+  .bs-col:nth-child(2) {
+    max-width: min-content;
+  }
+  .cm-osr {
+    @include font('Body1/Medium');
+    color: color('Gray/01');
+  }
+}
+// 전체일정 수정 탑 영역
+.pgs-glb-set-area {
+  padding: to-rem(24px) $spacing-left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: to-rem(16px);
+  .pg-txts {
+    max-width: calc(100% - to-rem(70px));
+    .ptit {
+      @include text-ellipsis;
+      @include font('Body2/Semibold');
+      color: color('Gray/01');
+      max-width: 100%;
+    }
+    .stit {
+      @include font('Body5/Medium');
+      margin-top: to-rem(4px);
+      color: color('Gray/05');
+    }
+  }
+  .pg-rts {
+  }
+}
+
+.comtest {
+  height: 50px;
+  width: 50px;
+  background: no-repeat left center get-background-svg('text', #{color('Blue/04 (basic)')});
+}
+
+.dialog-page {
+  min-height: var(--device-height);
+  .sub-header {
+    background: #000;
+    .mb-btn-close {
+      background-image: get-background-svg('icon_close', #{color('Common/White')});
+    }
+    .mb-ct .h-tx {
+      color: color('Common/White');
+    }
+  }
+  background: #000;
+}
+.comm-dialogpage {
+  min-height: calc(var(--device-height) - to-rem(60px));
+  .cmm-origin-image {
+    min-height: calc(var(--device-height) - to-rem(60px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
+    }
+
+    // 스와이프 추가
+    .swiper-wrapper {
+      align-items: center;
+    }
+    .ui-banner-band .s-container {
+      border-radius: 0;
+    }
+    .ui-banner-band .s-item {
+      max-width: 100%;
+      height: auto;
+      min-height: 0;
+      max-height: 100%;
+      img {
+        width: 100%;
+        
+      }
+    }
+    .bsw-contr-out {
+      .bs-pagination-out {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+      }
+      .swiper-pagination-bullet {
+        background: rgba(255, 255, 255, 0.22);
+        opacity: 1;
+        &.swiper-pagination-bullet-active {
+          background: rgba(255, 255, 255, 1);
+        }
+      }
+    }
+    .bs-swiper{
+      overflow: hidden;
+    }
+    &:not(.is-zoomarea){
+      .bsw-contr-out{
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        width: 100%;
+        bottom: to-rem(16px);
+      }
+    }
+    &.is-zoomarea{
+      $paginationHeight: to-rem(44px);
+      // .bs-swiper{
+        
+      // }
+      .ui-banner-band{
+        height: calc(var(--device-height) - to-rem(60px));;
+        overflow: auto;
+        display: flex;
+        .ubb-inner{
+          margin: auto;
+        }
+      }
+      &:not(.is-pagination){
+        .bs-pagination-out{display: none;}
+      }
+      &.is-pagination .bs-swiper{
+        padding-bottom: $paginationHeight;
+        .ui-banner-band{
+          height: calc(var(--device-height) - to-rem(60px) - $paginationHeight);;
+        }
+        .bsw-contr-out{
+          position: fixed;
+          left: 50%; 
+          transform: translateX(-50%);
+          bottom: 0; 
+          z-index: 1;
+          height: to-rem(44px);
+          display: inline-flex;
+          padding-left: to-rem(32px);
+          padding-right: to-rem(32px);
+          align-items: center;
+          justify-content: center;
+          &:before{
+            content: '';
+            width: 100vw;
+            height: to-rem(44px);
+            background: #000;
+            position: fixed;
+            bottom: 0;
+          }
+          .bs-pagination-out{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: to-rem(8px);
+          }
+          .swiper-pagination-current,
+          .swiper-pagination-total{
+            @include font('Body3/Semibold');
+            color: color('Common/White');
+            position: relative;
+          }
+          .swiper-pagination-current{
+          }
+          .bc-trc-g{
+            width: to-rem(1px);
+            height: to-rem(8px);
+            background: color('Common/White');
+            opacity: .5;
+            display: block;
+          }
+          .swiper-pagination-total{
+            opacity: .5;
+          }
+          .bsw-contr{
+            position: static;
+            .bs-button-prev,
+            .bs-button-next{
+              position: absolute;
+              top: 50%;
+              margin-top: to-rem(-12px);
+              width: to-rem(24px);
+              height: to-rem(24px);
+              background: no-repeat center center;
+              background-size: 100%;
+              &[tabindex="-1"]{
+                opacity: .5;
+              }
+            }
+            .bs-button-prev{
+              left: 0;
+              background-image: get-background-svg('icon_angle_small_left', #{color('Common/White')});
+            }
+            .bs-button-next{
+              right: 0;
+              background-image: get-background-svg('icon_angle_small_right', #{color('Common/White')});
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 서비스 소개 페이지
+.page-service-intro {
+  background-color: #ecf2ff;
+  text-align: center;
+  .ps-hr {
+    background-color: color('Gray/09');
+    margin-left: to-rem(16px);
+    margin-right: to-rem(16px);
+    height: to-rem(1px);
+  }
+  .ps-top-area {
+    background: linear-gradient(180deg, #d8e5fe 0%, #ffffff 100%);
+  }
+  .ps-content {
+    background-color: #fff;
+    padding-top: to-rem(16px);
+    padding-bottom: to-rem(60px);
+  }
+  .g-x-img {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: to-rem(496px);
+    .tb {
+      display: none;
+    }
+    .mob {
+      display: block;
+    }
+    @include tablet {
+      .tb {
+        display: block;
+      }
+      .mob {
+        display: none;
+      }
+    }
+    @include desktop {
+      .tb {
+        display: block;
+      }
+      .mob {
+        display: none;
+      }
+    }
+  }
+  .gs-s-desc {
+    @include font('Body1/Semibold');
+    color: color('Gray/04');
+    padding-top: to-rem(8px);
+    padding-bottom: to-rem(76px);
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: calc(to-rem(76px) - to-rem(50px));
+      width: 100%;
+      height: to-rem(40px);
+      background: no-repeat center center get-background-svg('icon_angle_small_down', #{color('Gray/07')});
+      animation: moveDownUp 1.3s infinite;
+      background-size: to-rem(40px);
+    }
+    @keyframes moveDownUp {
+      0% {
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+      }
+      50% {
+        transform: translateY(to-rem(20px));
+        animation-timing-function: ease-in;
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  }
+  .gs-tit {
+    .lbw {
+      @include font('Body2/Bold');
+      color: color('Blue/04 (basic)');
+      margin-bottom: to-rem(10px);
+      display: block;
+    }
+    .txw {
+      @include font('H1/Bold');
+      color: color('Gray/01');
+    }
+  }
+  .gs-stit {
+    .lbm {
+      display: inline-block;
+      width: to-rem(116px);
+      margin-bottom: to-rem(16px);
+    }
+    .txw {
+      @include font('T2/Bold');
+      color: color('Gray/01');
+    }
+  }
+  .intro-section-group {
+    .intro-section {
+      padding-bottom: to-rem(40px);
+      padding-top: to-rem(40px);
+      &:first-child {
+        padding-top: 0;
+      }
+      .g-slide-box {
+        margin-top: to-rem(32px);
+      }
+    }
+  }
+  .g-slide-box {
+    .sld-area {
+      padding-left: to-rem(32px);
+      padding-right: to-rem(32px);
+      .g-s-img {
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: to-rem(16px);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        background: #f1f3f5;
+        img {
+          max-width: to-rem(296px);
+        }
+      }
+    }
+    @include tablet {
+      .swiper-slide {
+        width: to-rem(575px);
+      }
+    }
+    @include desktop {
+      .swiper-slide {
+        width: to-rem(575px);
+      }
+    }
+  }
+  .g-tit-section {
+    .lbw {
+      @include font('Body6/Semibold');
+      color: color('Blue/04 (basic)');
+      background-color: color('Blue/09');
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: to-rem(4px) to-rem(8px);
+      border-radius: to-rem(32px);
+      margin-bottom: to-rem(16px);
+    }
+    .txw {
+      @include font('T1/Bold');
+      color: color('Gray/01');
+    }
+    .desc {
+      margin-top: to-rem(20px);
+      .d-p {
+        @include font('Body3/Medium');
+        color: color('Gray/04');
+        & + .d-p {
+          margin-top: to-rem(8px);
+        }
+      }
+    }
+  }
+  .ps-bottom-area {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    z-index: 1;
+    padding: to-rem(20px) to-rem(16px);
+  }
+}

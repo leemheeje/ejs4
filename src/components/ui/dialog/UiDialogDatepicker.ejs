@@ -1,0 +1,38 @@
+<%
+const {
+  items = []
+} = props || {}
+
+const localItems = items.length ? items : Array.from({length:50}).map((_,index)=>{
+  const c = index+1999
+  return {
+    codeId: index+1,
+    codeName: c,
+    checked:  c === 2001
+  }
+})
+%>
+
+<div class="ui-dialog-datepicker">
+  <div class="udd-inner">
+    <div class="ud-lst">
+      <!-- foreach:S -->
+      <%#_for(const k in localItems){_%>
+      <!-- <div class="ud-tp">
+        <button class="u-tx <%#-localItems[k].codeActive ? 'is-active' : ''%>"><%#-localItems[k].codeName%></button>
+      </div> -->
+      <%#_}_%>
+      <!-- foreach:E -->
+      <%-include($rootSrc('@/components/BsRadioGroup'),{
+        props: {
+          items:localItems,
+          slot: (item)=>`
+          <div class="ud-tp">
+            <div class="u-tx">${item.codeName}</div>
+          </div>
+          `
+        }
+       })%>
+    </div>
+  </div>
+</div>

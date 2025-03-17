@@ -1,0 +1,30 @@
+<%
+const {CSS_BACKGROUND, CSS_COLOR, CSS_BORDER_COLOR} = JSON.parse(include($rootSrc('@/data/colorSet.json')))
+const TAG_SIZE = {
+  LARGE: 'tag-large',
+  SMALL: 'tag-small',
+}
+const TAG_TYPE = {
+  DEFAULT: 'tag-type-default',
+  ROUND: 'tag-type-round',
+}
+
+
+const {
+  size = ()=> TAG_SIZE.LARGE,
+  type = ()=> TAG_TYPE.DEFAULT,
+  cssBackground = ()=>CSS_BACKGROUND['Gray/11'],
+  cssColor = ()=>CSS_COLOR['Gray/03'],
+  cssBorderColor = ()=>CSS_BORDER_COLOR['Gray/11'],
+  slot = '',
+} = props || {}
+
+const localSize = Object.values(TAG_SIZE).includes(size(TAG_SIZE)) ? size(TAG_SIZE) : DESIGN_TYPE.LARGE
+const localType = Object.values(TAG_TYPE).includes(type(TAG_TYPE)) ? type(TAG_TYPE) : TAG_TYPE.DEFAULT
+const localCssBackground = Object.values(CSS_BACKGROUND).includes(cssBackground(CSS_BACKGROUND)) ? cssBackground(CSS_BACKGROUND) : CSS_BACKGROUND['Gray/02']
+const localCssColor = Object.values(CSS_COLOR).includes(cssColor(CSS_COLOR)) ? cssColor(CSS_COLOR) : CSS_COLOR['Gray/02']
+const localCssBorderColor = Object.values(CSS_BORDER_COLOR).includes(cssBorderColor(CSS_BORDER_COLOR)) ? cssBorderColor(CSS_BORDER_COLOR) : CSS_BORDER_COLOR['Gray/02']
+%>
+<span class="bs-tag <%-localSize%> <%-localCssBackground%> <%-localCssColor%> <%-localCssBorderColor%> <%-localType%>">
+  <%-slot%>
+</span>

@@ -1,0 +1,65 @@
+<%
+const LAYOUT_TYPE = {
+  TYPE_1 : 'layout-type1', //마이페이지
+  TYPE_2 : 'layout-type2', //가이드쪽
+  TYPE_3 : 'layout-type3', //가이드 - 체크리스트
+}
+const {
+  slotTopArea = '',
+  title = '창업 준비',
+  value = 0,
+  useStatusBar = true,
+  slotStatusLabel = '',
+  slotLeftArea = '24.01.01 - 24.01.04',
+  slotRightArea = '오픈일 ∙ 24.03.21',
+  slotTopRightArea = '',
+  layoutType = ()=>LAYOUT_TYPE.TYPE_1
+} = props || {}
+
+const localLayoutType = Object.values(LAYOUT_TYPE).includes(layoutType(LAYOUT_TYPE)) ? layoutType(LAYOUT_TYPE) : LAYOUT_TYPE.TYPE_1
+%>
+
+<div class="ui-mypage-status-pannel <%-localLayoutType%>">
+  <div class="umsp-inner">
+    <%_if(slotTopArea){_%>
+    <div class="sec-stat-area">
+      <%-slotTopArea%>
+      <div class="sc-st-rt">
+        <%-slotTopRightArea%>
+      </div>
+    </div>
+    <%_}_%>
+    <div class="sec-cont-area">
+      <div class="sc-titx">
+        <span class="st-nm"><%-title%></span>
+        <%_if(localLayoutType === LAYOUT_TYPE.TYPE_1){_%>
+        <span class="st-no"><%-value%></span>
+        <%_}_%>
+        <%_if(localLayoutType === LAYOUT_TYPE.TYPE_2){_%>
+        <span class="st-ar">11</span>
+        <%_}_%>
+        <%_if(localLayoutType === LAYOUT_TYPE.TYPE_3 && value){_%>
+        <span class="st-st">
+          완료까지<span class="twx"><%-value%>%</span>남았어요, 힘내세요!
+        </span>
+        <%_}_%>
+      </div>
+      <%_if(useStatusBar && value){_%>
+      <div class="sc-prg">
+        <span class="s-val" style="width: <%-value%>%"></span>
+      </div>
+      <%_if(localLayoutType !== LAYOUT_TYPE.TYPE_3){_%>
+      <div class="sc-dte">
+        <%_if(localLayoutType === LAYOUT_TYPE.TYPE_1){_%>
+        <span class="s-lt"><%-slotLeftArea%></span>
+        <%_}_%>
+        <%_if(localLayoutType === LAYOUT_TYPE.TYPE_2){_%>
+        <span class="s-slt"><%-value%>% 달성 중</span>
+        <%_}_%>
+        <span class="s-rt"><%-slotRightArea%></span>
+      </div>
+      <%_}_%>
+      <%_}_%>
+    </div>
+  </div>
+</div>

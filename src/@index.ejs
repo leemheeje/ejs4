@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML리스트</title>
+</head>
+
+<%
+const extname = process.env.NODE_ENV === 'local' ? '' : '.html'
+%>
+
+<body>
+  - 수동으로 작성<br />
+  - 프로젝트별 또는 PC/MOB 또는 다국어 지원유무에 따라 HTML리스트의 형태가 달라질 수 있어 자동화 사용X<br />
+  <table>
+    <tbody>
+      <tr>
+        <td>메인</td>
+        <td><a href="./index<%-extname%>">/index</a></td>
+      </tr>
+      <tr>
+        <td>서브</td>
+        <td><a href="./home/index_case1<%-extname%>">/home/index_case1</a></td>
+      </tr>
+      <tr>
+        <td>영문-메인</td>
+        <td><a href="./en/index<%-extname%>">/index</a></td>
+      </tr>
+      <tr>
+        <td>영문-서브</td>
+        <td><a href="./en/home/index_case1<%-extname%>">/home/index_case1</a></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

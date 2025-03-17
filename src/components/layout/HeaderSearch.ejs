@@ -1,0 +1,38 @@
+<%
+const RIGHT_ICON_TYPE = {
+  ICON_SEARCH: 'icon_search',
+  ICON_CALENDER_DATE: 'icon_calender_date',
+  ICON_BOOKMARK_LINE: 'icon_bookmark_line',
+}
+const {
+  useBackButton = true,
+  useCloseButton = false,
+  useBottomArea = null,
+} = props || {}
+%>
+<div class="sub-header search">
+  <div class="head-content">
+    <div class="mb-inner">
+      <div class="mb-lt">
+        <%_if(useBackButton){_%>
+        <button class="mb-btn mb-btn-bck">
+          <span class="blind">뒤로가기</span>
+        </button>
+        <%_}_%>
+      </div>
+      <div class="mb-rt">
+        <%-include($rootSrc('@/components/BsInputField'),{
+          props:{
+            placeholder: '검색어를 입력해 주세요',
+            inputRightSlot : ()=>'<button type="button" class="btn-search">검색</button>',
+          }
+        })%>
+      </div>
+    </div>
+  </div>
+  <%_if(useBottomArea){_%>
+  <div class="head-bottom">
+    <%-useBottomArea%>
+  </div>
+  <%_}_%>
+</div>

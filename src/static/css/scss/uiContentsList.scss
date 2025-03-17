@@ -1,0 +1,292 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+// 컨테이터 감싸기
+.contents-container-wrap {
+  &[data-type='swiper'] {
+    $local-padding-left: $spacing-left;
+    background: #fff;
+    padding-top: to-rem(24px);
+    padding-left: $local-padding-left;
+    padding-bottom: to-rem(40px);
+    &.is-bottom-navigation {
+      padding-bottom: to-rem(104px);
+    }
+    .bs-swiper {
+      width: auto;
+      padding-left: $local-padding-left;
+      padding-right: $spacing-right;
+      margin-left: -$local-padding-left;
+    }
+  }
+
+  .contents-container {
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+}
+// 컨텐츠 리스트 컨테이너 리스트 껍데기
+.contents-container {
+  position: relative;
+  background: #fff;
+  padding: to-rem(24px) to-rem(0) to-rem(32px);
+  & + .contents-container {
+    margin-top: to-rem(10px);
+  }
+  &:last-of-type {
+    padding-bottom: 40px;
+  }
+  .bs-tab-category {
+    .btc-inner {
+      &.is-boxing {
+        padding: 12px 0;
+      }
+    }
+  }
+  .bs-sort {
+    height: 56px;
+    padding: 12px 16px;
+    & + .contents-list {
+      margin-top: 8px;
+    }
+  }
+
+  .contents-title {
+    color: color('Gray/01');
+    font-size: to-rem(18px);
+    font-weight: bold;
+    padding: 0 16px;
+  }
+  .btn-contents-more {
+    display: flex;
+    position: absolute;
+    top: to-rem(3px);
+    right: to-rem(16px);
+    color: color('Blue/04 (basic)');
+    line-height: 1;
+    font-size: to-rem(13px);
+    font-weight: 600;
+    align-items: center;
+    &::after {
+      content: '';
+      display: block;
+      background: get-background-svg('icon_angle_small_right', #{color('Blue/04 (basic)')}) 0 0 no-repeat;
+      background-size: 100% 100%;
+      width: to-rem(18px);
+      height: to-rem(18px);
+    }
+  }
+  &[data-type='swiper'] {
+    position: relative;
+    background: #fff;
+    margin-top: 0;
+    padding: 0;
+    @at-root .page-spacing & {
+      .bs-swiper {
+        width: auto;
+        padding-left: $spacing-left;
+        padding-right: $spacing-right;
+        margin-left: -$spacing-left;
+        margin-right: -$spacing-right;
+      }
+    }
+    & + &[data-type='swiper'] {
+      margin-top: to-rem(40px);
+    }
+    .btn-contents-more {
+      top: to-rem(3px);
+    }
+    .contents-title {
+      padding: 0;
+      span {
+        color: color('Blue/04 (basic)');
+        font-size: to-rem(14px);
+        font-weight: 600;
+        margin-left: to-rem(6px);
+        line-height: to-rem(19.6px);
+        vertical-align: middle;
+      }
+    }
+    .swiper-slide {
+      width: to-rem(136px);
+      .contents-list {
+        margin-top: 0;
+        gap: 0;
+        padding: 0;
+        .contents-item {
+          flex: 1;
+        }
+      }
+    }
+    .bs-swiper {
+      margin-top: to-rem(16px);
+    }
+  }
+}
+// 컨텐츠 리스트 ITEM 껍데기
+.contents-list {
+  display: flex;
+  margin-top: to-rem(16px);
+  padding: 0 to-rem(16px);
+  flex-wrap: wrap;
+  gap: to-rem(24px) to-rem(16px);
+
+  .contents-item {
+    position: relative;
+    width: calc(50% - to-rem(8px));
+    flex: 0 0 calc(50% - to-rem(8px));
+  }
+
+  @include tablet {
+    .contents-item {
+      width: calc(33% - to-rem(9px));
+      flex: 0 0 calc(33% - to-rem(9px));
+    }
+  }
+
+  @include desktop {
+    .contents-item {
+      width: calc(25% - to-rem(12px));
+      flex: 0 0 calc(25% - to-rem(12px));
+    }
+  }
+}
+// 컨텐츠 ITEM
+.contents-item {
+  .u-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: to-rem(4px);
+    .bs-tag.tag-small {
+      min-width: auto;
+    }
+  }
+  .btn-bookmark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: get-background-svg('icon_bookmark_line', #{color('Common/White')}) 0 bottom no-repeat;
+    background-size: to-rem(20px) to-rem(20px);
+    width: to-rem(30px);
+    height: to-rem(30px);
+    padding: 0;
+    border: 0;
+    font: 0/0 j;
+    &.active {
+      background: get-background-svg('icon_bookmark_fill', #{color('Common/White')}) 0 bottom no-repeat;
+      background-size: to-rem(20px) to-rem(20px);
+    }
+  }
+  a {
+    display: block;
+  }
+  .item-thumb {
+    overflow: hidden;
+    position: relative;
+    padding-top: 75%;
+    border-radius: to-rem(8px);
+    &[data-type='square'] {
+      padding-top: 100%;
+      .review {
+        display: none;
+      }
+      .category {
+        font-size: 16px;
+        font-weight: 600;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.4);
+      }
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: url(../images/common/bg_gradation.png) 0 0 no-repeat;
+      background-size: 100% 100%;
+      height: to-rem(52px);
+    }
+    img {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .review {
+      display: flex;
+      position: absolute;
+      top: to-rem(10px);
+      left: to-rem(10px);
+      color: color('Common/White');
+      font-size: to-rem(11px);
+      align-items: center;
+      z-index: 1;
+      span {
+        line-height: 1;
+        font-weight: 600;
+      }
+      &::before {
+        content: '';
+        display: block;
+        background: get-background-svg('icon_comment', #{color('Common/White')}) 0 0 no-repeat;
+        background-size: to-rem(14px) to-rem(14px);
+        width: to-rem(14px);
+        height: to-rem(14px);
+        margin-right: to-rem(4px);
+      }
+    }
+  }
+  .item-info {
+    h3 {
+      @include text-ellipsis(2, to-rem(21px));
+      margin-top: to-rem(12px);
+      color: color('Gray/02');
+      font-size: to-rem(15px);
+      font-weight: 600;
+    }
+    %desc-css{
+      color: color('Gray/05');
+      line-height: to-rem(15.6px);
+      font-size: to-rem(12px);
+    }
+    .it-f{
+      margin-top: to-rem(4px);
+      @include text-ellipsis(2, to-rem(16px));
+      ul{
+        display: flex;
+        flex-wrap: wrap;
+        li{
+          @extend %desc-css;
+          &+li:before{
+            content: '·';
+            margin-left: to-rem(2px);
+            margin-right: to-rem(2px);
+          }
+        }
+      }
+    }
+    .s-txt {
+      margin-top: to-rem(4px);
+      @extend %desc-css;
+      @include text-ellipsis(2, to-rem(16px));
+      *{
+        line-height: to-rem(16px) !important;
+      }
+    }
+  }
+}

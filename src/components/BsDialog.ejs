@@ -1,0 +1,125 @@
+<%
+const DIALOG_TYPE = {
+  ALERT: 'is-alert',
+  CONFIRM: 'is-confirm',
+  CHECK: 'is-check',
+  CONTENT: 'is-content',
+  ONLY_IMAGE: 'is-onlyimage',
+  ONLY_NOTIFICATION: 'is-only-notification', //안내팝업 전용
+}
+const {
+  className = '',
+  isBottomSheet = true,
+  type = ()=>DIALOG_TYPE.CONTENT,
+  useHeader = true,
+  title = '',
+  slotTopRight = null,
+  slot = null,
+  slotBottom = null,
+  subTitle = false,
+} = props || {}
+
+
+const localType = Object.values(DIALOG_TYPE).includes(type(DIALOG_TYPE)) ? type(DIALOG_TYPE) : DIALOG_TYPE.CONTENT
+%>
+
+<div class="bs-dialog <%-isBottomSheet ? 'is-bottomsheet' : ''%> <%-className%> <%-localType%>">
+  <div class="b-dimm"></div>
+  <div class="b-container">
+    <div class="b-inner">
+      <!-- header:S -->
+      <%_if(useHeader){_%>
+      <div class="bd-top">
+        <div class="t-lt">
+          <div class="t-tx"><%-title%></div>
+        </div>
+        <%_if(slotTopRight){_%>
+        <div class="t-rt">
+          <%-slotTopRight(props)%>
+        </div>
+        <%_}_%>
+      </div>
+      <%_}_%>
+      <!-- header:E -->
+      <%_if(subTitle){_%><p class="bd-sub">창업 스토어</p><%_}_%>
+      <!-- container:S -->
+      <%_if(slot){_%>
+      <div class="bd-cont <%-className%>">
+        <%_if(typeof slot === 'function'){_%>
+        <%-slot(props)%>
+        <%_}else{_%>
+        <%-slot%>
+        <%_}_%>
+      </div>
+      <%_}_%>
+      <!-- container:E -->
+      <!-- footer:S -->
+      <%_if(slotBottom || localType === DIALOG_TYPE.ALERT || localType === DIALOG_TYPE.CONFIRM || localType === DIALOG_TYPE.CHECK){_%>
+      <div class="bd-bott">
+        <%_if(typeof slotBottom === 'function'){_%>
+        <%-slotBottom(props)%>
+        <%_}else if(localType === DIALOG_TYPE.ALERT){_%>
+        <%-include($rootSrc('@/components/BsButton'),{
+            props:{
+              block: true,
+              size: (size)=>size.LARGE,
+              cssBackground: (color)=>color['Blue/04 (basic)'],
+              cssBorderColor: (color)=>color['Blue/04 (basic)'],
+              cssColor: (color)=> color['Common/White'],
+              slot: '확인'
+            }
+          })%>
+        <%_}else if(localType === DIALOG_TYPE.CONFIRM){_%>
+        <%
+          const buttonArray = isBottomSheet ? [
+          {codeId: 'code1', codeName: '확인'},
+          {codeId: 'code2', codeName: '취소'},
+          ] : [
+          {codeId: 'code2', codeName: '취소'},
+          {codeId: 'code1', codeName: '확인'},
+          ]
+          %>
+        <%-include($rootSrc('@/components/BsButtonGroup'), {
+          props:{
+            items: buttonArray,
+            slot: (item)=> include($rootSrc('@/components/BsButton'), {
+              props: {
+                block: true,
+                size: (BUTTON_SIZE)=> BUTTON_SIZE.LARGE,
+                cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND[item.codeId === 'code1' ? 'Blue/04 (basic)' : isBottomSheet ? 'Common/White' : 'Gray/08'],
+                cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR[item.codeId === 'code1' ? 'Blue/04 (basic)' : isBottomSheet ? 'Common/White' : 'Gray/08'],
+                cssColor: (CSS_COLOR)=>CSS_COLOR[item.codeId === 'code1' ? 'Common/White' : 'Gray/04'],
+                slot: item.codeName
+              }
+            })
+          }
+        })%>
+        <%_} else if(localType === DIALOG_TYPE.CHECK){_%>
+        <%
+          const buttonArray =[
+            {codeId: 'code1', codeName: '동의'},
+            {codeId: 'code2', codeName: '뒤로가기'},
+          ]
+          %>
+        <%-include($rootSrc('@/components/BsButtonGroup'), {
+          props:{
+            items: buttonArray,
+            slot: (item)=> include($rootSrc('@/components/BsButton'), {
+              props: {
+                block: true,
+                size: (BUTTON_SIZE)=> BUTTON_SIZE.LARGE,
+                cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND[item.codeId === 'code1' ? 'Blue/04 (basic)' : isBottomSheet ? 'Common/White' : 'Gray/08'],
+                cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR[item.codeId === 'code1' ? 'Blue/04 (basic)' : isBottomSheet ? 'Common/White' : 'Gray/08'],
+                cssColor: (CSS_COLOR)=>CSS_COLOR[item.codeId === 'code1' ? 'Common/White' : 'Gray/04'],
+                slot: item.codeName
+              }
+            })
+          }
+        })%>
+        <%_}_%>
+      </div>
+      <%_}_%>
+      <!-- footer:E -->
+    </div>
+  </div>
+</div>

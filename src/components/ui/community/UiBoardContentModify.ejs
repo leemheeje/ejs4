@@ -1,0 +1,14 @@
+<div class="board-write">
+  <div class="board-body">
+    <div class="content">
+      <textarea id="textarea" name="" id="" placeholder="내용을 입력해주세요"></textarea>
+    </div>
+  </div>
+  <div class="board-footer">
+    <%-include($rootSrc('@/components/BsContentInput'), {
+      props:{
+        useIconCamera: false
+      }
+    })%>
+  </div>
+</div>

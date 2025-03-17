@@ -1,0 +1,31 @@
+<%
+const {} = props || {}
+%>
+
+
+<%- include($rootSrc(`@/components/BsDialog`), {
+  props: {
+    useHeader: true,
+    className: 'dialog-guide-custom-target',
+    title: '타겟 고객 옵션을 선택해주세요',
+    slot: ()=> include($rootSrc('@/components/ui/guide/UiGuideCustomTarget'), {}),
+    slotBottom: ()=> include($rootSrc('@/components/BsButtonGroup'), {
+      props:{
+        items: [
+          {codeId: 'code1', codeName: '선택 완료'},
+          {codeId: 'code2', codeName: '취소'}
+        ],
+        slot: (item)=> include($rootSrc('@/components/BsButton'), {
+          props: {
+            block: true,
+            size: (BUTTON_SIZE)=> BUTTON_SIZE.LARGE,
+            cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND[item.codeId === 'code1' ? 'Blue/04 (basic)' : 'Common/White'],
+            cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR[item.codeId === 'code1' ? 'Blue/04 (basic)' : 'Common/White'],
+            cssColor: (CSS_COLOR)=>CSS_COLOR[item.codeId === 'code1' ? 'Common/White' : 'Gray/05'],
+            slot: item.codeName
+          }
+        })
+      }
+    })
+  }
+}) %>

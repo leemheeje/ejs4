@@ -1,0 +1,91 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+$icon-width: to-rem(24px);
+$icon-height: to-rem(24px);
+
+.bs-bottom-navigation{
+  position: fixed;
+  left: 0; 
+  width: 100%;
+  bottom: 0;
+  z-index: 4000;
+  box-shadow: 0px 0px 2px 0px #F1F3F5;
+  .bbn-lst{
+    background: color('Common/White');
+    padding: to-rem(10px) 0;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .bt-cont{
+    border: none;
+    background: transparent;
+    width: 100%;
+    max-width: to-rem(72px);
+  }
+  .b-ic{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: $icon-width;
+    height: $icon-height;
+    background: no-repeat center center;
+      background-size: 100%;
+      &.b-ic-home{
+      background-image: get-background-svg('icon_home_line', #{color('Gray/01')});
+    }
+    &.b-ic-guide{
+      background-image: get-background-svg('icon_guide_line', #{color('Gray/01')});
+    }
+    &.b-ic-store{
+      background-image: get-background-svg('icon_store_line', #{color('Gray/01')});
+    }
+    &.b-ic-community{
+      background-image: get-background-svg('icon_community_line', #{color('Gray/01')});
+    }
+    &.b-ic-my{
+      background-image: get-background-svg('icon_my_line', #{color('Gray/01')});
+    }
+  }
+  .b-tx{
+    margin-top: to-rem(6px);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    @include font('Body6/Medium');
+    color: color('Gray/01');
+  }
+  .bb-tp{
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    &.active{
+      .b-ic{
+        &.b-ic-home{
+          background-image: get-background-svg('icon_home_fill', #{color('Blue/04 (basic)')});
+        }
+        &.b-ic-guide{
+          background-image: get-background-svg('icon_guide_fill', #{color('Blue/04 (basic)')});
+        }
+        &.b-ic-store{
+          background-image: get-background-svg('icon_store_fill', #{color('Blue/04 (basic)')});
+        }
+        &.b-ic-community{
+          background-image: get-background-svg('icon_community_fill', #{color('Blue/04 (basic)')});
+        }
+        &.b-ic-my{
+          background-image: get-background-svg('icon_my_fill', #{color('Blue/04 (basic)')});
+        }
+      }
+      .b-tx{
+        color: color('Blue/04 (basic)');
+      }
+    }
+  }
+}

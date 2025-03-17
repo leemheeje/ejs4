@@ -1,0 +1,26 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="format-detection" content="telephone=no">
+  <title><%-head?.title || 'document'%></title>
+  <!-- css -->
+  <link rel="stylesheet" href="<%-$staticSrc('@/static/css/common.min.css')%>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <% if (head?.meta) { %>
+  <%_for (let i in head.meta) {_%>
+  <meta name="<%- head.meta[i].name %>" content="<%- head.meta[i].content %>">
+  <%_}_%>
+  <%_}_%>
+  <%_if (head?.link) {_%>
+  <%_for (let i in head.link) {_%>
+  <link rel="<%- head.link[i].rel %>" href="<%- head.link[i].href %>">
+  <%_}_%>
+  <%_}_%>
+  <%_if (head?.script) {_%>
+  <%_for (let i in head.script) {_%>
+  <script src="<%- head.script[i].src %>"></script>
+  <%_}_%>
+  <%_}_%>
+
+
+</head>

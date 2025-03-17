@@ -1,0 +1,19 @@
+<%
+const {
+  label = '',
+  labelRight = '',
+  required = false,
+  desc
+} = props || {}
+%>
+
+
+<div class="bs-label <%-required ? 'is-required' : ''%> <%-labelRight ? 'is-labelright' : ''%>">
+  <label class="bl-t"><%-label%></label>
+  <%_if(labelRight){_%>
+  <div class="bl-rr"> <%-labelRight%> </div>
+  <%_}_%>
+  <%_if(desc){_%>
+    <p class="bs-label-desc"><%-desc%></p>
+  <%_}_%>
+</div>

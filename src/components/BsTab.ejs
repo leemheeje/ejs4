@@ -1,0 +1,38 @@
+<%
+const TAB_SIZE = {
+  LARGE:'large',
+  SMALL:'small',
+}
+const {
+  items = [
+    {codeId: 0, codeName: 'Label'},
+    {codeId: 1, codeName: 'Label'},
+    {codeId: 2, codeName: 'Label'},
+  ],
+  value= 0,
+  size = ()=>TAB_SIZE.LARGE,
+} = props || {}
+
+const localSize = Object.values(TAB_SIZE).includes(size(TAB_SIZE)) ? size(TAB_SIZE) : TAB_SIZE.LARGE
+%>
+
+<div class="bs-tab <%-localSize%>">
+  <div class="bat-inner">
+    <div class="tn-lst">
+      <!-- foreach:S -->
+      <%_for(const k in items){_%>
+      <div class="tn-tp">
+        <button class="tx <%-items[k].codeId === value && 'active' %>"><%-items[k].codeName%></button>
+        <%_if(items[k].isLayer){_%>
+        <div class="u-tps-lay">
+          <span class="u-tl">
+            <%-items[k].isLayer%>
+          </span>
+        </div>
+        <%_}_%>
+      </div>
+      <%_}_%>
+      <!-- foreach:E -->
+    </div>
+  </div>
+</div>

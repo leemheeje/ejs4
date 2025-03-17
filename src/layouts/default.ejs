@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="<%-$currentLocale%>">
+<%- include($rootSrc('@/components/layout/Head')); %>
+
+<body>
+  <div class="main">
+    <%- include($rootSrc('@/components/layout/HeaderMain')) %>
+    <%- body %>
+  </div>
+
+  <%-include($rootSrc('@/components/layout/Script'))%>
+</body>
+
+</html>

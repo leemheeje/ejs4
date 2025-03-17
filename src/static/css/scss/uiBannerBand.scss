@@ -1,0 +1,37 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+.page-spacing{
+  .page-unspacing{
+    .ui-banner-band{
+      max-width: calc(to-rem(608px) + $spacing-left + $spacing-right);
+      padding-left: $spacing-left;
+      padding-right: $spacing-right;
+    }  
+  }
+}
+
+.ui-banner-band{
+  max-width: to-rem(608px);
+  margin-left: auto;
+  margin-right: auto;
+  .s-container{
+    border-radius: to-rem(16px);
+    overflow: hidden;
+  }
+  .s-item{
+    background: none;
+    border: none;
+    display: block;
+    text-align: center;
+    max-width: calc(to-rem(328px) + $spacing-left + $spacing-right);
+    margin-left: auto;
+    margin-right: auto;
+    min-height: to-rem(90px);
+    max-height: to-rem(120px);
+    overflow: hidden;
+  }
+}

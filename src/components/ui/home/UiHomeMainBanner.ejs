@@ -1,0 +1,19 @@
+<%
+const {
+  type = 'type-1',
+  imageSrc = $staticSrc('@/static/images/@dummy/banner1.png'),
+  title = '창업 성공을 만드는<br />가장 빠른길, 비벗',
+  description = '창업 성공 시작하기',
+} = props || {}
+%>
+
+
+<div class="ui-home-mainbanner <%-type%>">
+  <button class="uhb-inner">
+    <div class="ub-img"><img src="<%-imageSrc%>" class="u-img" alt="" /></div>
+    <div class="txt-bx">
+      <div class="tit"><%-title%></div>
+      <span class="stit"><%-description%></span>
+    </div>
+  </button>
+</div>

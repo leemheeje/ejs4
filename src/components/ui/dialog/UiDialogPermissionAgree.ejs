@@ -1,0 +1,26 @@
+<%
+const {
+  title = '앱 이용을 위해 권한을 허용해 주세요',
+  description = '선택 접근 권한은 해당 기능을 사용할 때 허용이 필요하며, 비허용시에도 해당 기능 외 서비스 이용이 가능합니다.'
+} = props || {}
+
+%>
+
+
+<%- include($rootSrc(`@/components/BsDialog`), {
+  props: {
+    useHeader: false,
+    isBottomSheet: false,
+    slot: ()=> include($rootSrc('@/components/ui/list/UIListPermissionAgree')),
+    slotBottom: ()=> include($rootSrc('@/components/BsButton'), {
+      props:{
+        block: true,
+        size: (BUTTON_SIZE)=> BUTTON_SIZE.LARGE,
+        cssBackground: (COLOR)=>COLOR['Blue/04 (basic)'],
+        cssBorderColor: (COLOR)=>COLOR['Blue/04 (basic)'],
+        cssColor: (COLOR)=>COLOR['Common/White'],
+        slot: '확인'
+      }
+    })
+  }
+}) %>

@@ -1,0 +1,34 @@
+<%# "000 선택해주세요" 팝업 %>
+<%
+const {
+  title = '',
+  useHeader,
+  className = "dialog-default-choose",
+  slotBottom = ()=>null,
+  items = []
+} = props || {}
+%>
+
+
+<%- include($rootSrc(`@/components/BsDialog`), {
+  props: {
+    className,
+    useHeader,
+    title,
+    slot: ()=> include($rootSrc('@/components/ui/list/UiListDefaultChoose'), {
+      props: {
+        items
+      }
+    }),
+    slotBottom: ()=> slotBottom() ? slotBottom() : include($rootSrc('@/components/BsButton'), {
+      props:{
+        block: true,
+        size: (BUTTON_SIZE)=> BUTTON_SIZE.LARGE,
+        cssBackground: (COLOR)=>COLOR['Gray/08'],
+        cssBorderColor: (COLOR)=>COLOR['Gray/08'],
+        cssColor: (COLOR)=>COLOR['Gray/04'],
+        slot: '취소'
+      }
+    })
+  }
+}) %>

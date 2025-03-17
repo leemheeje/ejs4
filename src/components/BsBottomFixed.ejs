@@ -1,0 +1,12 @@
+<%
+const {
+  slot = '',
+  useCssPadding=true,
+} = props || {}
+%>
+
+<div class="bs-bottom-fixed <%-!useCssPadding ? 'no-padding': ''%>">
+  <div class="bbf-inner">
+    <%-slot%>
+  </div>
+</div>

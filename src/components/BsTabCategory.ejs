@@ -1,0 +1,37 @@
+<%
+const {
+  items = [
+  {codeId: 99, codeName: '전체'},
+  {codeId: 1, codeName: '창업 노하우'},
+  {codeId: 2, codeName: '사장님 가이드'},
+  {codeId: 3, codeName: '소상공인 혜택'},
+  ],
+  value = 99,
+  useBoxing = false,
+  type,
+  flexwrap = true
+} = props || {}
+%>
+
+<div class="bs-tab-category">
+  <div class="btc-inner <%-useBoxing ? 'is-boxing' : ''%>">
+    <div class="bc-lst" data-wrap="<%-flexwrap%>" >
+      <!-- foreach:S -->
+      <%_for(const k in items){_%>
+      <%_if(type === 'del'){_%>
+      <div class="uhi-tp">
+        <div class="uh-tx" data-type="del">
+          <button type="button"><%-items[k].codeName%></button>
+          <a href="#">삭제</a>
+        </div>
+      </div>
+      <%} else {%>
+      <div class="uhi-tp <%-items[k].codeId === value ? 'active' : '' %>">
+        <button class="uh-tx"><%-items[k].codeName%></button>
+      </div>
+      <%}%>
+      <%}%>
+      <!-- foreach:E -->
+    </div>
+  </div>
+</div>

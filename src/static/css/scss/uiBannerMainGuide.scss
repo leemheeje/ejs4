@@ -1,0 +1,37 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+.ui-banner-main-guide{
+  margin-bottom: to-rem(16px);
+  .ubm-inner{
+    padding-left: to-rem(16px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    min-height: to-rem(138px);
+  }
+  .ub-txts{
+    align-self: flex-start;
+    text-align: left;
+    .u-tit{
+      display: block;
+      @include font('H1/Bold');
+      color: color('Gray/01');
+    }
+    .u-desc{
+      display: block;
+      @include font('Body4/Medium');
+      color: color('Gray/04');
+      margin-top: to-rem(6px);
+    }
+  }
+  .ub-synb{
+    min-width: to-rem(106px);
+    width: to-rem(106px);
+    margin-bottom: to-rem(16px);
+    .u-img{}
+  }
+}

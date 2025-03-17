@@ -1,0 +1,64 @@
+<%
+const RIGHT_ICON_TYPE = {
+  ICON_CALENDER_DATE: 'icon_calender_date',
+  ICON_BOOKMARK_LINE: 'icon_bookmark_line',
+}
+const {
+  title = 'Title',
+  useBackgroundGray = false,
+  useRightArea = [],
+  useBottomArea = null,
+} = props || {}
+%>
+<div class="title-header <%-useBackgroundGray ? 'gray' : ''%>">
+  <div class="head-content">
+    <div class="mb-inner">
+      <div class="mb-lt">
+        <%_if(typeof title === 'string'){_%>
+        <span class="h-tx"><%-title%></span>
+        <%_}else if(typeof title === 'object'){_%>
+        <ul class="m-lst">
+          <%_for(let k in title){_%>
+          <li class="m-t">
+            <button class="mw-b <%-title[k].active ? 'active' : ''%>">
+              <span class="h-tx"><%-title[k].codeName%></span>
+            </button>
+          </li>
+          <%_}_%>
+        </ul>
+        <%_}_%>
+      </div>
+      <div class="mb-rt">
+        <%_for(let k in useRightArea){_%>
+        <%_if(useRightArea[k] === RIGHT_ICON_TYPE.ICON_CALENDER_DATE){_%>
+        <button class="mb-btn mb-btn-cal">
+          <span class="blind">일정</span>
+        </button>
+        <%_}else if(useRightArea[k] === RIGHT_ICON_TYPE.ICON_BOOKMARK_LINE){_%>
+        <button class="mb-btn mb-btn-bookmark">
+          <span class="blind">북마크</span>
+        </button>
+        <%_}else if(useRightArea[k] === 'icon_setting'){_%>
+        <button class="mb-btn mb-btn-setting">
+          <span class="blind">설정</span>
+        </button>
+        <%_}else{_%>
+        <button class="mb-btn ">
+          <%-include($rootSrc('@/components/BsIcon'), {
+              props:{
+                type: (type)=>type[useRightArea[k]],
+                color: (color)=>color['Gray/01']
+              }
+            })%>
+        </button>
+        <%_}_%>
+        <%_}_%>
+      </div>
+    </div>
+  </div>
+  <%_if(useBottomArea){_%>
+  <div class="head-bottom">
+    <%-useBottomArea%>
+  </div>
+  <%_}_%>
+</div>

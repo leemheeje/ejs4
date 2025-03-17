@@ -1,0 +1,33 @@
+<%
+const {
+  items = [
+  {codeId: 1, codeName: ''}
+  ],
+  id = '',
+  name = '',
+  useCustomArea = true,
+  className = '',
+  slot = ()=>null,
+} = props || {};
+
+const localId = id ? id : _.uniqueId('_RADIO_GROUP_')
+const localName = name ? name : localId 
+%>
+
+<div class="bs-radio-group <%-className%>">
+  <ul class="brg-lst">
+    <%_for(const k in items){_%>
+    <li class="tn-tp">
+      <%-include($rootSrc('@/components/BsRadio'), {
+          props:{
+            checked: !!items[k].checked,
+            useCustomArea,
+            id: `${localName}_${k}_`,
+            name: localId,
+            slot: slot(items[k])
+          }
+        })%>
+    </li>
+    <%_}_%>
+  </ul>
+</div>

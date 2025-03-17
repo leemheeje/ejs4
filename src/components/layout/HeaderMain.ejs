@@ -1,0 +1,33 @@
+<%
+const {
+  useBottomArea = null,
+} = props || {}
+%>
+<div class="main-header">
+  <div class="head-content">
+    <div class="mb-inner">
+      <div class="mb-lt">
+        <span class="h-tx">비벗</span>
+      </div>
+      <div class="mb-ct">
+        <span class="h-tx">Title</span>
+      </div>
+      <div class="mb-rt">
+        <!-- 새로운 알림있을시, on 클래스 추가 -->
+        <button class="mb-btn mb-btn-alarm on">
+          <%-include($rootSrc('@/components/BsIcon'), {
+            props:{
+              type: (type)=>type['icon_alarm'],
+              color: (color)=>color['Gray/01']
+            }
+          })%>
+        </button>
+      </div>
+    </div>
+  </div>
+  <%_if(useBottomArea){_%>
+  <div class="head-bottom">
+    <%-useBottomArea%>
+  </div>
+  <%_}_%>
+</div>

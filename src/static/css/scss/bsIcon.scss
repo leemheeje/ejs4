@@ -1,0 +1,25 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+$icon-width: to-rem(24px);
+$icon-height: to-rem(24px);
+
+.bs-icon{
+  width: $icon-width;
+  height: $icon-height;
+  max-height: 100%;
+  display: inline-flex;
+  @each $k, $v in icon-map(color('Gray/01')){
+   &.#{$k}{
+    -webkit-mask-image: get-background-svg($k, '#000');
+    mask-image: get-background-svg($k, '#000');
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    background-image: none;
+   } 
+  }
+  @extend %css-background-color-set;
+}

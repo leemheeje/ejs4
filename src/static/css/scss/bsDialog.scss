@@ -1,0 +1,318 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+$TYPE_ALERT: 'is-alert';
+$TYPE_CONFIRM: 'is-confirm';
+$TYPE_CONTENT: 'is-content';
+$TYPE_ONLY_IMAGE: 'is-onlyimage';
+$TYPE_ONLY_NOTIFICATION: 'is-only-notification';
+
+$IS_BOTTOMSHEET: 'is-bottomsheet';
+$dialog_spacing_left: calc($spacing-left + to-rem(4px));
+$dialog_spacing_right: calc($spacing-right + to-rem(4px));
+
+.tlp-dialog {
+  position: absolute;
+  z-index: 5000;
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+}
+.bs-dialog {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5000;
+
+  // 가운데정렬
+  &.dialog-default-choose-center {
+    text-align: center;
+    .ui-list-default-choose .dl-tp {
+      justify-content: center;
+    }
+  }
+  .b-dimm {
+    @extend %dimm;
+  }
+  .b-container {
+    position: relative;
+    width: 100%;
+  }
+  // 컨텐츠 헤더 버텀시트기준으로 일단 작업 :S
+  .bd-top {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    margin-bottom: to-rem(32px);
+    .t-lt {
+      @include text-ellipsis;
+      .t-tx {
+        @include font('T2/Bold');
+        color: color('Gray/01');
+      }
+    }
+    .t-rt {
+      display: flex;
+      align-items: center;
+      .profile-img {
+        width: to-rem(64px);
+        height: to-rem(64px);
+        overflow: hidden;
+        border-radius: 50%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .bd-sub {
+    font-size: 11px;
+    line-height: to-rem(14.3px);
+    color: color('Gray/05');
+    margin: to-rem(-16px) 0 to-rem(16px);
+  }
+
+  .bd-cont {
+    max-height: calc(76vh - to-rem(200px));
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: to-rem(16px);
+    &.no-space {
+      max-height: auto;
+      overflow-y: inherit;
+      overflow-x: inherit;
+      padding-bottom: 0;
+    }
+  }
+  .bd-bott {
+    position: relative;
+    margin-left: calc($dialog_spacing_left * -1);
+    margin-right: calc($dialog_spacing_right * -1);
+    padding: $dialog_spacing_left;
+    padding-left: $spacing-left;
+    padding-right: $spacing-right;
+    &:after {
+      content: '';
+      width: 100%;
+      height: to-rem(20px);
+      position: absolute;
+      left: 0;
+      bottom: 100%;
+      background: linear-gradient(180deg, transparent 30%, #fff 100%);
+    }
+  }
+  &:not(.#{$IS_BOTTOMSHEET}) {
+    .b-container {
+      margin-left: to-rem(30px);
+      margin-right: to-rem(30px);
+      max-width: calc(100% - 60px);
+      .b-inner {
+        background: #fff;
+        padding-top: to-rem(26px);
+        padding-left: $dialog_spacing_left;
+        padding-right: $dialog_spacing_right;
+        border-radius: to-rem(16px);
+      }
+      .bd-bott {
+        &:after {
+          content: none;
+        }
+      }
+    }
+    &.#{$TYPE_ALERT},
+    &.#{$TYPE_CONFIRM} {
+      .bd-top {
+        @include font('T3/Semibold');
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: to-rem(60px);
+        padding-bottom: to-rem(4px);
+        margin-bottom: 0;
+        .t-lt {
+          overflow: initial;
+          text-overflow: inherit;
+          white-space: initial;
+          .t-tx {
+            color: color('Gray/02');
+            @include font('T3/Semibold');
+          }
+        }
+      }
+      .bd-cont {
+        @include font('Body2/Medium');
+        color: color('Gray/05');
+        text-align: center;
+        word-break: break-all;
+      }
+    }
+  }
+  // 컨텐츠 헤더 버텀시트기준으로 일단 작업 :E
+  &.#{$IS_BOTTOMSHEET} {
+    .b-container {
+      margin-top: auto;
+
+      .b-inner {
+        background: #fff;
+        padding-top: to-rem(26px);
+        padding-left: $dialog_spacing_left;
+        padding-right: $dialog_spacing_right;
+        border-top-left-radius: to-rem(16px);
+        border-top-right-radius: to-rem(16px);
+        .bd-bott {
+          box-shadow: 0px -4px 10px 0px #fff;
+          .bs-button-group {
+            display: grid;
+            .bg-tp {
+            }
+          }
+        }
+      }
+    }
+    &.#{$TYPE_ALERT},
+    &.#{$TYPE_CONFIRM} {
+      .bd-cont {
+        @include font('Body2/Medium');
+        color: color('Gray/05');
+        text-align: left;
+        word-break: break-all;
+      }
+    }
+  }
+
+  &.#{$TYPE_ONLY_IMAGE},
+  &.#{$TYPE_ONLY_NOTIFICATION} {
+    .b-container {
+      .b-inner {
+        overflow: hidden;
+        padding-left: $spacing-left;
+        padding-right: $spacing-right;
+        .bd-top {
+          display: none;
+        }
+        .bd-cont {
+          max-height: initial;
+        }
+        .bd-bott {
+          margin-left: calc($spacing-left * -1);
+          margin-right: calc($spacing-right * -1);
+          padding-top: to-rem(24px);
+          padding-bottom: to-rem(16px);
+          &:after {
+            content: none;
+          }
+          .bs-button-group {
+            display: flex;
+            .bg-tp {
+              flex: auto;
+              .bs-button {
+                padding-left: 0;
+                padding-right: 0;
+              }
+            }
+          }
+        }
+        .bd-cont {
+          padding-bottom: 0;
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .bs-swiper .bsw-contr .bs-pagination {
+        margin-top: 0;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: to-rem(16px);
+        margin-bottom: 0;
+        z-index: 1;
+        .swiper-pagination-bullet {
+          background: #bfc2cd;
+          opacity: 1;
+          &.swiper-pagination-bullet-active {
+            background: #19191b;
+          }
+        }
+      }
+    }
+    &.#{$IS_BOTTOMSHEET} {
+      .b-container {
+        .b-inner {
+          padding: 0;
+          .bd-bott {
+            box-shadow: initial;
+            padding-top: to-rem(8px);
+            padding-bottom: to-rem(8px);
+            .bs-button.FONT_BODY1_SEMIBOLD {
+              .b-cont {
+                .b-tx {
+                  @include font('Body1/Semibold');
+                }
+              }
+            }
+            .bs-button-group {
+              .bg-tp {
+                flex: 1;
+              }
+            }
+          }
+          .bd-cont {
+            padding-bottom: 0;
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 커뮤니티 프로파일 팝업 용
+  &.bs-profile {
+    .ui-list-selectstore-title {
+      font-size: to-rem(11px);
+      color: color('Gray/05');
+      line-height: to-rem(14.3px);
+      margin-bottom: to-rem(16px);
+    }
+    .u-thumb {
+      margin-right: to-rem(16px);
+      flex: 0 0 to-rem(36px);
+      width: to-rem(36px);
+    }
+    .bd-top {
+      align-items: center;
+      margin-bottom: to-rem(15px);
+    }
+
+    .ui-list-selectstore .uq-tps.is-checked .uqt-cont .ut-txts .u-tit .u-tt {
+      color: color('Gray/02');
+    }
+    .ui-list-selectstore .uqt-cont .ut-txts .u-tit .u-tt {
+      &.empty {
+        color: color('Gray/03');
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+
+  .ui-list-selectstore {
+    .uqt-cont {
+      .ut-txts {
+        width: calc(100% - to-rem(16px) - to-rem(40px));
+      }
+    }
+  }
+}

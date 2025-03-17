@@ -1,0 +1,33 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+.bs-tooltip{
+  position: absolute;
+  right: to-rem(11px);
+  bottom: calc(100% + to-rem(8px));
+  .tx-int{
+    padding: to-rem(5px) to-rem(8px);
+    border-radius: to-rem(6px);
+    background: color('Opacity/100');
+    @include font('Body6/Medium');
+    color: color('Common/White');
+    display: block;
+    text-align: center;
+    position: relative;
+    white-space: nowrap;
+    &:after{
+      content: "";
+      width: to-rem(8px);
+      height: to-rem(8px);
+      background: color('Opacity/100');
+      transform: rotate(45deg);
+      border-radius: to-rem(2px);
+      position: absolute;
+      right: to-rem(14px);
+      bottom: to-rem(-3px);
+    }
+  }
+}

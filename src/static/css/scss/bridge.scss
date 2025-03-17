@@ -1,0 +1,48 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+
+.bridge-page{
+  background: color('Blue/04 (basic)');
+  min-height: var(--device-height);
+  display: flex;
+  flex-direction: column;
+  .br-log-sec{
+    height: 100%;
+    flex: 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .img{
+      width: to-rem(91px);
+    }
+    .tx{
+      @include font('Body1/Semibold');
+      color: color('Common/White');
+      margin-top: to-rem(20px);
+    }
+  }
+  .br-bt-sec{
+    width: 100%;
+    padding: to-rem(20px) to-rem($spacing-left) to-rem(40px);
+    text-align: center;
+    .tt-x{
+      @include font('Body2/Medium');
+      color: color('Common/White');
+      margin-bottom: to-rem(24px);
+    }
+    .bt-group{
+      display: flex;
+      gap: to-rem(12px);
+      flex-direction: column;
+      .bs-button.large.background-white.border-color-white .b-tx{
+        @include font('Body1/Semibold');
+        margin-left: to-rem(10px);
+      }
+    }
+  }
+}

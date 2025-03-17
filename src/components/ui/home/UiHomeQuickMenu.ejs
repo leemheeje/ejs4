@@ -1,0 +1,28 @@
+<%
+const {
+  items = [
+  {codeId: 1, codeName: '창업 MBTI'},
+  {codeId: 2, codeName: '이벤트'},
+  {codeId: 3, codeName: '가이드 꿀팁'},
+  {codeId: 4, codeName: '사장님 등록'},
+  ],
+} = props || {}
+
+const localItems = items.slice(0,3)
+%>
+
+
+<div class="ui-home-quickmenu">
+  <ul class="uhq-lst">
+    <!-- foreach:S -->
+    <%_for(const k in localItems){_%>
+    <li class="uh-tp">
+      <button class="tx-con">
+        <span class="ic-x icon-tp<%-localItems[k].codeId%>"></span>
+        <div class="ic-t"><%-localItems[k].codeName%></div>
+      </button>
+    </li>
+    <%_}_%>
+    <!-- foreach:E -->
+  </ul>
+</div>

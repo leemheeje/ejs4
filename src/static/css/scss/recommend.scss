@@ -1,0 +1,112 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+.page-recommend {
+  background: #f6f6f6;
+  .bs-tab {
+    background: #fff;
+  }
+  .bs-tab-category {
+    background: #fff;
+  }
+  .sec-flt-container{
+    .bs-tab-category .bc-lst{
+      padding: to-rem(12px);
+      padding-left: $spacing-left;
+      padding-right: $spacing-right;
+    }
+  }
+  .search-container {
+    background: #fff;
+    padding: to-rem(8px) to-rem(16px) to-rem(24px);
+    margin-bottom: to-rem(10px);
+  }
+  .ad-container {
+    overflow: hidden;
+    background: #4acabf;
+    max-width: to-rem(608px);
+    margin: 0 auto;
+    border-radius: to-rem(16px);
+    text-align: center;
+    a {
+      display: block;
+      overflow: hidden;
+      max-width: to-rem(360px);
+      margin: 0 auto;
+      border-radius: to-rem(16px);
+      min-height: to-rem(90px);
+      max-height: to-rem(120px);
+      img{
+        height: 100%;
+      }
+    }
+  }
+
+  // 없음
+  .ui-drop-section {
+    background: #fff;
+    height: calc(100vh - 106px - 59px);
+    height: calc(100dvh - 106px - 59px);
+  }
+}
+// TIP
+.tip-container {
+  background: #fff;
+  padding: to-rem(16px) to-rem(16px) to-rem(32px);
+  h2 {
+    font-size: to-rem(18px);
+  }
+  .tip-contents {
+    background: #f6f6f6;
+    margin-top: to-rem(16px);
+    padding: to-rem(20px);
+    border-radius: to-rem(16px);
+    img {
+      max-width: 100%;
+      width: 100%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h3 {
+      color: color('Gray/02');
+      font-size: to-rem(16px);
+    }
+    &:not(.is-basic) .t-content{
+      @include text-ellipsis(5, to-rem(21px));
+    }
+    p {
+      color: color('Gray/05');
+      font-weight: 500;
+      font-size: to-rem(15px);
+    }
+    &.is-basic {
+      background: color('Common/White');
+      margin-top: to-rem(24px);
+      padding: 0;
+      border-radius: 0;
+      p {
+        overflow: visible;
+        text-overflow: initial;
+        display: block;
+        max-height: initial;
+      }
+    }
+  }
+  .more-text {
+    display: flex;
+    background-size: 100% 100%;
+    background-image: url('../images/common/bg_blur.png');
+    min-height: to-rem(103px);
+    text-align: center;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: to-rem(2px);
+    p {
+      color: color('Gray/01');
+      font-size: to-rem(16px);
+      font-weight: 600;
+    }
+  }
+}

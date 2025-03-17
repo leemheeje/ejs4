@@ -1,0 +1,66 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+.ui-list-permission-agree{
+  .udp-inner{
+    text-align: left;
+  }
+  .ud-tit{
+    @include font('T2/Bold');
+    color: color('Gray/01');
+  }
+  .ud-desc{
+    margin-top: to-rem(32px);
+    @include font('Body4/Medium');
+    color: color('Gray/05');
+  }
+  .ud-lst{
+    margin-top: to-rem(32px);
+    .ud-tp{
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      .u-ic{
+        min-width: to-rem(24px);
+        width: to-rem(24px);
+        height: to-rem(24px);
+        background: no-repeat center center;
+        background-size: 100%;
+        &-alarm{
+          background-image: url('../images/common/ico_cl_alarm.svg');
+        }
+        &-camera{
+          background-image: url('../images/common/ico_cl_camera.svg');
+        }
+        &-pick{
+          background-image: url('../images/common/ico_cl_pick.svg');
+        }
+        &-file{
+          background-image: url('../images/common/ico_cl_file.svg');
+        }
+        &-phone{
+          background-image: url('../images/common/ico_cl_phone.svg');
+        }
+      }
+      .u-tx{
+        margin-left: to-rem(4px);
+        padding: to-rem(2px) 0;
+        display: flex;
+        align-items: flex-start;
+        @include font('Body3/Medium');
+        color: color('Gray/05');
+        .x-str{
+          @include font('Body3/Semibold');
+          color: color('Gray/02');
+          margin-right: to-rem(16px);
+          min-width: fit-content;
+        }
+      }
+      &+.ud-tp{
+        margin-top: to-rem(16px);
+      }
+    }
+  }
+}

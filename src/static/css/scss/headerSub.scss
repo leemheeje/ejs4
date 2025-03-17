@@ -1,0 +1,59 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+.sub-header {
+  @extend %headers;
+  @at-root.#{$is-scroll-0} {
+    .sub-header {
+      position: sticky;
+      &:after {
+        content: '';
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: color('Gray/11');
+      }
+    }
+  }
+
+  // 등록 버튼 disabled
+  .bs-button {
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+  body:not(.#{$is-scroll-0}) &.c-transparent{
+    background: transparent;
+    .mb-ct .h-tx{
+      color: color('Common/White');
+    }
+    .mb-btn{
+      &-bck {
+        background-image: get-background-svg('icon_angle_left_thick', #{color('Common/White')});
+      }
+      &-close {
+        background-image: get-background-svg('icon_close', #{color('Common/White')});
+      }
+      &-cal {
+        background-image: get-background-svg('icon_calender_date', #{color('Common/White')});
+      }
+      &-search {
+        background-image: get-background-svg('icon_search', #{color('Common/White')});
+      }
+      &-bookmark {
+        background-image: get-background-svg('icon_bookmark_line', #{color('Common/White')});
+      }
+      &-share {
+        background-image: get-background-svg('icon_share', #{color('Common/White')});
+      }
+      .background-gray-01.bs-icon{
+        background-color: color('Common/White')
+      }
+    }
+  }
+}

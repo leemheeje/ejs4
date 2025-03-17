@@ -1,0 +1,63 @@
+<%
+const {CSS_BACKGROUND} = JSON.parse(include($rootSrc('@/data/colorSet.json')))
+const ICON_TYPE = {
+  icon_calender:'icon_calender',
+  icon_calender_date:'icon_calender_date',
+  icon_alarm:'icon_alarm',
+  icon_home_line:'icon_home_line',
+  icon_home_fill:'icon_home_fill',
+  icon_guide_line:'icon_guide_line',
+  icon_guide_fill:'icon_guide_fill',
+  icon_store_line:'icon_store_line',
+  icon_store_fill:'icon_store_fill',
+  icon_community_line:'icon_community_line',
+  icon_community_fill:'icon_community_fill',
+  icon_my_line:'icon_my_line',
+  icon_my_fill:'icon_my_fill',
+  icon_search:'icon_search',
+  icon_step:'icon_step',
+  icon_share:'icon_share',
+  icon_angle_small_down:'icon_angle_small_down',
+  icon_angle_small_down2:'icon_angle_small_down2',
+  icon_angle_small_right:'icon_angle_small_right',
+  icon_angle_small_left:'icon_angle_small_left',
+  icon_angle_small_up:'icon_angle_small_up',
+  icon_add_small:'icon_add_small',
+  icon_add:'icon_add',
+  icon_close:'icon_close',
+  icon_check:'icon_check',
+  icon_check_circle:'icon_check_circle',
+  icon_cancle_circle:'icon_cancle_circle',
+  icon_cancle:'icon_cancle',
+  icon_file:'icon_file',
+  icon_comment:'icon_comment',
+  icon_camera:'icon_camera',
+  icon_menu_dot:'icon_menu_dot',
+  icon_list:'icon_list',
+  icon_keyboard_down:'icon_keyboard_down',
+  icon_heart_line:'icon_heart_line',
+  icon_heart_fill:'icon_heart_fill',
+  icon_angle_right_thick:'icon_angle_right_thick',
+  icon_angle_left_thick:'icon_angle_left_thick',
+  icon_angle_right:'icon_angle_right',
+  icon_angle_left:'icon_angle_left',
+  icon_bookmark_line:'icon_bookmark_line',
+  icon_bookmark_fill:'icon_bookmark_fill',
+  icon_warning:'icon_warning',
+  icon_copy:'icon_copy',
+  icon_setting:'icon_setting',
+  icon_zoom:'icon_zoom',
+}
+const {
+  type = ()=>'',
+  color = ()=>CSS_BACKGROUND['Gray/01'],
+} = props || {}
+
+const localType = Object.values(ICON_TYPE).includes(type(ICON_TYPE)) ? type(ICON_TYPE) : ''
+%>
+
+<%_if(localType){_%>
+<span class="bs-icon <%-localType%> <%-color(CSS_BACKGROUND)%>"></span>
+<%_}else if(type(ICON_TYPE)){_%>
+<span class="en-tx"><%-type(ICON_TYPE)%></span>
+<%_}_%>

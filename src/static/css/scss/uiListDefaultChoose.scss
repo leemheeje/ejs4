@@ -1,0 +1,70 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+
+.ui-list-default-choose{
+  .dlst-inner{}
+  .dl-tp{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .d-cont{
+      max-width: calc(100% - to-rem(36px));
+      .d-tt{
+        font-size: to-rem(16px);
+        line-height: to-rem(22.4px);
+        font-weight: 500;
+        color: color('Gray/02');
+        display: flex;
+        align-items: center;
+        gap: to-rem(2px);
+        flex-wrap: wrap;
+        .t-s{
+          @include font('Body4/Medium');
+          color: color('Gray/05');
+        }
+      }
+    }
+    .d-rt{
+      min-width: to-rem(20px);
+      width: to-rem(20px);
+      height: to-rem(20px);
+      display: flex;
+      align-items: center;
+      // .bs-checkbox.design-check .ico-check{
+      //   background-image: get-background-svg('icon_check', #{color('Common/White')});;
+      // }
+      // .bs-checkbox.design-check .b-inp:checked~.b-lb .ico-check{
+      //   background-image: get-background-svg('icon_check', #{color('Blue/04 (basic)')});;
+      // }
+    }
+    &+.dl-tp{
+      margin-top: to-rem(24px);
+    }
+  }
+  .bs-radio-group{
+    .tn-tp+.tn-tp{
+      margin-top: to-rem(24px);
+    }
+  }
+  .bs-radio{
+    .b-inp:checked~.b-lb{
+      .dl-tp {
+        .d-tt{
+          @include font('Body1/Semibold');
+          color: color('Blue/04 (basic)');
+          .t-s{
+            color: color('Blue/04 (basic)');
+          }
+        }
+        .d-rt{
+          background-image: get-background-svg('icon_check', #{color('Blue/04 (basic)')});;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+}

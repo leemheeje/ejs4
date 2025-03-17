@@ -1,0 +1,42 @@
+<%
+const {
+  title = '체리포스 1호점체리포스 1호점체리포스 1호점체리포스 1호점체리포스 1호점',
+  date = '2024.01.01 - 2024.06.01',
+  imgSrc = $staticSrc('@/static/images/common/icon_01.svg')
+} = props || {}
+%>
+
+<div class="ui-home-storeinfo">
+  <div class="uhs-inner">
+    <div class="ug-txts">
+      <div class="u-top"><%-date%></div>
+      <button class="u-cont">
+        <span class="u-t"><%-title%></span>
+      </button>
+    </div>
+    <div class="ug-rt">
+      <span class="u-thb">
+        <!-- 
+        * 카테고리별 아이콘 경로 (온라인)
+        - 의류&패션&잡화                             : <%-$staticSrc('@/static/images/common/icon_01.svg')%>
+        - 식품                                      : <%-$staticSrc('@/static/images/common/icon_02.svg')%>
+        - 가전( 컴퓨터 및 주변기기, 전자, 통신기기 )   : <%-$staticSrc('@/static/images/common/icon_03.svg')%>
+        - 생활용품 ( 가구 등)                         : <%-$staticSrc('@/static/images/common/icon_04.svg')%>
+        - 뷰티 (화장품)                               : <%-$staticSrc('@/static/images/common/icon_05.svg')%>
+        - 애완용품                                    : <%-$staticSrc('@/static/images/common/icon_06.svg')%>
+        - 스포츠&레저                                 : <%-$staticSrc('@/static/images/common/icon_07.svg')%>
+        - 아동&유아용품                               : <%-$staticSrc('@/static/images/common/icon_08.svg')%>
+        - 기타                                        : <%-$staticSrc('@/static/images/common/icon_09.svg')%>
+
+        * 카테고리별 아이콘 경로 (오프라인)
+        - 카페                                         : <%-$staticSrc('@/static/images/common/icon_10.svg')%>
+        - 일반 음식점                                   : <%-$staticSrc('@/static/images/common/icon_11.svg')%>
+        - 주점                                          : <%-$staticSrc('@/static/images/common/icon_12.svg')%>
+        - 기타                                          : <%-$staticSrc('@/static/images/common/icon_13.svg')%>
+        - 미정                                          : <%-$staticSrc('@/static/images/common/icon_14.svg')%>
+         -->
+        <img class="u-img" src="<%-imgSrc%>" alt="" />
+      </span>
+    </div>
+  </div>
+</div>

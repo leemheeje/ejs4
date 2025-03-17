@@ -1,0 +1,32 @@
+<%
+const {
+id = '',
+name = '',
+value = '',
+placeholder = '찾으시는 상품을 입력해주세요.',
+icon = '',
+type = 'text',
+useClear = false,
+readonly = false,
+disabled = false,
+supportMessage = '',
+isFocus = false,
+isError = false,
+isSuccess = false,
+required = false,
+className = false,
+} = props || {}
+
+%>
+
+
+<div class="bs-ipt-wrap <%-className%> <%-isFocus ? 'is-focus' : ''%> <%-isError ? 'is-error' : ''%> <%-isSuccess ? ' ' : ''%> <%-required ? 'is-required' : ''%> <%-readonly ? 'is-readonly' : ''%>">
+  <div class="b-inpu-area">
+    <textarea class="b-ipt-text" id="<%-id%>" name="<%-name%>" placeholder="<%-placeholder%>" value="<%-value%>" <%-readonly ? 'readonly' : ''%> <%-disabled ? 'disabled' : ''%> <%-required ? 'required' : ''%>></textarea>
+  </div>
+  <%_if(supportMessage && (isError || isSuccess)){_%>
+  <div class="b-ipt-meesage">
+    <p class="ms-msg"><%-supportMessage%></p>
+  </div>
+  <%_}_%>
+</div>

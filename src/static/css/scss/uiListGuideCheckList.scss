@@ -1,0 +1,113 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+.ui-list-guide-checklist{
+  %list{
+    display: block;
+    width: calc(100% - to-rem(24px) - to-rem(16px));
+    margin-left: to-rem(16px);
+    padding-right: to-rem(36px);
+    position: relative;
+    &:after{
+      content: '';
+      width: to-rem(20px);
+      height: to-rem(20px);
+      position: absolute;
+      right: 0;
+      top: 50%;
+      margin-top: to-rem(-10px);
+      background: no-repeat center center get-background-svg('icon_angle_small_right', #{color('Gray/05')});
+      background-size: 100%;
+    }
+  }
+ .ug-lst{
+  padding: to-rem(8px) 0;
+  .ug-tps{
+    border-bottom: to-rem(1px) solid color('Gray/10');
+  }
+  .bs-checkbox{
+    display: block;
+    width: 100%;
+    .b-lb{
+      display: flex;
+      width: 100%;
+      .ico-check{
+        align-self: center;
+      }
+      .b-tx{
+        @extend %list;
+      }
+    }
+  }
+  
+  .u-tp-cont{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: to-rem(20px) 0;
+    min-height: to-rem(83px);
+    .u-lt{
+      width: to-rem(24px);
+      height: to-rem(24px);
+      display: block;
+      position: absolute;
+      left: 0; 
+      top: 50%;
+      margin-top: to-rem(-12px);
+      img{
+        width: 100%;
+      }
+    }
+    .u-txts{
+      width: calc(100% - to-rem(44px));
+      .u-tt{
+        @include text-ellipsis;
+        @include font('Body2/Medium');
+        color: color('Gray/02');
+        display: block;
+        
+      }
+      .u-st{
+        @include font('Body6/Regular');
+        color: color('Gray/06');
+        display: block;
+        margin-top: to-rem(8px);
+      }
+    }
+    .u-stsx{
+      .bs-tag{
+        min-width: to-rem(44px);
+      }
+    }
+  }
+  .u-cont-button{
+    @extend %list;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    margin-left: 0;
+    padding-left: to-rem(40px);
+  }
+  .u-cont-viewer{
+    .u-tp-cont{
+      padding: to-rem(20px);
+      background: color('Blue/09');
+      border-radius: to-rem(16px);
+      min-height: to-rem(88px);
+      .u-txts{
+        .u-tt{
+          @include font('Body1/Semibold');
+          color: color('Gray/02');
+        }
+        .u-st{
+          @include font('Body4/Regular');
+          color: color('Gray/05');
+        }
+      }
+    }
+  }
+ } 
+}

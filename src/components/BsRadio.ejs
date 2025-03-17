@@ -1,0 +1,47 @@
+<%
+const {CSS_COLOR} = JSON.parse(include($rootSrc('@/data/colorSet.json')))
+const DESIGN_TYPE = {
+  CHECKBOX : 'design-checkbox',
+  ROUND : 'design-roundcheckbox',
+  CHECK : 'design-check',
+  LABEL : 'design-label',
+}
+
+const {
+  slot = '',
+  id = '',
+  name = '',
+  useCustomArea = false,
+  designType = ()=>DESIGN_TYPE.ROUND,
+  disabled = false,
+  checked = false,
+  cssColor = ()=>CSS_COLOR['Gray/02'],
+  goods = null,
+} = props || {};
+
+const localId = id ? id : _.uniqueId('_uid_')
+const localName = name ? name : localId 
+const localDesignType = Object.values(DESIGN_TYPE).includes(designType(DESIGN_TYPE)) ? designType(DESIGN_TYPE) : DESIGN_TYPE.CHECKBOX
+const localCssColor = Object.values(CSS_COLOR).includes(cssColor(CSS_COLOR)) ? cssColor(CSS_COLOR) : CSS_COLOR['Gray/02']
+%>
+
+<span class="bs-radio <%-localDesignType%> <%-disabled ? 'is-disabled' : ''%> ">
+  <input type="radio" id="<%-localId%>" class="b-inp" <%- checked ? 'checked' : '' %> <%- disabled ? 'disabled' : '' %> name="<%-localName%>">
+  <label class="b-lb" for="<%-localId%>">
+    <%_if(!useCustomArea){_%>
+    <span class="ico-check"></span>
+    <%_if(slot){_%>
+    <span class="b-tx <%-localCssColor%>"><%-slot%></span>
+    <%_}_%>
+    <%_}else{_%>
+    <div class="b-n-slot"><%-slot%></div>
+    <%_}_%>
+    <%_if(goods){_%>
+    <div class="reword-goods">
+      <img src="./static/images/common/reword/<%-goods.image%>" alt=" <%-goods.name%>">
+      <p class="goods-name"><%-goods.name%></p>
+      <span class="goods-detail"><%-goods.detail%></span>
+    </div>
+    <%_}_%>
+  </label>
+</span>

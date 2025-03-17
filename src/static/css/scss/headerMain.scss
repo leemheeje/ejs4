@@ -1,0 +1,26 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+.main-header{
+  @extend %headers;
+  background: color('Gray/11');
+  .mb-ct{
+    display: none;
+  }
+  .mb-inner .mb-lt {
+    .h-tx {
+      font-size: 0;
+      width: to-rem(46px);
+      height: to-rem(28px);
+      background: no-repeat left center url('../images/logo-basic.svg');
+      background-size: 100%;
+      max-width: 100%;
+    }
+  }
+  .mb-lt{
+    max-width: calc(100% - to-rem(64px));
+  }
+}

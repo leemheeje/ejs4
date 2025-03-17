@@ -1,0 +1,25 @@
+<%
+defineExport({
+  layout: 'searchLayout',
+  head:{
+    title: '창업계획서-가이드-재진입-온라인',
+    meta:[
+      {"property": "og:title", "content": "비벗 - 성공한 사장님들의 친구"},
+      {"property": "og:description", "content": "비벗이 창업 성공을 도와드릴게요"},
+      {"property": "og:image", "content": "https://cdn.kcp.co.kr/uiteam/bbud/img/ogimage_default.jpg"}
+    ]
+  },
+  data: {
+    headerSubInfo: {
+      title: "창업 계획"
+    }
+  }
+}).bind()
+%>
+
+<%- include($rootSrc('@/components/page/adduser/index'), {
+  props:{
+    pageKeyName:'재진입-온라인',
+    pageAlias: "가이드-창업계획서",
+  }
+}) %>

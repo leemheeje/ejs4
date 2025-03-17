@@ -1,0 +1,254 @@
+<%
+const {
+  pageKeyName,
+  useToast,
+  useBottomSheet,
+  tabValue
+} = props || {}
+%>
+
+<div class="page-home is-bottom-navigation">
+  <div class="page-spacing">
+    <!-- 메인 카테고리:S -->
+    <%- include($rootSrc('@/components/ui/home/UiHomeCategory')) %>
+    <!-- 메인 카테고리:E -->
+    <div class="MT16">
+      <%_if(pageKeyName === 'home_case1'){_%>
+      <!-- 창업계획서 작성X:S -->
+      <%- include($rootSrc('@/components/ui/home/UiHomeMainBanner'), {
+        props:{
+          title: $t('창업 성공을 만드는<br/>가장 빠른길, 비벗'),
+          description: $t('창업 성공 시작하기')
+        }
+      }) %>
+      <!-- 창업계획서 작성X:E -->
+      <%_}_%>
+
+      <%_if(pageKeyName === 'home_case2'){_%>
+      <!-- 창업계획서 작성O:S -->
+      <%- include($rootSrc('@/components/ui/home/UiHomeStoreInfo')) %>
+      <div class="store-layout MT8">
+        <%- include($rootSrc('@/components/bsSwiper'), {
+          props: {
+            items: [
+            {codeId: 1, title: '통신 판매업 신고', option:'매장 준비', date: '24.01.02 - 24.01.04', codeStatusId: 999, codeStatusName: '지남'},
+            {codeId: 2, title: '사업자 등록증 발급사업자 등록증 발급사업자 등록증 발급', option:'개업 준비', date: '24.01.02 - 24.01.04',codeStatusId: 998, codeStatusName: '진행중'},
+            {codeId: 3, title: '업체 선정 및 계약', option:'매장 준비', date: '24.01.02 - 24.01.04',codeStatusId: 997, codeStatusName: '예정'},
+            {codeId: 99,codeStatusId: 9999},
+            ],
+            spaceBetween: 10,
+            pagination: true,
+            navigation: false,
+            slot: ({
+              title,
+              option,
+              date,
+              codeStatusId,
+              codeStatusName,
+            })=>include($rootSrc('@/components/ui/home/UiHomeStoreSection'), {
+              props: {
+                tags:{
+                  cssColor: (CSS_COLOR)=>CSS_COLOR['Common/White'],
+                  cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND[codeStatusId === 998 ? 'Red/05' : codeStatusId === 997 ? 'Blue/05' : 'Gray/02'],
+                  cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR[codeStatusId === 998 ? 'Red/05' : codeStatusId === 997 ? 'Blue/05' : 'Gray/02'],
+                  slot: codeStatusName
+                },
+                title,
+                option,
+                date,
+                isMore: codeStatusId === 9999
+              }
+            })
+          }
+        }) %>
+      </div>
+      <!-- 창업계획서 작성O:E -->
+      <%_}_%>
+
+
+      <%_if(pageKeyName === 'home_case3'){_%>
+      <!-- 창업 완료:S -->
+      <%- include($rootSrc('@/components/ui/home/UiHomeStoreInfo')) %>
+      <div class="MT16">
+        <%- include($rootSrc('@/components/ui/home/UiHomeMainBanner'), {
+          props:{
+            type: 'type-2',
+            imageSrc: $staticSrc('@/static/images/@dummy/banner3.png'),
+            title: '비벗이 사업성공을<br/>도와드릴께요',
+            description: '창업 가능성 알아보기'
+          }
+        }) %>
+        <!-- 창업 완료:E -->
+      </div>
+      <%_}_%>
+
+
+    </div>
+
+    <div class="MT16">
+      <!-- 메인 배너:S -->
+      <%- include($rootSrc('@/components/ui/home/UiHomeQuickMenu'), {
+        props:{
+          items: pageKeyName === 'home_case1' ? 
+            [
+            {codeId: 4, codeName: '사장님 등록'},
+            {codeId: 3, codeName: '가이드 꿀팁'},
+            {codeId: 1, codeName: '창업 MBTI'},
+            ]
+            : pageKeyName === 'home_case2' ? 
+            [
+            {codeId: 3, codeName: '가이드 꿀팁'},
+            {codeId: 2, codeName: '이벤트'},
+            {codeId: 1, codeName: '창업 MBTI'},
+            ] : 
+            [
+            {codeId: 1, codeName: '창업 MBTI'},
+            {codeId: 2, codeName: '이벤트'},
+            {codeId: 3, codeName: '가이드 꿀팁'},
+            ]
+        }
+      }) %>
+      <!-- 메인 배너:E -->
+    </div>
+    <div class="MT16">
+      <!-- 띠 배너:S -->
+      <div class="page-unspacing">
+        <%- include($rootSrc('@/components/BsSwiper'), {
+        props:{
+          items: [
+          {codeId: 0, codeSrc: $staticSrc('@/static/images/@dummy/banner2.png'),colorBackground: '#37c17f'},
+          {codeId: 1, codeSrc: $staticSrc('@/static/images/@dummy/banner2.png'),colorBackground: '#37c17f'},
+          ],
+          loop: true,
+          pagination: true,
+          slot: ({codeSrc,colorBackground})=> include($rootSrc('@/components/ui/banner/UiBannerBand'), {
+            props: {
+              imgSrc:codeSrc,
+              colorBackground
+            }
+          })
+        }
+      })%>
+      </div>
+      <!-- 띠 배너:E -->
+    </div>
+
+    <%_if(pageKeyName === 'home_case1'){_%>
+    <div class="MT16">
+      <%-include($rootSrc('@/components/ui/banner/uiBannerBandContent'), {
+        props: {
+          imgSrc : $staticSrc('@/static/images/common/icon_sim_15_3.png'),
+          title: '비벗은 어떻게<br />창업을 성공시킬까?',
+          buttonText: '알아보기'
+        }
+      })%>
+    </div>
+    <%_}_%>
+    <div class="MT16">
+      <!-- 사장님을 위한 정보:S -->
+      <div class="mb-comuti-wrap">
+        <div class="mcw-tit">사장님을 위한 정보</div>
+        <div class="mcw-tab">
+          <%- include($rootSrc('@/components/BsTab'), {
+            props: {
+              items: [
+              {codeId: 0, codeName: '지원 사업'},
+              {codeId: 1, codeName: '창업 정보'},
+              {codeId: 2, codeName: '창업 라운지'},
+              ],
+              value: tabValue,
+              size: (TAB_SIZE)=>TAB_SIZE.SMALL
+            }
+          }) %>
+        </div>
+        <div class="mcw-lst">
+          <div class="lst-cont">
+            <%_if(!tabValue){_%>
+            <!-- 지원사업 리스트:S -->
+            <div class="lst-tp">
+              <%- include($rootSrc('@/components/ui/list/UiListQueryParse.ejs'), {
+                props: {
+                  items: JSON.parse(include($rootSrc('@/data/store.json'))).listQueryParse['홈>지원사업'],
+                  useBookmark: true,
+                  useThumbnail: true,
+                  useBookmarkRight: false
+                }
+              }) %>
+            </div>
+            <!-- 지원사업 리스트:E -->
+            <%_}_%>
+            <%_if(tabValue === 1){_%>
+            <!-- 창업정보 리스트:S -->
+            <div class="lst-tp">
+              <%- include($rootSrc('@/components/ui/list/UiListQueryParse.ejs'), {
+                props: {
+                  items: JSON.parse(include($rootSrc('@/data/store.json'))).listQueryParse['홈>창업정보'],
+                  useTagsTop: true,
+                  useThumbnail: true,
+                  useThumbnailRight: true,
+                  className:"infomation"
+              }
+              }) %>
+            </div>
+            <!-- 창업정보 리스트:E -->
+            <%_}_%>
+            <%_if(tabValue === 2){_%>
+            <!-- 창업라운지 리스트:S -->
+            <div class="lst-tp">
+              <%- include($rootSrc('@/components/ui/list/UiListQueryParse.ejs'), {
+                props: {
+                  items: JSON.parse(include($rootSrc('@/data/store.json'))).listQueryParse['홈>창업라운지'],
+                  useTagsTop: true,
+                  className:"lounge"
+                }
+              }) %>
+            </div>
+            <!-- 창업라운지 리스트:E -->
+            <%_}_%>
+          </div>
+        </div>
+        <div class="mcw-bot">
+          <button class="mw-btn">
+            <span class="m-t">
+              <%_if(!tabValue){_%>
+              지원사업 전체보기
+              <%_}_%>
+              <%_if(tabValue === 1){_%>
+              창업정보 전체보기
+              <%_}_%>
+              <%_if(tabValue === 2){_%>
+              창업 라운지 전체보기
+              <%_}_%>
+            </span>
+          </button>
+        </div>
+      </div>
+      <!-- 사장님을 위한 정보:E -->
+    </div>
+  </div>
+</div>
+
+
+
+<%- include($rootSrc('@/components/BsBottomNavigation'), {
+  props:{
+    value: 1
+  }
+}) %>
+
+<%_if(useToast){_%>
+<!-- 토스트팝업 :S -->
+<%- include($rootSrc('@/components/BsToast'), {
+    props: {
+      isNavigation: true,
+      align: (ALIGN_TYPE)=>ALIGN_TYPE.BOTTOM,
+      slot: include($rootSrc('@/components/ui/toast/UiToastMbti'))
+    }
+  }) %>
+<!-- 토스트팝업 :E -->
+<%_}_%>
+<%_if(useBottomSheet){_%>
+<!-- 홈 "스토어를 선택해주세요" :S -->
+<%- include($rootSrc('@/components/ui/dialog/UiDialogSelectStore')) %>
+<!-- 홈 "스토어를 선택해주세요" :E -->
+<%_}_%>

@@ -1,0 +1,20 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+.title-header{
+  @extend %headers;
+  .mb-inner{
+    justify-content: space-between;
+    .mb-ct{
+      display: none;
+    }
+    .mb-lt{
+      @include text-ellipsis;
+      display: block;
+      max-width: 100%;
+    }
+  }
+  
+}

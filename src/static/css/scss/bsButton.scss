@@ -1,0 +1,142 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+$SIZE_LARGE: 'large';
+$SIZE_MEDIUM: 'medium';
+$SIZE_SMALL: 'small';
+
+$TYPE_DEFAULT: 'default';
+$TYPE_TEXT: 'text';
+
+
+.bs-button{
+  display: inline-flex;
+  border: to-rem(1px) solid;
+  align-items: center;
+  justify-content: center;
+  &.block{
+    width: 100%;
+  }
+  .b-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .b-tx{
+    @include font('Body3/Medium');
+    @at-root .bs-row .bs-button .b-tx{
+      white-space: nowrap;
+    }
+  }
+  .b-rt,.b-lt{
+    display: flex;
+    align-items: center;
+  }
+  &.#{$SIZE_LARGE}{
+    .b-tx{
+      @include font('Body1/Semibold');
+    }
+    &.#{$CSS_BACKGROUND_COMMON_WHITE}{
+      .b-tx{
+        @include font('Body2/Semibold');
+      }
+      &.#{$CSS_BORDER_COLOR_COMMON_WHITE}{
+        .b-tx{
+          @include font('Body1/Medium');
+        }
+      }
+    }
+   .b-rt,.b-lt{
+      width: to-rem(20px);
+      height: to-rem(20px);
+    }
+  }
+  &.#{$SIZE_MEDIUM}{
+    .b-tx{
+      @include font('Body3/Semibold');
+    }
+   .b-rt,.b-lt{
+      width: to-rem(18px);
+      height: to-rem(18px);
+    }
+  }
+  &.#{$SIZE_SMALL}{
+    .b-tx{
+      @include font('Body6/Semibold');
+    }
+   .b-rt,.b-lt{
+      width: to-rem(14px);
+      height: to-rem(14px);
+    }
+  }
+  &.#{$TYPE_DEFAULT}{
+    text-align: center;
+    &.#{$SIZE_LARGE}{
+      padding-left: to-rem(28px);
+      padding-top: to-rem(12px);
+      padding-right: to-rem(28px);
+      padding-bottom: to-rem(12px);
+      border-radius: to-rem(8px);
+    }
+    &.#{$SIZE_MEDIUM}{
+      padding-left: to-rem(20px);
+      padding-top: to-rem(9px);
+      padding-right: to-rem(20px);
+      padding-bottom: to-rem(9px);
+      border-radius: to-rem(8px);
+    }
+    &.#{$SIZE_SMALL}{
+      padding-left: to-rem(11px);
+      padding-top: to-rem(7px);
+      padding-right: to-rem(11px);
+      padding-bottom: to-rem(7px);
+      border-radius: to-rem(6px);
+    }
+  }
+  &.#{$TYPE_DEFAULT}{
+    &:disabled{
+      border-color: color('Gray/10');
+      background-color: color('Gray/10');
+      &.#{$CSS_BACKGROUND_COMMON_WHITE}{
+        background-color: color('Common/White');
+      }
+      .b-tx{
+        color: color('Gray/06');
+      }
+      &.#{$CSS_BACKGROUND_COMMON_WHITE}{
+        .b-tx{
+          color: color('Gray/08');
+        }
+      }
+    }
+  }
+  &.#{$TYPE_TEXT}{
+    background: transparent;
+    border: none;
+    .b-cont{
+      gap: to-rem(4px);
+    }
+    &.#{$SIZE_LARGE}{
+      .b-tx{
+        @include font('Body1/Medium');
+      }
+    }
+    &.#{$SIZE_MEDIUM}{
+      .b-tx{
+        @include font('Body3/Medium');
+      }
+    }
+    &.#{$SIZE_SMALL}{
+      .b-tx{
+        @include font('Body4/Medium');
+      }
+    }
+  }
+  @extend %buttonColorSet;
+}
+
+
+

@@ -1,0 +1,36 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+$SIZE_DEFAULT: 'size-default';
+$SIZE_SM: 'size-sm';
+
+.bs-title {
+  .bt-tt {
+    display: flex;
+    align-items: center;
+    @include font('T1/Bold');
+    color: color('Gray/01');
+    .b-r {
+      letter-spacing: -0.01em;
+      font-size: to-rem(14px);
+      font-weight: 600;
+      line-height: 1.3;
+      color: color('Blue/04 (basic)');
+      margin-left: to-rem(6px);
+    }
+  }
+  .bt-st {
+    @include font('Body1/Medium');
+    color: color('Gray/05');
+  }
+  .bt-tt + .bt-st {
+    margin-top: to-rem(12px);
+  }
+  &.#{$SIZE_SM} {
+    .bt-tt {
+      @include font('T2/Bold');
+    }
+  }
+}

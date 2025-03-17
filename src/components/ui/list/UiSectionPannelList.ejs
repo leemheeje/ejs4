@@ -1,0 +1,72 @@
+<%
+const {
+  title = '',
+  items = []
+} = props || {}
+%>
+<div class="ui-section-pannel-list">
+  <div class="usp-inner">
+    <div class="up-tits"><%-title%></div>
+    <div class="up-lsts">
+      <!-- foreach:S -->
+      <%_for(const k in items){_%>
+      <button class="u-tps <%-items[k].isActive ? 'is-active' : ''%>">
+        <div class="u-tps-cont">
+          <span class="ub-sym">
+            <img src="<%-items[k].codeImageSrc%>" class="u-img" alt="" />
+          </span>
+          <div class="ub-txts">
+            <div class="u-tit">
+              <span class="t-tx"><%-items[k].codeTitle%></span>
+              <%_if(items[k].codeTag){_%>
+              <div class="tg-grp">
+                <%_if(items[k].codeTag === '진행중'){_%>
+                <%- include($rootSrc('@/components/BsTag'), {
+                  props:{
+                    size: (size)=>size.SMALL,
+                    cssBackground: (color)=>color['Red/05'],
+                    cssColor: (color)=>color['Common/White'],
+                    cssBorderColor: (color)=>color['Red/05'],
+                    slot: '진행중'
+                  }
+                }) %>
+                <%_}else if(items[k].codeTag === '예정'){_%>
+                <%- include($rootSrc('@/components/BsTag'), {
+                  props:{
+                    size: (size)=>size.SMALL,
+                    cssBackground: (color)=>color['Blue/05'],
+                    cssColor: (color)=>color['Common/White'],
+                    cssBorderColor: (color)=>color['Blue/05'],
+                    slot: '예정'
+                  }
+                }) %>
+                <%_}else if(items[k].codeTag === '완료'){_%>
+                <%- include($rootSrc('@/components/BsTag'), {
+                  props:{
+                    size: (size)=>size.SMALL,
+                    cssBackground: (color)=>color['Gray/02'],
+                    cssColor: (color)=>color['Common/White'],
+                    cssBorderColor: (color)=>color['Gray/02'],
+                    slot: '완료'
+                  }
+                }) %>
+                <%_}_%>
+              </div>
+              <%_}_%>
+            </div>
+            <div class="u-desc"><%-items[k].codeDescription%></div>
+          </div>
+        </div>
+        <%_if(items[k].isLayer){_%>
+        <div class="u-tps-lay">
+          <span class="u-tl">
+            <span class="COLOR_BLUE_05 FW_SEMIBOLD">1분 창업 계획서</span>를 작성하면<br />주요단계를 확인할 수 있어요!
+          </span>
+        </div>
+        <%_}_%>
+      </button>
+      <%_}_%>
+      <!-- foreach:E -->
+    </div>
+  </div>
+</div>

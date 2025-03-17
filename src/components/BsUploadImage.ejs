@@ -1,0 +1,55 @@
+<%
+const {
+  id='',
+  multiple=false,
+  type=()=>null,
+  items = [
+  `<%-$staticSrc('@/static/images/@dummy/recommendThumb2.png')%>`,
+`<%-$staticSrc('@/static/images/@dummy/recommendThumb2.png')%>`,
+`<%-$staticSrc('@/static/images/@dummy/recommendThumb2.png')%>`,
+`<%-$staticSrc('@/static/images/@dummy/recommendThumb2.png')%>`,
+],
+maxlength=10,
+className,
+add=true
+} = props || {}
+
+const localId = id ? id : _.uniqueId('_uid_')
+%>
+
+
+<div class="bs-uploadimage <%-className ? className : ''%> <%-multiple ? 'is-mutiple' : ''%> <%-type() === 'type-2' ? 'type-2' : ''%>">
+  <div class="bu-inner">
+    <!-- 
+    isMultiple ? 등록이미지가 10개 이상이면 label 삭제 :
+    등록이미지가 잇으면 label 삭제
+    -->
+
+    <div class="bx-items">
+      <%_if(!(items.length >= maxlength) && add){_%>
+      <label class="i-lb" for="<%-localId%>">
+        <%_if(items.length){_%>
+        <%# 등록된 사진이 없을때:S %>
+        <span class="d-in"><%-items.length%>/<%-maxlength%></span>
+        <%# 등록된 사진이 없을때:E %>
+        <%_}else{_%>
+        <%# 등록된 사진이 1개 이상일때:S %>
+        <span class="d-in">사진 추가</span>
+        <%# 등록된 사진이 1개 이상일때:E %>
+        <%_}_%>
+        <input type="file" id="<%-localId%>" class="inp" <%-multiple ? 'multiple' : ''%> />
+      </label>
+      <%_}_%>
+      <!-- foreach:S -->
+      <%_for(const k in items){_%>
+      <div class="b-item">
+        <img src="<%-items[k]%>" class="img" alt="" />
+        <button class="d-btn">
+          <span class="d-in">삭제</span>
+        </button>
+      </div>
+      <%_}_%>
+      <!-- foreach:E -->
+    </div>
+  </div>
+</div>

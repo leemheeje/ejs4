@@ -1,0 +1,46 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+.ui-toast-mbti{
+  .utm-inner{
+    padding-left: $spacing-box-left;
+    padding-right: $spacing-box-right;
+    display: flex;
+    align-items: center;
+    gap: to-rem(14px);
+    width: 100%;
+    border-radius: to-rem(30px);
+    min-height: to-rem(52px);
+    border: none;
+    background-color: color('Opacity/100');
+  }
+  .ut-lts{
+    min-width: to-rem(24px);
+    width: to-rem(24px);
+    height: to-rem(24px);
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    display: block;
+  }
+  .ut-cont{
+    @include font('Body3/Bold');
+    @include text-ellipsis(1, to-rem(19.6px));
+    text-align: left;
+    width: calc(100% - to-rem(5px) - to-rem(24px));
+    color: color('Common/White');
+  }
+  .ut-rts{
+    margin-right: 0;
+    margin-left: auto;
+    color: color('Common/White');
+    min-width: to-rem(20px);
+    width: to-rem(20px);
+    height: to-rem(20px);
+    background: no-repeat right center get-background-svg('icon_angle_small_right', #{color('Common/White')});
+    background-size: 100%;
+  }
+}

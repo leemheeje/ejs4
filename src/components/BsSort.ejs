@@ -1,0 +1,26 @@
+<%
+const {
+  category = ['전체'],
+  sortType = true,
+  sort,
+} = props || {}
+%>
+
+<div class="bs-sort">
+  <div class="sort-left">
+    <%_if(sort.sortType){%>
+    <button type="button" class="sort-type-front" data-latest>최신순</button>
+    <%_} else {%>
+    <p>총 <strong>0</strong>개</p>
+    <%_}_%>
+  </div>
+  <div class="sort-right">
+    <%_if(sort.category.length > 0){%>
+    <%_for(const i in sort.category){_%>
+    <button type="button" class="sort-type-select"><%-sort.category[i]%></button>
+    <%_} _%>
+    <%_} else { _%>
+    <!-- <button type="button" class="sort-type-front" data-latest>최신순</button> -->
+    <%_} _%>
+  </div>
+</div>

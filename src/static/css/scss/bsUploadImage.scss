@@ -1,0 +1,127 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+$TYPE-2: 'type-2';
+
+.bs-uploadimage{
+  position: relative;
+  
+  %layer_box{
+    border-radius: to-rem(8px);
+    overflow: hidden;
+    min-width: to-rem(96px);
+    width: to-rem(96px);
+    height: to-rem(96px);
+  }
+  %layer_area{
+     @include font('Body4/Medium');
+      color: color('Common/White');
+      padding-top: to-rem(24px);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:after{
+        content: '';
+        width: to-rem(20px);
+        height: to-rem(20px);
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: to-rem(-10px);
+        background:  no-repeat center center;
+        background-size: 100%;
+      }
+  }
+  &.#{$TYPE-2}{
+    // 1:.75 => 160:120
+    %layer_box{
+      @extend %layer_box;
+      min-width: to-rem(96px);
+      width: 100%;
+      height: 0;;
+      padding-bottom: 75%;
+    }
+  }
+  .inp{
+    @extend %layer_box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    appearance: none;
+    opacity: 0;
+  }
+  .bu-inner{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: to-rem(10px);
+  }
+  .i-lb{
+    @extend %layer_box;
+    border: to-rem(1px) solid color('Gray/09');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .d-in{
+      @extend %layer_area;
+      color: color('Gray/06');
+      &:after{
+        background-image: get-background-svg('icon_add_small', #{color('Gray/06')});
+        text-shadow: 0px 0px to-rem(2px) rgba(0, 0, 0, 0.8);
+       }
+    }
+  }
+  .bx-items{
+    position: relative;
+    display: flex;
+    white-space: nowrap;
+    overflow-x: auto;
+    gap: to-rem(10px);
+    .b-item{
+      position: relative;
+      @extend %layer_box;
+      .img{
+        width: 100%;
+        min-height: 100%;
+      }
+    }
+  }
+  .d-btn{
+    border: none;
+    position: absolute;
+    right: to-rem(8px);
+    top: to-rem(8px);
+    width: to-rem(20px);
+    height: to-rem(20px);
+    border-radius: 50%;
+    background: rgba(25, 25, 27, 0.6) no-repeat center center get-background-svg('icon_cancle', #{color('Common/White')});
+    background-size: to-rem(16px);
+    .d-in{
+      font-size: 0;
+    }
+  }
+  &.#{$TYPE-2}{
+    .bu-inner{
+      display: block;
+    }
+    .i-lb .d-in{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.page-spacing{
+  .bs-uploadimage:not(.type-2){
+    margin-right: -$spacing-right;
+    .bx-items{
+      padding-right: $spacing-right;
+    }
+  }
+}

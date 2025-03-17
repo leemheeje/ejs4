@@ -1,0 +1,170 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+// 애니메이션 참고 page-loader: https://css-loaders.com/dots/ #3
+// 애니메이션 참고 list-loader: https://css-loaders.com/spinner/ #20
+%page-loader {
+  width: to-rem(30px);
+  aspect-ratio: 2;
+  --_g1: no-repeat radial-gradient(circle closest-side, rgba(0, 123, 255, 1) 90%, transparent);
+  --_g2: no-repeat radial-gradient(circle closest-side, rgba(0, 123, 255, 0.8) 90%, transparent);
+  --_g3: no-repeat radial-gradient(circle closest-side, rgba(0, 123, 255, 0.6) 90%, transparent);
+  background:
+    var(--_g1) 0% 50%,
+    var(--_g2) 50% 50%,
+    var(--_g3) 100% 50%;
+  background-size: calc(100% / 3) 50%;
+  animation: l3 1s infinite linear;
+  @keyframes l3 {
+    0%,
+    100% {
+      background: var(--_g2), var(--_g2), var(--_g2);
+      background-position:
+        0% 50%,
+        50% 50%,
+        100% 50%;
+      background-size: calc(100% / 3) 50%;
+    }
+    20% {
+      background: var(--_g1), var(--_g2), var(--_g2);
+      background-position:
+        0% 0%,
+        50% 50%,
+        100% 50%;
+      background-size: calc(100% / 3) 50%;
+    }
+    40% {
+      background: var(--_g3), var(--_g1), var(--_g2);
+      background-position:
+        0% 100%,
+        50% 0%,
+        100% 50%;
+      background-size: calc(100% / 3) 50%;
+    }
+    60% {
+      background: var(--_g2), var(--_g3), var(--_g1);
+      background-position:
+        0% 50%,
+        50% 100%,
+        100% 0%;
+      background-size: calc(100% / 3) 50%;
+    }
+    80% {
+      background: var(--_g2), var(--_g2), var(--_g3);
+      background-position:
+        0% 50%,
+        50% 50%,
+        100% 100%;
+      background-size: calc(100% / 3) 50%;
+    }
+  }
+}
+
+%list-loader {
+  width: to-rem(28px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: to-rem(3px) solid color('Blue/04 (basic)');
+  animation:
+  // l20-1 0.8s infinite linear alternate,
+  // l20-2 1.6s infinite linear;
+    l20-1 1.2s infinite linear alternate,
+    l20-2 2.4s infinite linear;
+  @keyframes l20-1 {
+    0% {
+      clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+    }
+    12.5% {
+      clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
+    }
+    25% {
+      clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
+    }
+    50% {
+      clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+    }
+    62.5% {
+      clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+    }
+    75% {
+      clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%);
+    }
+    100% {
+      clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%);
+    }
+  }
+  @keyframes l20-2 {
+    0% {
+      transform: scaleY(1) rotate(0deg);
+    }
+    49.99% {
+      transform: scaleY(1) rotate(135deg);
+    }
+    50% {
+      transform: scaleY(-1) rotate(0deg);
+    }
+    100% {
+      transform: scaleY(-1) rotate(-135deg);
+    }
+  }
+}
+
+.bs-preloader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .bp-ics {
+    display: block;
+    margin: 0 auto;
+  }
+  .loading-text {
+    font-size: to-rem(18px);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-top: to-rem(40px);
+  }
+  &.is-page-loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5001;
+    .bp-ics {
+      @extend %page-loader;
+    }
+  }
+  &.is-list-loader {
+    padding: to-rem(30px) 0;
+    .bp-ics {
+      @extend %list-loader;
+    }
+  }
+
+  &.is-no-flex {
+    display: block;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+  }
+
+  &.is-dim {
+    &::before {
+      content: '';
+      background: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 5000;
+    }
+  }
+  .bp-ics {
+    z-index: 6000;
+  }
+}

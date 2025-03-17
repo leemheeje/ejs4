@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="<%-$currentLocale%>">
+<%- include($rootSrc('@/components/layout/Head')); %>
+
+<body>
+  <div class="login-layout">
+    <%- include($rootSrc('@/components/layout/HeaderSub'), {
+      props: {
+        ...data?.headerSubInfo,
+        useRightArea: data?.headerSubInfo?.useRightArea
+      }
+    }) %>
+    <%- body %>
+  </div>
+
+  <%-include($rootSrc('@/components/layout/Script'))%>
+</body>
+
+</html>

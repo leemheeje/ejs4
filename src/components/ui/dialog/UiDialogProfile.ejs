@@ -1,0 +1,36 @@
+<%
+const {
+  profileData
+} = props || {}
+%>
+
+
+<%- include($rootSrc(`@/components/BsDialog`), {
+  props: {
+    className: 'bs-profile',
+    title: profileData.nicknName,
+    slotTopRight: ()=> `<div class="profile-img"><img src="${profileData.profileIMG}"></div>`,
+    slot: ()=> include($rootSrc('@/components/ui/list/UiListSelectStore'), {
+      props:{
+        profileData
+      }
+    }),
+    slotBottom: ()=> include($rootSrc('@/components/BsButtonGroup'), {
+      props:{
+        items: [
+          {codeId: 'code1', codeName: '닫기'},
+        ],
+        slot: (item)=> include($rootSrc('@/components/BsButton'), {
+          props: {
+            block: true,
+            size: (BUTTON_SIZE)=> BUTTON_SIZE.LARGE,
+            cssBackground: (CSS_BACKGROUND)=>CSS_BACKGROUND[item.codeId === 'code1' ? 'Gray/08' : 'Common/White'],
+            cssBorderColor: (CSS_BORDER_COLOR)=>CSS_BORDER_COLOR[item.codeId === 'code1' ? 'Gray/08' : 'Common/White'],
+            cssColor: (CSS_COLOR)=>CSS_COLOR[item.codeId === 'code1' ? 'Gray/04' : 'Gray/05'],
+            slot: item.codeName
+          }
+        })
+      }
+    })
+  }
+}) %>

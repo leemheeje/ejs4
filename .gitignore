@@ -1,0 +1,5 @@
+node_modules
+dist
+.docs
+.routes
+src/static/css/*.min.css

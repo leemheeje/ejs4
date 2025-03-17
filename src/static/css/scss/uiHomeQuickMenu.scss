@@ -1,0 +1,58 @@
+@import '_variable';
+@import '_mixin';
+@import '_function';
+@import '_placeholder';
+
+
+.ui-home-quickmenu{
+  display: flex;
+  justify-content: center;
+  .uhq-lst{
+    display: flex;
+    align-items: flex-start;
+    justify-items: center;
+    margin-left: calc($spacing-left / -2);
+    margin-right: calc($spacing-right / -2);
+    .uh-tp{
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: calc($spacing-left / 2) 0;
+      padding-left: calc($spacing-left / 2);
+      padding-right: calc($spacing-right / 2);
+    }
+  }
+  .tx-con{
+    width: to-rem(85px);
+    text-align: center;
+    border: none;
+    background: transparent;
+    .ic-x{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: to-rem(58px);
+      height: to-rem(58px);
+      border-radius: to-rem(16px);
+      background: no-repeat center center color('Blue/08');
+      background-size: to-rem(36px);
+      &.icon-tp1{
+        background-image: url('../images/common/icon_flat_1.png');
+      }
+      &.icon-tp2{
+        background-image: url('../images/common/icon_flat_2.png');
+      }
+      &.icon-tp3{
+        background-image: url('../images/common/icon_flat_3.png');
+      }
+      &.icon-tp4{
+        background-image: url('../images/common/icon_flat_4.png');
+      }
+    }
+    .ic-t{
+      margin-top: to-rem(4px);
+      @include font('Body4/Medium');
+      color: color('Gray/03');
+    }
+  }
+}

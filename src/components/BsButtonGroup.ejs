@@ -1,0 +1,17 @@
+<%
+const {
+  items= null,
+  slot= null,
+  useflexWrap=false
+} = props || {}
+%>
+
+<%_if(typeof items === 'object' && typeof slot === 'function'){_%>
+<ul class="bs-button-group <%-useflexWrap ? 'is-flexwrap' : ''%>">
+  <%_for(const k in items){_%>
+  <li class="bg-tp">
+    <%-slot(items[k])%>
+  </li>
+  <%_}_%>
+</ul>
+<%_}_%>

@@ -1,0 +1,92 @@
+<%
+const {
+  items= [],
+  loop=false,
+  pagination=false,
+  paginationOut=false,
+  paginationFraction=false,
+  autoHeight=false,
+  navigation=false,
+  spaceBetween=0, 
+  value= 0,
+  slidesPerView,
+  slidesPerGroup,
+  breakpoints,
+  centeredSlides=false,
+  slot = ()=>null,
+} = props || {}
+
+const localSwiperOption = {}
+if(loop) localSwiperOption.loop = loop
+if(slidesPerView) localSwiperOption.slidesPerView = slidesPerView
+if(slidesPerView) localSwiperOption.slidesPerGroup = slidesPerGroup
+if(centeredSlides) localSwiperOption.centeredSlides = centeredSlides
+if(spaceBetween) localSwiperOption.spaceBetween = spaceBetween
+if(breakpoints) localSwiperOption.breakpoints = {
+  640: {
+    slidesPerView: 3,
+  },
+  1024: {
+    slidesPerView: 4,
+  }
+}
+if(pagination) {
+  localSwiperOption.pagination = {el: '.bs-pagination'}
+  if(paginationFraction){
+    localSwiperOption.pagination = {
+      ...localSwiperOption.pagination,
+      type: 'fraction',
+    }
+  }
+}
+if(paginationOut) {
+  localSwiperOption.pagination = {el: '.bs-pagination-out'}
+  if(paginationFraction){
+    localSwiperOption.pagination = {
+      ...localSwiperOption.pagination,
+      type: 'fraction',
+    }
+  }
+}
+if(navigation) localSwiperOption.navigation = {nextEl: '.bs-button-next', prevEl: '.bs-button-prev'}
+if(autoHeight) localSwiperOption.autoHeight = autoHeight
+
+%>
+
+<div class="bs-swiper bsSwiper <%-paginationFraction ? 'is-fraction' : ''%>">
+  <div class="bss-inner">
+    <div class="sld-area">
+      <div class="bsa-swiper swiperContainer " data-params='<%-JSON.stringify(localSwiperOption)%>'>
+        <!-- <div class="bsa-swiper swiperContainer"> -->
+        <div class="swiper-wrapper bwp-container">
+          <%_for(const k in items){_%>
+          <div class="swiper-slide bwp-swiper"><%-slot(items[k])%></div>
+          <%_}_%>
+        </div>
+      </div>
+    </div>
+    <%_if((pagination || navigation) && items.length > 1){_%>
+    <div class="bsw-contr">
+      <%_if(pagination){_%>
+      <div class="bs-pagination"></div>
+      <%_}_%>
+      <%_if(navigation && !paginationOut){_%>
+      <div class="bs-button-prev"></div>
+      <div class="bs-button-next"></div>
+      <%_}_%>
+    </div>
+    <%_}_%>
+  </div>
+
+  <%_if(paginationOut){_%>
+  <div class="bsw-contr-out">
+    <div class="bs-pagination-out"></div>
+    <%_if(navigation){_%>
+    <div class="bsw-contr">
+      <div class="bs-button-prev"></div>
+      <div class="bs-button-next"></div>
+    </div>
+    <%_}_%>
+  </div>
+  <%_}_%>
+</div>

@@ -1,0 +1,19 @@
+<%
+const {
+  slot = '복사 완료! 원하는 위치에 붙여넣기 하세요'
+} = props || {}
+%>
+
+<div class="ui-toast-mbti copy-sucess">
+  <div class="utm-inner">
+    <div class="ut-lts">
+      <%-include($rootSrc('@/components/BsIcon'),{
+        props:{
+          type: (type)=>type['icon_check_circle'],
+          color: (color)=>color['Blue/04 (basic)']
+        }
+      })%>
+    </div>
+    <div class="ut-cont"><%-slot%></div>
+  </div>
+</div>

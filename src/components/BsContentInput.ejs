@@ -1,0 +1,30 @@
+<%
+const {
+  useIconKeyboard = false,
+  useIconCamera = true,
+  useInputField = true,
+  useCount = true,
+} = props || {}
+%>
+
+<div class="typing-container">
+  <div class="btn-area">
+    <%_if(useIconKeyboard){_%>
+    <button type="button" class="btn-keyboard"><span class="blind">키보드</span></button>
+    <%_}_%>
+    <%_if(useIconCamera){_%>
+    <button type="button" class="btn-camera"><span class="blind">카메라</span></button>
+    <%_}_%>
+  </div>
+  <div class="typing-input">
+    <%#_if(useInputField){_%>
+    <!-- <input type="text"> -->
+    <%#_}_%>
+  </div>
+  <%_if(useCount){_%>
+  <div class="word-count">
+    <strong>0</strong>
+    <span>/ 1000</span>
+  </div>
+  <%_}_%>
+</div>
