@@ -20,7 +20,7 @@ jobs:
               },
               body: JSON.stringify({
                 body: '#fix 개인-테스트project/3: testinaaaaaaaaaaaa???'
-              });
+              })
             });
             const text = await res.text();
             console.log("Dooray response:", text);
