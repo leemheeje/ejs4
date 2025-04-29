@@ -1,19 +1,19 @@
 name: Notify Dooray on PR Merged to Main
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed # PR이 닫힐 때 (merged 포함)
     branches:
       - main
 
 jobs:
   notify:
+    if: github.event.pull_request.merged == true # 머지된 경우만 실행
     runs-on: ubuntu-latest
     steps:
       - name: Send PR title and body to Dooray
         run: |
           curl -X POST "https://nhnent.dooray.com/services/1708537454543641438/4056747660541074455/NaXDAyaQQ12Box37PL0kXQ" \
             -H "Content-Type: application/json" \
-            -d "$(jq -n \
-                  --arg title "${{ github.event.pull_request.title }}" \
-                  --arg body "${{ github.event.pull_request.body }}" \
-                  '{ text: ($title + "\n\n" + $body) }')"
+            -d "#fix 개인-테스트project/3 : textin???"
