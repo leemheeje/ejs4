@@ -19,6 +19,8 @@ jobs:
                 "Content-Type": "application/json"
               },
               body: JSON.stringify({
-                text: 'fix #개인-테스트project/3: testinaaaaaaaaaaaa???'
+                "botName": "GitHub",
+                text: 'fix #개인-테스트project/3: testinaaaaaaaaaaaa???',
+                "attachments": []
               })
             });
