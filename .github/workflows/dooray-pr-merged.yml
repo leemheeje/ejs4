@@ -1,22 +1,40 @@
-name: Notify Dooray on PR Merged to Main
+name: Forward PR Event to Dooray
 
 on:
   pull_request:
     types:
-      - closed # PR이 닫힐 때 (merged 포함)
+      - closed
     branches:
       - main
 
 jobs:
   notify:
-    if: github.event.pull_request.merged == true # 머지된 경우만 실행
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Send PR title and body to Dooray
-        run: |
-          curl -X POST "https://nhnent.dooray.com/services/1708537454543641438/4056747660541074455/NaXDAyaQQ12Box37PL0kXQ" \
-            -H "Content-Type: application/json" \
-            -d "$(jq -n \
-                  --arg title "${{ github.event.pull_request.title }}" \
-                  --arg body "${{ github.event.pull_request.body }}" \
-                  '{ text: ("[PR Merge] " + $title + "\n\n" + $body) }')"
+      - name: Send full event payload to Dooray
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const prTitle = context.payload.pull_request.title;
+            const prDescription = context.payload.pull_request.body;
+
+            // title과 description을 조합
+            const combinedBody = `${prTitle}\n\n${prDescription}`;
+
+            const payload = JSON.stringify({
+              body: combinedBody,
+              pr_url: context.payload.pull_request.html_url,
+              author: context.payload.pull_request.user.login,
+              merged_at: context.payload.pull_request.merged_at
+            });
+
+            const res = await fetch("https://nhnent.dooray.com/services/1708537454543641438/4056747660541074455/NaXDAyaQQ12Box37PL0kXQ", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: payload
+            });
+            const text = await res.text();
+            console.log("Dooray response:", text);
