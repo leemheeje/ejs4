@@ -1,15 +1,12 @@
 name: Notify Dooray on PR Merged to Main
 
 on:
-  pull_request:
-    types:
-      - closed # PR이 닫힐 때 (merged 포함)
+  push:
     branches:
       - main
 
 jobs:
   notify:
-    if: github.event.pull_request.merged == true # 머지된 경우만 실행
     runs-on: ubuntu-latest
     steps:
       - name: Send PR title and body to Dooray
