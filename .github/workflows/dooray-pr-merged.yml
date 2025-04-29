@@ -20,7 +20,7 @@ jobs:
               },
               body: JSON.stringify({
                 "botName": "GitHub",
-                "content": 'fix #개인-테스트project/2: testinaaaaaaaaaaaa???',
+                "text": 'fix #개인-테스트project/2: testinaaaaaaaaaaaa???',
                 "attachments": []
               })
             });
