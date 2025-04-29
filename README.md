@@ -16,7 +16,7 @@ npm run build
 
 #### 추가된기능
 
-- 파일 디렉토리 작성가능
+- 파일 디렉토리 작성가능 기능추가
   - src/pages/.../.../index.ejs
 - 레이아웃선언가능
   src/pages/.. 안에 EJS파일만 layout선언가능
