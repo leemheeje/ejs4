@@ -22,5 +22,5 @@ jobs:
                 body: '#fix 개인-테스트project/3: testinaaaaaaaaaaaa???'
               })
             });
-            const text = await res.text();
+            const text = await res.json();
             console.log("Dooray response:", text);
