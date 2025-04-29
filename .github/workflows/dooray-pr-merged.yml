@@ -9,7 +9,7 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Send PR title and body to Dooray
+      - name: 두레이알림
         uses: actions/github-script@v6
         with:
           script: |
@@ -20,7 +20,7 @@ jobs:
               },
               body: JSON.stringify({
                 "botName": "GitHub",
-                "text": 'fix #개인-테스트project/3: testinaaaaaaaaaaaa???',
+                "text": 'fix #개인-테스트project/2: testinaaaaaaaaaaaa???',
                 "attachments": []
               })
             });
