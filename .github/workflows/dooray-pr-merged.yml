@@ -1,0 +1,24 @@
+name: Notify Dooray on PR Merged to Main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send PR title and body to Dooray
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const res = await fetch("https://nhnent.dooray.com/services/1708537454543641438/4056747660541074455/NaXDAyaQQ12Box37PL0kXQ", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                text: 'fix #개인-테스트project/3: testinaaaaaaaaaaaa???'
+              })
+            });
