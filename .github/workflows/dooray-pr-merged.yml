@@ -10,7 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send PR title and body to Dooray
-        run: |
-          curl -X POST "https://nhnent.dooray.com/services/1708537454543641438/4056747660541074455/NaXDAyaQQ12Box37PL0kXQ" \
-            -H "Content-Type: application/json" \
-            -d "#fix 개인-테스트project/3 : textin???"
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const res = await fetch("https://nhnent.dooray.com/services/1708537454543641438/4056747660541074455/NaXDAyaQQ12Box37PL0kXQ", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                body: '#fix 개인-테스트project/3: testinaaaaaaaaaaaa???'
+              });
+            });
+            const text = await res.text();
+            console.log("Dooray response:", text);
